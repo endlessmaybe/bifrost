@@ -9,7 +9,7 @@ Bifrost 是 Windows 和 Android 网络代理客户端，支持智能选线、全
 | 平台 | 版本 | 选择 |
 | --- | --- | --- |
 | Windows x64 | **2.2.63** | `Bifrost-Offline-Setup-2.2.63-r1790830096-Windows-x64.exe` |
-| 安卓手机 | **2.2.41** | 通常选择 `Bifrost-Android-2.2.41-arm64-v8a.apk`；红米 K80 使用此包 |
+| 安卓手机 | **2.2.41** | 通常选择 `Bifrost-Android-2.2.41-arm64-v8a.apk`；|
 | 旧款 32 位安卓 | **2.2.41** | `Bifrost-Android-2.2.41-armeabi-v7a.apk` |
 | x86_64 安卓设备 / 模拟器 | **2.2.41** | `Bifrost-Android-2.2.41-x86_64.apk` |
 
