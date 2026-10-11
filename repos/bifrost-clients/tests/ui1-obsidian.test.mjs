@@ -1,0 +1,241 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+
+const root = path.resolve(import.meta.dirname, '..');
+const artifactDir = path.join(root, 'artifacts', 'ui-acceptance', 'ui1-obsidian-20260816');
+const read = relative => fs.readFileSync(path.join(root, relative), 'utf8');
+const sha256File = file => crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+
+function pngSize(file) {
+  const bytes = fs.readFileSync(file);
+  assert.equal(bytes.subarray(0, 8).toString('hex'), '89504e470d0a1a0a', `${file} is not a PNG`);
+  return { width: bytes.readUInt32BE(16), height: bytes.readUInt32BE(20) };
+}
+
+test('UI1 evidence is the Obsidian V2 production renderer, not the historical R9 directory', () => {
+  const evidencePath = path.join(artifactDir, 'evidence.json');
+  const manifestPath = path.join(artifactDir, 'sha256-manifest.json');
+  assert.ok(fs.existsSync(evidencePath), evidencePath);
+  assert.ok(fs.existsSync(manifestPath), manifestPath);
+  const evidence = JSON.parse(fs.readFileSync(evidencePath, 'utf8'));
+  const manifest = JSON.parse(fs.readFileSync(manifestPath, 'utf8'));
+  const pixelPath = path.resolve(root, '../bifrost-docs/evidence/ui1-pixel-acceptance.json');
+  const pixel = JSON.parse(fs.readFileSync(pixelPath, 'utf8'));
+  assert.equal(evidence.contract, 'UI1-OBSIDIAN-V2');
+  assert.equal(evidence.overall.status, 'PASS_WITH_PENDING_EXTERNAL');
+  assert.equal(evidence.overall.windows, 'PASS');
+  assert.equal(evidence.overall.control, 'PASS');
+  assert.equal(evidence.overall.android, 'PENDING-EXTERNAL');
+  assert.equal(pixel.status, 'PASS');
+  assert.equal(pixel.contract, 'UI1-OBSIDIAN-V2-PIXEL-GLYPH-MASK');
+  assert.match(pixel.actual, /bifrost-windows-dark-protected-test-actual\.png$/);
+  const ownerReference = path.join(root, '..', 'bifrost-docs', 'assets', 'ui', 'bifrost-obsidian-final-reference.png');
+  assert.equal(pixel.inputProvenance.ownerReference, path.resolve(ownerReference));
+  assert.equal(pixel.inputProvenance.ownerReferenceSha256, '84c7f867f1e0e8f250b657ec98eee650e443e1663344dc2d69e1e428cbf356da');
+  assert.equal(pixel.inputProvenance.ownerReferenceSha256, sha256File(ownerReference));
+  assert.deepEqual(pixel.inputProvenance.ownerReferenceDimensions, { width: 1672, height: 941 });
+  assert.equal(pixel.maskArtifacts.glyphOnly, true);
+  assert.ok(pixel.maskArtifacts.coveragePercent <= 10);
+  assert.equal(pixel.maskArtifacts.structureMaskCoveragePercent, 0);
+  assert.equal(pixel.maskArtifacts.structurePixelsMasked, 0);
+  assert.ok(pixel.metrics.edgeSsim >= 0.85);
+  assert.notEqual(pixel.metrics.edgeSsimStrictThreshold04, pixel.metrics.edgeSsim, 'strict .04 edge metric must be distinct');
+  assert.notEqual(pixel.metrics.edgeSsimStrictGaussianSigma2Threshold04, pixel.metrics.edgeSsimStrictThreshold04, 'Gaussian-window metric must be distinct');
+  assert.deepEqual(pixel.inputProvenance.generatedInputs, []);
+  assert.match(pixel.inputProvenance.maskInput, /ui1-pixel-landmarks-v1\.json$/);
+  assert.ok(Math.abs(pixel.delta.topCenterPx.x) <= 8 && Math.abs(pixel.delta.topCenterPx.y) <= 8);
+  assert.ok(Math.abs(pixel.delta.bottomCenterPx.x) <= 8 && Math.abs(pixel.delta.bottomCenterPx.y) <= 8);
+  assert.ok(pixel.referenceBounds.dial && pixel.actualBounds.dial, 'dial bbox evidence is required');
+  assert.ok(Math.abs(pixel.dialGeometry.centerOffsetPx.x) <= 4 && Math.abs(pixel.dialGeometry.centerOffsetPx.y) <= 4);
+  assert.ok(Math.abs(pixel.dialGeometry.widthDeltaRelative) <= 0.04);
+  assert.ok(Math.abs(pixel.dialGeometry.heightDeltaRelative) <= 0.04);
+  assert.ok(Math.abs(pixel.dialGeometry.diameterDeltaRelative) <= 0.04);
+  for (const name of ['topSegmented', 'bottomMode', 'dial']) {
+    for (const key of ['x', 'y', 'width', 'height']) {
+      assert.equal(pixel.delta[name][key], pixel.actualBounds[name][key] - pixel.referenceBounds[name][key], `${name}.${key} delta must be arithmetic`);
+    }
+  }
+  assert.ok(Math.abs(pixel.delta.topSegmented.width) / pixel.referenceBounds.topSegmented.width <= 0.05);
+  assert.ok(Math.abs(pixel.delta.bottomMode.width) / pixel.referenceBounds.bottomMode.width <= 0.05);
+  for (const artifact of pixel.artifacts) assert.ok(fs.existsSync(path.resolve(root, '../bifrost-docs/evidence', artifact)), artifact);
+  assert.equal(evidence.layoutMatrices.windows.length, 6);
+  for (const row of evidence.layoutMatrices.windows) {
+    assert.equal(row.fitsRequestedLogicalViewport, true, `${row.width}x${row.height}@${row.scale} must fit`);
+    assert.equal(row.derived.overallPass, true, `${row.width}x${row.height}@${row.scale} must pass`);
+  }
+  assert.deepEqual(evidence.layoutMatrices.windows.map(row => [row.width, row.height, row.scale]), [[1440, 810, 1], [960, 640, 1], [1440, 900, 1.25], [1440, 900, 1.5], [1920, 1080, 2], [1180, 760, 1]]);
+  assert.equal(evidence.obsidianGeometry.allGeometryPass, true);
+  assert.equal(evidence.obsidianGeometry.dial.centerPass, true);
+  assert.equal(evidence.obsidianGeometry.dial.sizePass, true);
+  assert.ok(evidence.obsidianGeometry.dial.referenceBounds.width > 0 && evidence.obsidianGeometry.dial.actualBounds.width > 0);
+  assert.ok(Math.abs(evidence.obsidianGeometry.dial.widthDeltaRelative) <= 0.04);
+  assert.ok(Math.abs(evidence.obsidianGeometry.dial.heightDeltaRelative) <= 0.04);
+  assert.ok(Math.abs(evidence.obsidianGeometry.dial.diameterDeltaRelative) <= 0.04);
+  assert.ok(Math.abs(evidence.obsidianGeometry.dial.centerOffsetFromReference.x) <= 4);
+  assert.ok(Math.abs(evidence.obsidianGeometry.dial.centerOffsetFromReference.y) <= 4);
+  const protectedRows = evidence.windows.filter(row => row.state === 'protected-test');
+  const idleRows = evidence.windows.filter(row => row.state === 'idle');
+  assert.equal(protectedRows.length, 2);
+  assert.ok(protectedRows.every(row => row.testWatermark));
+  assert.ok(idleRows.every(row => !row.testWatermark));
+  assert.equal(evidence.android.status, 'PENDING-EXTERNAL');
+  for (const row of evidence.windows) {
+    const file = path.join(artifactDir, row.name);
+    assert.deepEqual(pngSize(file), { width: 1440, height: 810 });
+    assert.equal(sha256File(file), row.sha256);
+  }
+  for (const row of evidence.windowsResponsive ?? []) {
+    assert.deepEqual(pngSize(path.join(artifactDir, row.name)), { width: 1180, height: 760 });
+    assert.equal(sha256File(path.join(artifactDir, row.name)), row.sha256);
+  }
+  for (const entry of manifest.files) {
+    const file = path.join(artifactDir, entry.name);
+    assert.equal(fs.statSync(file).size, entry.bytes);
+    assert.equal(sha256File(file), entry.sha256);
+  }
+  assert.doesNotMatch(fs.readFileSync(evidencePath, 'utf8'), /invite|recovery|pairing|session_token|socks_password/i);
+});
+
+test('UI1 production sources implement the approved teal-rune desktop, auth routing and motion gates', () => {
+  const wpf = read('windows-app/MainWindow.xaml');
+  const dial = read('windows-app/ObsidianMechanicalDial.cs');
+  const androidDial = read('android-app/src/main/java/com/bifrost/client/ui/components/BifrostAComponents.kt');
+  const androidScreen = read('android-app/src/main/java/com/bifrost/client/ui/screens/BifrostAHomeScreen.kt');
+  const androidPolicy = read('android-app/src/main/java/com/bifrost/client/ui/model/BifrostAndroidLayoutPolicy.kt');
+  const viewModel = read('windows-app/UiShellViewModel.cs');
+  const telemetry = read('windows-app/WindowsTunnelTelemetry.cs');
+  const windowBridge = read('windows-app/MainWindow.xaml.cs');
+  const components = read('windows-app/Themes/Components.xaml');
+  const admin = fs.readFileSync(path.resolve(root, '../bifrost-control/web-admin/index.html'), 'utf8');
+  assert.doesNotMatch(wpf, /<local:ObsidianMechanicalDial/);
+  assert.match(wpf, /x:Key="ObsidianNavButton"/);
+  assert.doesNotMatch(wpf, /x:Key="TopNavButton"/);
+  assert.match(wpf, /x:Name="DesktopTitleBar"/);
+  assert.match(wpf, /x:Name="SidebarBorder"/);
+  assert.match(wpf, /x:Name="NavStack"/);
+  assert.match(wpf, /x:Name="HomeCommandSurface"/);
+  assert.match(wpf, /x:Name="HomeRouteConsole"/);
+  assert.match(wpf, /Text="\{Binding PrimaryActionLabel\}"/);
+  assert.match(wpf, /WindowStyle="None"/);
+  assert.match(wpf, /WindowChrome/);
+  assert.match(wpf, /MinWidth="760" MinHeight="620"/);
+  assert.doesNotMatch(wpf, /x:Name="CompactHomePage"/);
+  assert.match(wpf, /x:Name="HomeSmartGateNodeBox"[\s\S]*ItemsSource="\{Binding CountryOptions\}"[\s\S]*SelectedValue="\{Binding Country, Mode=TwoWay\}"/);
+  assert.doesNotMatch(wpf, /x:Name="CompactNavigationBar"/);
+  assert.match(wpf, /x:Name="DesignDirectionBox"/);
+  assert.match(wpf, /Width="1280" Height="810"/);
+  assert.doesNotMatch(wpf, /ToolbarSegmentContainer/);
+  for (const color of ['#FF5F57', '#FEBC2E', '#28C840']) assert.doesNotMatch(wpf, new RegExp(color));
+  assert.match(wpf, /ThemeQuickButton[\s\S]*CommandParameter="settings"/);
+  assert.match(wpf, /Text="BIFROST"/);
+  assert.doesNotMatch(wpf, /总览（连接）/);
+  assert.match(wpf, /Text="SmartGate"/);
+  assert.match(wpf, /x:Name="HomeSmartGateNodeSelector"[\s\S]*Visibility="\{Binding IsSmartGateMode/);
+  assert.match(wpf, /x:Name="HomeSmartGateNodeBox"[\s\S]*ItemsSource="\{Binding CountryOptions\}"[\s\S]*SelectedValue="\{Binding Country, Mode=TwoWay\}"/);
+  assert.match(wpf, /<ScrollViewer x:Name="HomePage"/);
+  assert.match(wpf, /Tag="home"[^>]*AutomationProperties\.Name="连接"/);
+  assert.match(wpf, /Tag="activity"[^>]*AutomationProperties\.Name="活动"/);
+  assert.match(viewModel, /PacketLossMetric/);
+  assert.doesNotMatch(wpf, /Text="丢包率 0\.12%"/);
+  assert.match(viewModel, /PacketLossMetric => _state\.Presentation\.IsTestState \? "0\.12%" : "—"/);
+  assert.doesNotMatch(wpf, /状态由验证回执提供/);
+  assert.match(wpf, /InspectorBorder[^>]*Visibility="Collapsed"/);
+  assert.match(wpf, /x:Name="ActivityPage"/);
+  for (const panel of ['SmartModePanel', 'GlobalModePanel', 'SmartGateModePanel']) assert.match(wpf, new RegExp(`x:Name="${panel}"`));
+  assert.match(wpf, /x:Name="SmartGateConnectButton"[\s\S]*Command="\{Binding ConnectCommand\}"/);
+  assert.match(viewModel, /IsSmartGateMode/);
+  assert.match(viewModel, /zero country exits|no country exit/i);
+  assert.match(windowBridge, /"routing" => "分流"/);
+  assert.doesNotMatch(windowBridge, /HeroDial\.(Width|Height)\s*=/);
+  assert.match(windowBridge, /activityChartHost\.RowDefinitions\[0\]\.Height = GridLength\.Auto/);
+  assert.match(components, /x:Key="SegmentStyle"[\s\S]*ControlTemplate TargetType="ListBox"[\s\S]*x:Name="SegmentFrame"[\s\S]*Background="\{TemplateBinding Background\}"/);
+  assert.match(windowBridge, /EndsWith\(\$"Themes\/\{resolved\}"[\s\S]*return;[\s\S]*MergedDictionaries\.Add\(replacement\);[\s\S]*MergedDictionaries\.Remove\(old\)/);
+  assert.match(windowBridge, /Contains\("Themes\/Direction"/);
+  assert.doesNotMatch(windowBridge, /Contains\("\/Themes\/Direction"/);
+  assert.doesNotMatch(wpf, /Style="\{StaticResource StatusPill\}"/);
+  assert.match(wpf, /ItemsSource="\{Binding SourceOptions\}"/);
+  assert.match(wpf, /ItemsSource="\{Binding CountryOptions\}"/);
+  assert.match(wpf, /ItemsSource="\{Binding SourceRouteGroups\}"/);
+  assert.match(wpf, /ItemsSource="\{Binding CandidateRoutes\}"/);
+  assert.match(wpf, /Command="\{Binding DataContext\.SelectCandidateCommand, RelativeSource=\{RelativeSource AncestorType=Window\}\}"/);
+  assert.doesNotMatch(wpf, /UseCandidateCommand|使用并连接/);
+  assert.match(wpf, /Text="\{Binding LatencyText\}"/);
+  assert.match(wpf, /AutomationProperties\.Name="\{Binding CandidateProbeAutomationName\}"/);
+  assert.match(viewModel, /CandidateProbeAutomationName => IsCandidateProbeRunning[\s\S]*停止当前线路测速[\s\S]*重新测量当前源站全部线路延迟/);
+  assert.doesNotMatch(wpf, /x:Name="CandidateBox"/);
+  assert.match(wpf, /ItemsSource="\{Binding LiveEvents\}"/);
+  assert.doesNotMatch(wpf, /SG-01\s+新加坡|JP-02\s+东京|US-01\s+洛杉矶|api\.github\.com:443|www\.cloudflare\.com:443|www\.youtube\.com:443/);
+  assert.match(viewModel, /PollServiceStatusAsync/);
+  assert.match(viewModel, /NormalizePersistedApplicationPolicy/);
+  assert.match(telemetry, /InterfaceName = "bifrost1"/);
+  assert.match(telemetry, /GetIPv4Statistics/);
+  assert.match(windowBridge, /WmGetMinMaxInfo/);
+  assert.match(windowBridge, /monitorInfo\.WorkArea/);
+  assert.match(viewModel, /IsActivityPage/);
+  assert.match(viewModel, /page is "nodes" or "routing" or "activity" or "settings"/);
+  // The owner-approved desktop explicitly restores the obsidian rune medallion.
+  assert.match(dial, /DrawMedallion/);
+  assert.match(wpf, /x:Name="HeroAuroraImage"/);
+  assert.doesNotMatch(wpf, /TextBlock Text="安全连接中心"/);
+  assert.doesNotMatch(dial, /DrawEmbossedLogo|for \(var index = 0; index < 60; index\+\+\)/);
+  assert.doesNotMatch(dial, /DispatcherTimer|Milliseconds\(80\)/);
+  assert.match(dial, /CompositionTarget\.Rendering/);
+  assert.match(dial, /Stopwatch\.GetTimestamp/);
+  assert.doesNotMatch(dial.match(/private void OnRendering[\s\S]*?protected override void OnRender/)?.[0] ?? '', /new Pen|new Brush/);
+  assert.match(dial, /ReduceMotion/);
+  assert.match(androidDial, /repeat\(24\)/);
+  assert.match(androidDial, /Color\(0xFF19CDD3\)/);
+  assert.match(androidDial, /Color\(0xFF73CFC4\)/);
+  assert.doesNotMatch(androidDial, /painterResource\(R\.drawable\.obsidian_mechanical_dial\)/);
+  assert.match(androidScreen, /useLightMaterial/);
+  assert.match(androidScreen, /presentation\.statusText/);
+  assert.match(androidScreen, /BifrostUiText\.overviewTitle/);
+  assert.match(androidScreen, /BifrostUiText\.currentConnection/);
+  assert.match(androidScreen, /BifrostUiText\.smartGate/);
+  assert.match(androidScreen, /LocalBifrostDesign\.current/);
+  assert.match(androidScreen, /DesignDirectionSelector/);
+  assert.match(androidScreen, /verticalScroll\(rememberScrollState\(\)\)/);
+  assert.doesNotMatch(androidScreen, /BifrostThemeQuickAction/);
+  assert.match(androidDial, /fun BifrostModeGlyph/);
+  assert.match(androidDial, /rememberInfiniteTransition/);
+  assert.match(androidDial, /elderFuthark\s*=\s*"ᚠᚢᚦᚨᚱᚲᚷᚹᚺᚾᛁᛃᛇᛈᛉᛋᛏᛒᛖᛗᛚᛜᛞᛟ"/);
+  assert.match(androidDial, /PathFillType\.EvenOdd/);
+  assert.match(androidDial, /triangleBand/);
+  assert.match(androidDial, /iconRadius \* \.31f/);
+  assert.doesNotMatch(androidDial, /val turn = index \* 120f/);
+  assert.doesNotMatch(androidDial, /sweepGradient/);
+  assert.match(androidDial, /rememberInfiniteTransition/);
+  assert.match(androidDial, /TRANSITION_ANIMATION_SCALE/);
+  assert.match(androidScreen, /layoutPlan\.dialSizeDp/);
+  assert.match(androidScreen, /design\.heroMinDp/);
+  assert.match(androidScreen, /ModalBottomSheet/);
+  assert.match(androidScreen, /showDivider/);
+  assert.match(androidScreen, /outline\.copy\(alpha = if/);
+  assert.doesNotMatch(androidScreen, /padding\(bottom = 42\.dp\)/);
+  assert.match(androidPolicy, /usesThreePane/);
+  assert.match(androidPolicy, /detailsAsSheet/);
+  assert.match(androidPolicy, /BifrostAndroidLayoutRegion/);
+  assert.match(androidPolicy, /compactSummary/);
+  assert.match(admin, /id="appWorkspace" hidden/);
+  assert.match(admin, /function applyRoute/);
+  assert.match(admin, /hashchange/);
+  assert.match(admin, /prefers-reduced-motion/);
+  assert.match(admin, /--divider:/);
+  assert.match(admin, /inspector-row:not\(:last-child\)::after/);
+  assert.doesNotMatch(admin, /inspector-row[^}]*border-bottom:1px solid color-mix\(in srgb,var\(--line\) 70%/);
+  assert.doesNotMatch(admin, /transition:\s*all/i);
+  assert.doesNotMatch(admin, /innerHTML/);
+  assert.doesNotMatch(admin, /36% 27%|radial-gradient\(circle at 38% 28%|repeating-conic-gradient/i);
+  assert.doesNotMatch(admin, /linear-gradient\([^;]*#08090a/i);
+  assert.match(admin, /sidebar a\.active[^}]*background:var\(--card\)/);
+  assert.match(admin, /obsidian-mechanical-dial\.png/);
+  assert.match(admin, /obsidian-mechanical-dial-light\.png/);
+  assert.match(admin, /dial-material-light/);
+  for (const panel of ['artifact-verification', 'canary-progress', 'signature-rollback', 'recent-receipts']) {
+    assert.match(admin, new RegExp(`data-release-panel="${panel}"`));
+  }
+  assert.match(admin, /需要管理员登录/);
+});

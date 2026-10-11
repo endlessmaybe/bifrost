@@ -1,0 +1,7193 @@
+{
+  "format": "BIFROST-SERVICE-ROUTING-1",
+  "generated_at": "2026-09-14",
+  "precedence": "after explicit service exceptions and ads, before CN/GeoIP fallback",
+  "sources": {
+    "format": "BIFROST-SERVICE-RULE-SOURCES-1",
+    "date": "2026-09-14",
+    "revisions": {
+      "v2fly": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+      "metacubex": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+      "blackmatrix7": "5f74cf186fccb58a1e328007361723776165027e"
+    },
+    "files": [
+      {
+        "source": "v2fly",
+        "service": "twitter",
+        "commit": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/data/twitter",
+        "file": "v2fly-twitter.txt",
+        "bytes": 327,
+        "sha256": "05fee908ab80f262be5f603b24d3bdaa60aee1005ccc1cec988bab9236061116"
+      },
+      {
+        "source": "v2fly",
+        "service": "youtube",
+        "commit": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/data/youtube",
+        "file": "v2fly-youtube.txt",
+        "bytes": 2444,
+        "sha256": "9ffb657176fdffed567953749c137bb3d8a216ce4e839b3831b626c752902213"
+      },
+      {
+        "source": "v2fly",
+        "service": "telegram",
+        "commit": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/data/telegram",
+        "file": "v2fly-telegram.txt",
+        "bytes": 252,
+        "sha256": "24a2d026dbf3a09a8ca893420a40adbad70328978df0100d9c63abecdbf01b5d"
+      },
+      {
+        "source": "v2fly",
+        "service": "discord",
+        "commit": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/data/discord",
+        "file": "v2fly-discord.txt",
+        "bytes": 528,
+        "sha256": "6e57668fe3c87895036e1b35ce7110ea1872c41850e1e92258dc20517e3d6dc5"
+      },
+      {
+        "source": "v2fly",
+        "service": "reddit",
+        "commit": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/data/reddit",
+        "file": "v2fly-reddit.txt",
+        "bytes": 182,
+        "sha256": "c9a8f8d31c03484cad62527e65d47b101a657d3293b9adead66a2eecf80fbce9"
+      },
+      {
+        "source": "v2fly",
+        "service": "netflix",
+        "commit": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/data/netflix",
+        "file": "v2fly-netflix.txt",
+        "bytes": 680,
+        "sha256": "6a5568ce8d99b718b3a191292c81c94be56b5e14601316b99a6ece708f8f91f7"
+      },
+      {
+        "source": "v2fly",
+        "service": "disney",
+        "commit": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/data/disney",
+        "file": "v2fly-disney.txt",
+        "bytes": 2598,
+        "sha256": "692bd4cf2e28adc8128597bcd9fcd77eae2c6ac9420dc282703873a6d40a05b1"
+      },
+      {
+        "source": "v2fly",
+        "service": "spotify",
+        "commit": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/data/spotify",
+        "file": "v2fly-spotify.txt",
+        "bytes": 676,
+        "sha256": "ec710e93e84e85536a661905f2182f239464f55c1e837523de222d7e9d21c65b"
+      },
+      {
+        "source": "v2fly",
+        "service": "tiktok",
+        "commit": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/data/tiktok",
+        "file": "v2fly-tiktok.txt",
+        "bytes": 944,
+        "sha256": "e57322c704e4fe5ef3b202e4b86e82767fbe7f1af2c01f065fde4764205d0e4f"
+      },
+      {
+        "source": "v2fly",
+        "service": "github",
+        "commit": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/data/github",
+        "file": "v2fly-github.txt",
+        "bytes": 1837,
+        "sha256": "32c682a5437b3203fc8559cbf033f44ede2abb25f6358ab1a6fdc0decf5f479f"
+      },
+      {
+        "source": "v2fly",
+        "service": "instagram",
+        "commit": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/data/instagram",
+        "file": "v2fly-instagram.txt",
+        "bytes": 1326,
+        "sha256": "e392526b75e27218f874590d0db99b5e009fb0b7679095f0eac48a4ee3fb6413"
+      },
+      {
+        "source": "v2fly",
+        "service": "facebook",
+        "commit": "6fe5416797ec88d29a3a1c69ce1431d73b955e88",
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/data/facebook",
+        "file": "v2fly-facebook.txt",
+        "bytes": 6381,
+        "sha256": "1011563ed705cc73eaac145506c7a3e59530f59fd501d8ca88664e95e9f05cc5"
+      },
+      {
+        "source": "metacubex",
+        "service": "twitter",
+        "commit": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/twitter.list",
+        "file": "metacubex-twitter.txt",
+        "bytes": 369,
+        "sha256": "7bc17d19d2fa089b36993e56275eb0eb7355963f3e90a711364086442fd369c0"
+      },
+      {
+        "source": "metacubex",
+        "service": "youtube",
+        "commit": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/youtube.list",
+        "file": "metacubex-youtube.txt",
+        "bytes": 2743,
+        "sha256": "e95f241fa4357918fc1066390c352aad750b571ddea15e3421d30c84e947ac10"
+      },
+      {
+        "source": "metacubex",
+        "service": "telegram",
+        "commit": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/telegram.list",
+        "file": "metacubex-telegram.txt",
+        "bytes": 293,
+        "sha256": "2448b2699519cd258b10232fcacd01e89b7db04c8ce7fc860a4962518370a329"
+      },
+      {
+        "source": "metacubex",
+        "service": "discord",
+        "commit": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/discord.list",
+        "file": "metacubex-discord.txt",
+        "bytes": 542,
+        "sha256": "9f2530e2dc4117a27851256d731908931064bc6c9fefe43f69cc164804a33456"
+      },
+      {
+        "source": "metacubex",
+        "service": "reddit",
+        "commit": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/reddit.list",
+        "file": "metacubex-reddit.txt",
+        "bytes": 205,
+        "sha256": "bbfb9746c59c64d225d9126f23dc1f4d376edbafab2ac297415be9e9a059af16"
+      },
+      {
+        "source": "metacubex",
+        "service": "netflix",
+        "commit": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/netflix.list",
+        "file": "metacubex-netflix.txt",
+        "bytes": 452,
+        "sha256": "980ec18a1c566850622523310feb9ed38cd562c82e697c3da7f756b816f337d8"
+      },
+      {
+        "source": "metacubex",
+        "service": "disney",
+        "commit": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/disney.list",
+        "file": "metacubex-disney.txt",
+        "bytes": 4122,
+        "sha256": "3d791b93bbc96a114bb0283d7723d47cf0751dd42a38e9bb966e0b923cce8ff4"
+      },
+      {
+        "source": "metacubex",
+        "service": "spotify",
+        "commit": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/spotify.list",
+        "file": "metacubex-spotify.txt",
+        "bytes": 622,
+        "sha256": "848d93a2d8da4caa0d0338e303e3b3da8cb56a7e5d58431e43d8a94b5f2d3080"
+      },
+      {
+        "source": "metacubex",
+        "service": "tiktok",
+        "commit": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/tiktok.list",
+        "file": "metacubex-tiktok.txt",
+        "bytes": 730,
+        "sha256": "892f03350bb9c1d5e2fa15b417ac6759f13b12f558208d979d9f4d4cec310003"
+      },
+      {
+        "source": "metacubex",
+        "service": "github",
+        "commit": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/github.list",
+        "file": "metacubex-github.txt",
+        "bytes": 1924,
+        "sha256": "f5d67e6e0c8799bd292c8a012d579c8af37ee6a0af771299dd6500db4d1202fd"
+      },
+      {
+        "source": "metacubex",
+        "service": "instagram",
+        "commit": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/instagram.list",
+        "file": "metacubex-instagram.txt",
+        "bytes": 1447,
+        "sha256": "e5cba6ce4fa5a0dddbd4710d9dd5b6693c249e6f5be4179401843109ecbca228"
+      },
+      {
+        "source": "metacubex",
+        "service": "facebook",
+        "commit": "a1bf9c5ed492b6c4603636a0383b9698757d25a5",
+        "url": "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/facebook.list",
+        "file": "metacubex-facebook.txt",
+        "bytes": 7120,
+        "sha256": "c596908eb3c2227cd9d7b9974f8fed38ad4439118a0a10c4f63c69181313fd9e"
+      },
+      {
+        "source": "blackmatrix7",
+        "service": "twitter",
+        "commit": "5f74cf186fccb58a1e328007361723776165027e",
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/rule/Clash/Twitter/Twitter.list",
+        "file": "blackmatrix7-twitter.txt",
+        "bytes": 1116,
+        "sha256": "64c836f2431ca0d4728cc545bb74280ee50c886e346040012e6cdd2f3eee3f97"
+      },
+      {
+        "source": "blackmatrix7",
+        "service": "youtube",
+        "commit": "5f74cf186fccb58a1e328007361723776165027e",
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/rule/Clash/YouTube/YouTube.list",
+        "file": "blackmatrix7-youtube.txt",
+        "bytes": 5227,
+        "sha256": "a8e4819c3ee2ba71c06873769310ec012a3aa2e8fc54843168ae6edef6e75280"
+      },
+      {
+        "source": "blackmatrix7",
+        "service": "telegram",
+        "commit": "5f74cf186fccb58a1e328007361723776165027e",
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/rule/Clash/Telegram/Telegram.list",
+        "file": "blackmatrix7-telegram.txt",
+        "bytes": 1562,
+        "sha256": "0e99a027795b51c495e3bd97c854b147898c5e598ece47bd79515a419aab25e1"
+      },
+      {
+        "source": "blackmatrix7",
+        "service": "discord",
+        "commit": "5f74cf186fccb58a1e328007361723776165027e",
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/rule/Clash/Discord/Discord.list",
+        "file": "blackmatrix7-discord.txt",
+        "bytes": 1076,
+        "sha256": "3d18c8fe716de06891ba3d6c34dba254cb65138a10f79e1a1a0628b5237ecb2c"
+      },
+      {
+        "source": "blackmatrix7",
+        "service": "reddit",
+        "commit": "5f74cf186fccb58a1e328007361723776165027e",
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/rule/Clash/Reddit/Reddit.list",
+        "file": "blackmatrix7-reddit.txt",
+        "bytes": 426,
+        "sha256": "8437bd0bbf3214170f6601f3a9b34d45a7684c9e9f8d7554b608142be8a2e80b"
+      },
+      {
+        "source": "blackmatrix7",
+        "service": "netflix",
+        "commit": "5f74cf186fccb58a1e328007361723776165027e",
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/rule/Clash/Netflix/Netflix.list",
+        "file": "blackmatrix7-netflix.txt",
+        "bytes": 40391,
+        "sha256": "9ceac35682ac97d17223d90e08c4e56b52c072b1698d746a2d22444110318b57"
+      },
+      {
+        "source": "blackmatrix7",
+        "service": "disney",
+        "commit": "5f74cf186fccb58a1e328007361723776165027e",
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/rule/Clash/Disney/Disney.list",
+        "file": "blackmatrix7-disney.txt",
+        "bytes": 5638,
+        "sha256": "8ac935cbe8c975ce285879c098859b93badf309c0d321a55291f486c54820f9e"
+      },
+      {
+        "source": "blackmatrix7",
+        "service": "spotify",
+        "commit": "5f74cf186fccb58a1e328007361723776165027e",
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/rule/Clash/Spotify/Spotify.list",
+        "file": "blackmatrix7-spotify.txt",
+        "bytes": 1210,
+        "sha256": "0832138646a9425340a62743e0a1f847f681b571b1d28d07372a97dd6fd46efd"
+      },
+      {
+        "source": "blackmatrix7",
+        "service": "tiktok",
+        "commit": "5f74cf186fccb58a1e328007361723776165027e",
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/rule/Clash/TikTok/TikTok.list",
+        "file": "blackmatrix7-tiktok.txt",
+        "bytes": 1121,
+        "sha256": "7146b733ee239b6818d496aec1640cf1e962b39cda823388ce98d83761a6c885"
+      },
+      {
+        "source": "blackmatrix7",
+        "service": "github",
+        "commit": "5f74cf186fccb58a1e328007361723776165027e",
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/rule/Clash/GitHub/GitHub.list",
+        "file": "blackmatrix7-github.txt",
+        "bytes": 1117,
+        "sha256": "ced8ab0ecda5775d04ec8ee6a57b282181108565331a6a1d85e9a26fee25d79b"
+      },
+      {
+        "source": "blackmatrix7",
+        "service": "instagram",
+        "commit": "5f74cf186fccb58a1e328007361723776165027e",
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/rule/Clash/Instagram/Instagram.list",
+        "file": "blackmatrix7-instagram.txt",
+        "bytes": 287,
+        "sha256": "65f28f9253b0dbb2a81485c788537896a0817766685e7bd91b2f90ec7aa19548"
+      },
+      {
+        "source": "blackmatrix7",
+        "service": "facebook",
+        "commit": "5f74cf186fccb58a1e328007361723776165027e",
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/rule/Clash/Facebook/Facebook.list",
+        "file": "blackmatrix7-facebook.txt",
+        "bytes": 17399,
+        "sha256": "747563c96825bbd5f868be955543b0ca1979064e7b094f8aab08aafbce577c36"
+      }
+    ],
+    "licenses": {
+      "v2fly": {
+        "url": "https://raw.githubusercontent.com/v2fly/domain-list-community/6fe5416797ec88d29a3a1c69ce1431d73b955e88/LICENSE",
+        "sha256": "b9d84a22870d3f21c91a4c6e410c9cc51d00902f5233ad0c84011479244bf7d2",
+        "text": "MIT License\n\nCopyright (c) 2018-2019 V2Ray\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associat"
+      },
+      "metacubex": {
+        "error": "HTTP Error 404: Not Found"
+      },
+      "blackmatrix7": {
+        "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/5f74cf186fccb58a1e328007361723776165027e/LICENSE",
+        "sha256": "8177f97513213526df2cf6184d8ff986c675afb514d4e68a404010521b880643",
+        "text": "                    GNU GENERAL PUBLIC LICENSE\n                       Version 2, June 1991\n\n Copyright (C) 1989, 1991 Free Software Foundation, Inc.,\n"
+      }
+    }
+  },
+  "domain_suffix": [
+    "112263.com",
+    "20thcenturystudios.com",
+    "20thcenturystudios.com.au",
+    "20thcenturystudios.com.br",
+    "20thcenturystudios.jp",
+    "abc-studios.com",
+    "abc.com",
+    "abcnews.com",
+    "abcnews.edgesuite.net",
+    "aboutfacebook.com",
+    "accessfacebookfromschool.com",
+    "accountkit.com",
+    "acebooik.com",
+    "acebook.com",
+    "achat-followers-instagram.com",
+    "acheter-followers-instagram.com",
+    "acheterdesfollowersinstagram.com",
+    "acheterfollowersinstagram.com",
+    "adobedtm.com",
+    "advancediddetection.com",
+    "adventuresbydisney.com",
+    "airhorn.solutions",
+    "airhornbot.com",
+    "askfacebook.net",
+    "askfacebook.org",
+    "atdmt2.com",
+    "atlasdmt.com",
+    "atlasonepoint.com",
+    "atom.io",
+    "atscaleconference.com",
+    "audio-ak-spotify-com.akamaized.net",
+    "audio4-ak-spotify-com.akamaized.net",
+    "babble.com",
+    "babyzone.com",
+    "bam.nr-data.net",
+    "bamgrid.com",
+    "bamtech.net",
+    "beautyandthebeastmusical.co.uk",
+    "bigbeans.solutions",
+    "binoculus.com",
+    "bookstagram.com",
+    "botorch.org",
+    "braze.com",
+    "buck.build",
+    "buckbuild.com",
+    "buyingfacebooklikes.com",
+    "buyoculus.com",
+    "byspotify.com",
+    "bytedapm.com",
+    "bytegecko-i18n.com",
+    "byteintlapi.com",
+    "byteoversea.com",
+    "callhulu.com",
+    "capcut.com",
+    "careersatfb.com",
+    "carstagram.com",
+    "cdn-spotify-experiments.conductrics.com",
+    "cdn-telegram.org",
+    "cdn.optimizely.com",
+    "cdninstagram.com",
+    "celebgramme.com",
+    "chickstagram.com",
+    "china-facebook.com",
+    "click-url.com",
+    "cms-twdigitalassets.com",
+    "comments.app",
+    "como-hackearfacebook.com",
+    "componentkit.org",
+    "contest.com",
+    "conviva.com",
+    "cookielaw.org",
+    "copilotprodattachments.blob.core.windows.net",
+    "crowdtangle.com",
+    "d9.flashtalking.com",
+    "dacebook.com",
+    "dependabot.com",
+    "detpress.com",
+    "dilcdn.com",
+    "dis.gd",
+    "discord-activities.com",
+    "discord-attachments-uploads-prd.storage.googleapis.com",
+    "discord.co",
+    "discord.com",
+    "discord.design",
+    "discord.dev",
+    "discord.gg",
+    "discord.gift",
+    "discord.gifts",
+    "discord.media",
+    "discord.new",
+    "discord.store",
+    "discord.tools",
+    "discordactivities.com",
+    "discordapp.com",
+    "discordapp.io",
+    "discordapp.net",
+    "discordapp.page.link",
+    "discordcdn.com",
+    "discordmerch.com",
+    "discordpartygames.com",
+    "discordsays.com",
+    "discordstatus.com",
+    "disney-asia.com",
+    "disney-discount.com",
+    "disney-plus.net",
+    "disney-studio.com",
+    "disney-studio.net",
+    "disney.asia",
+    "disney.be",
+    "disney.bg",
+    "disney.ca",
+    "disney.ch",
+    "disney.co.il",
+    "disney.co.jp",
+    "disney.co.kr",
+    "disney.co.th",
+    "disney.co.uk",
+    "disney.co.za",
+    "disney.com",
+    "disney.com.au",
+    "disney.com.br",
+    "disney.com.hk",
+    "disney.com.tw",
+    "disney.cz",
+    "disney.de",
+    "disney.dk",
+    "disney.es",
+    "disney.fi",
+    "disney.fr",
+    "disney.gr",
+    "disney.hu",
+    "disney.id",
+    "disney.in",
+    "disney.io",
+    "disney.it",
+    "disney.my",
+    "disney.nl",
+    "disney.no",
+    "disney.ph",
+    "disney.pl",
+    "disney.pt",
+    "disney.ro",
+    "disney.ru",
+    "disney.se",
+    "disney.sg",
+    "disneyaccount.com",
+    "disneyadsales.com",
+    "disneyanimation.com",
+    "disneyarena.com",
+    "disneyaulani.com",
+    "disneybaby.com",
+    "disneycareers.com",
+    "disneychannelonstage.com",
+    "disneychannelroadtrip.com",
+    "disneycruisebrasil.com",
+    "disneyenconcert.com",
+    "disneyiejobs.com",
+    "disneyinflight.com",
+    "disneyinternational.com",
+    "disneyinternationalhd.com",
+    "disneyjunior.com",
+    "disneyjuniortreataday.com",
+    "disneylandparis.com",
+    "disneylatino.com",
+    "disneymagicmoments.co.il",
+    "disneymagicmoments.co.uk",
+    "disneymagicmoments.co.za",
+    "disneymagicmoments.de",
+    "disneymagicmoments.es",
+    "disneymagicmoments.fr",
+    "disneymagicmoments.gen.tr",
+    "disneymagicmoments.gr",
+    "disneymagicmoments.it",
+    "disneymagicmoments.pl",
+    "disneymagicmomentsme.com",
+    "disneyme.com",
+    "disneymeetingsandevents.com",
+    "disneymovieinsiders.com",
+    "disneymusicpromotion.com",
+    "disneynewseries.com",
+    "disneynow.com",
+    "disneypeoplesurveys.com",
+    "disneyplus.bn5x.net",
+    "disneyplus.com",
+    "disneyplus.com.ssl.sc.omtrdc.net",
+    "disneyprivacycenter.com",
+    "disneyredirects.com",
+    "disneysrivieraresort.com",
+    "disneystore.com",
+    "disneystreaming.com",
+    "disneysubscription.com",
+    "disneytermsofuse.com",
+    "disneytickets.co.uk",
+    "disneyturkiye.com.tr",
+    "disneytvajobs.com",
+    "disneyworld-go.com",
+    "dlfacebook.com",
+    "dlp-media.com",
+    "dmed.technology",
+    "dotfacebook.com",
+    "dotfacebook.net",
+    "draftjs.org",
+    "dssedge.com",
+    "dssott.com",
+    "dtci.co",
+    "dtci.technology",
+    "edgedatg.com",
+    "espn.co.uk",
+    "espn.com",
+    "espn.hb.omtrdc.net",
+    "espn.net",
+    "espncdn.com",
+    "espndotcom.tt.omtrdc.net",
+    "espnqa.com",
+    "execute-api.us-east-1.amazonaws.com",
+    "expresswifi.com",
+    "f8.com",
+    "faacebok.com",
+    "faacebook.com",
+    "faasbook.com",
+    "facbebook.com",
+    "facbeok.com",
+    "facboo.com",
+    "facbook.com",
+    "facbool.com",
+    "facboox.com",
+    "faccebook.com",
+    "faccebookk.com",
+    "facdbook.com",
+    "facdebook.com",
+    "face-book.com",
+    "faceabook.com",
+    "facebboc.com",
+    "facebbook.com",
+    "facebboook.com",
+    "facebcook.com",
+    "facebdok.com",
+    "facebgook.com",
+    "facebhook.com",
+    "facebkkk.com",
+    "facebo-ok.com",
+    "faceboak.com",
+    "facebock.com",
+    "facebocke.com",
+    "facebof.com",
+    "faceboik.com",
+    "facebok.com",
+    "facebokbook.com",
+    "facebokc.com",
+    "facebokk.com",
+    "facebokok.com",
+    "faceboks.com",
+    "facebol.com",
+    "facebolk.com",
+    "facebomok.com",
+    "faceboo.com",
+    "facebooa.com",
+    "faceboob.com",
+    "faceboobok.com",
+    "facebooc.com",
+    "faceboock.com",
+    "facebood.com",
+    "facebooe.com",
+    "faceboof.com",
+    "facebooi.com",
+    "facebooik.com",
+    "facebooik.org",
+    "facebooj.com",
+    "facebook-corp.com",
+    "facebook-covid-19.com",
+    "facebook-ebook.com",
+    "facebook-forum.com",
+    "facebook-hardware.com",
+    "facebook-inc.com",
+    "facebook-login.com",
+    "facebook-newsroom.com",
+    "facebook-newsroom.org",
+    "facebook-pmdcenter.com",
+    "facebook-pmdcenter.net",
+    "facebook-pmdcenter.org",
+    "facebook-privacy.com",
+    "facebook-program.com",
+    "facebook-studio.com",
+    "facebook-support.org",
+    "facebook-texas-holdem.com",
+    "facebook-texas-holdem.net",
+    "facebook.br",
+    "facebook.ca",
+    "facebook.cc",
+    "facebook.com",
+    "facebook.design",
+    "facebook.hu",
+    "facebook.in",
+    "facebook.net",
+    "facebook.nl",
+    "facebook.org",
+    "facebook.se",
+    "facebook.shop",
+    "facebook.tv",
+    "facebook.us",
+    "facebook.wang",
+    "facebook123.org",
+    "facebook30.com",
+    "facebook30.net",
+    "facebook30.org",
+    "facebook4business.com",
+    "facebookadvertisingsecrets.com",
+    "facebookappcenter.info",
+    "facebookappcenter.net",
+    "facebookappcenter.org",
+    "facebookatschool.com",
+    "facebookawards.com",
+    "facebookblueprint.net",
+    "facebookbrand.com",
+    "facebookbrand.net",
+    "facebookcanadianelectionintegrityinitiative.com",
+    "facebookcareer.com",
+    "facebookcheats.com",
+    "facebookck.com",
+    "facebookclub.com",
+    "facebookcom.com",
+    "facebookconnect.com",
+    "facebookconsultant.org",
+    "facebookcoronavirus.com",
+    "facebookcovers.org",
+    "facebookcredits.info",
+    "facebookdating.net",
+    "facebookdevelopergarage.com",
+    "facebookdusexe.org",
+    "facebookemail.com",
+    "facebookenespanol.com",
+    "facebookexchange.com",
+    "facebookexchange.net",
+    "facebookfacebook.com",
+    "facebookflow.com",
+    "facebookgames.com",
+    "facebookgraphsearch.com",
+    "facebookgraphsearch.info",
+    "facebookgroups.com",
+    "facebookhome.cc",
+    "facebookhome.com",
+    "facebookhome.info",
+    "facebookhub.com",
+    "facebooki.com",
+    "facebookinc.com",
+    "facebookland.com",
+    "facebooklikeexchange.com",
+    "facebooklive.com",
+    "facebooklivestaging.net",
+    "facebooklivestaging.org",
+    "facebooklogin.com",
+    "facebooklogin.info",
+    "facebookloginhelp.net",
+    "facebooklogs.com",
+    "facebookmail.com",
+    "facebookmail.tv",
+    "facebookmanager.info",
+    "facebookmarketing.info",
+    "facebookmarketingpartner.com",
+    "facebookmarketingpartners.com",
+    "facebookmobile.com",
+    "facebookmsn.com",
+    "facebooknews.com",
+    "facebooknfl.com",
+    "facebooknude.com",
+    "facebookofsex.com",
+    "facebookook.com",
+    "facebookpaper.com",
+    "facebookpay.com",
+    "facebookphonenumber.net",
+    "facebookphoto.com",
+    "facebookphotos.com",
+    "facebookpmdcenter.com",
+    "facebookpoke.net",
+    "facebookpoke.org",
+    "facebookpoker.info",
+    "facebookpokerchips.info",
+    "facebookporn.net",
+    "facebookporn.org",
+    "facebookporno.net",
+    "facebookportal.com",
+    "facebookquotes4u.com",
+    "facebooks.com",
+    "facebooksafety.com",
+    "facebooksecurity.net",
+    "facebookshop.com",
+    "facebooksignup.net",
+    "facebooksite.net",
+    "facebookstories.com",
+    "facebookstudios.net",
+    "facebookstudios.org",
+    "facebooksupplier.com",
+    "facebooksuppliers.com",
+    "facebookswagemea.com",
+    "facebookswagstore.com",
+    "facebooksz.com",
+    "facebookthreads.net",
+    "facebooktv.net",
+    "facebooktv.org",
+    "facebookvacation.com",
+    "facebookw.com",
+    "facebookwork.com",
+    "facebookworld.com",
+    "facebool.com",
+    "facebool.info",
+    "facebooll.com",
+    "faceboom.com",
+    "faceboon.com",
+    "faceboonk.com",
+    "faceboooik.com",
+    "faceboook.com",
+    "faceboop.com",
+    "faceboot.com",
+    "faceboox.com",
+    "facebopk.com",
+    "facebpook.com",
+    "facebuk.com",
+    "facebuok.com",
+    "facebvook.com",
+    "facebyook.com",
+    "facebzook.com",
+    "facecbgook.com",
+    "facecbook.com",
+    "facecbook.org",
+    "facecook.com",
+    "facecook.org",
+    "facedbook.com",
+    "faceebok.com",
+    "faceebook.com",
+    "faceebot.com",
+    "facegbok.com",
+    "facegbook.com",
+    "faceobk.com",
+    "faceobok.com",
+    "faceobook.com",
+    "faceook.com",
+    "facerbooik.com",
+    "facerbook.com",
+    "facesbooc.com",
+    "facesounds.com",
+    "facetook.com",
+    "facevbook.com",
+    "facewbook.co",
+    "facewook.com",
+    "facfacebook.com",
+    "facfebook.com",
+    "faciometrics.com",
+    "fackebook.com",
+    "facnbook.com",
+    "facrbook.com",
+    "facvebook.com",
+    "facwebook.com",
+    "facxebook.com",
+    "fadebook.com",
+    "faebok.com",
+    "faebook.com",
+    "faebookc.com",
+    "faeboook.com",
+    "faecebok.com",
+    "faesebook.com",
+    "fafacebook.com",
+    "faicbooc.com",
+    "fasebokk.com",
+    "fasebook.com",
+    "faseboox.com",
+    "fast.com",
+    "fasttext.cc",
+    "favebook.com",
+    "faycbok.com",
+    "fb.careers",
+    "fb.com",
+    "fb.gg",
+    "fb.me",
+    "fb.watch",
+    "fbacebook.com",
+    "fbaddins.com",
+    "fbbmarket.com",
+    "fbboostyourbusiness.com",
+    "fbcdn-a.akamaihd.net",
+    "fbcdn.com",
+    "fbcdn.net",
+    "fbf8.com",
+    "fbfeedback.com",
+    "fbhome.com",
+    "fbidb.io",
+    "fbinc.com",
+    "fbinfer.com",
+    "fbinnovation.com",
+    "fblitho.com",
+    "fbmarketing.com",
+    "fbmessenger.com",
+    "fbredex.com",
+    "fbreg.com",
+    "fbrell.com",
+    "fbrpms.com",
+    "fbsbx.com",
+    "fbsbx.net",
+    "fbsupport-covid.net",
+    "fbthirdpartypixel.com",
+    "fbthirdpartypixel.net",
+    "fbthirdpartypixel.org",
+    "fburl.com",
+    "fbwat.ch",
+    "fbworkmail.com",
+    "fcacebook.com",
+    "fcaebook.com",
+    "fcebook.com",
+    "fcebookk.com",
+    "fcfacebook.com",
+    "fdacebook.info",
+    "feacboo.com",
+    "feacbook.com",
+    "feacbooke.com",
+    "feacebook.com",
+    "fecbbok.com",
+    "fecbooc.com",
+    "fecbook.com",
+    "feceboock.com",
+    "fecebook.net",
+    "feceboox.com",
+    "fececbook.com",
+    "feook.com",
+    "ferabook.com",
+    "fescebook.com",
+    "fesebook.com",
+    "ffacebook.com",
+    "fgacebook.com",
+    "ficeboock.com",
+    "findyourlimits.com",
+    "flow.dev",
+    "flow.org",
+    "flowtype.org",
+    "flxvpn.net",
+    "fmcebook.com",
+    "fnacebook.com",
+    "fosebook.com",
+    "fpacebook.com",
+    "fqcebook.com",
+    "fracebook.com",
+    "fragment.com",
+    "freeb.com",
+    "freebasics.com",
+    "freebasics.net",
+    "freebs.com",
+    "freefacebook.com",
+    "freefacebook.net",
+    "freefacebookads.net",
+    "freefblikes.com",
+    "freeform.com",
+    "freehulu.com",
+    "freindfeed.com",
+    "frescolib.org",
+    "friendbook.info",
+    "friendfed.com",
+    "friendfeed-api.com",
+    "friendfeed-media.com",
+    "friendfeed.com",
+    "friendfeedmedia.com",
+    "fsacebok.com",
+    "fscebook.com",
+    "fundraisingwithfacebook.com",
+    "funnyfacebook.org",
+    "futureofbusinesssurvey.org",
+    "fxnetwork.com",
+    "fxnetworks.com",
+    "gacebook.com",
+    "gameroom.com",
+    "gfacecbook.com",
+    "ggpht.cn",
+    "ggpht.com",
+    "gh.io",
+    "ghcr.io",
+    "ghe.com",
+    "git.io",
+    "github-api.arkoselabs.com",
+    "github-atom-io-herokuapp-com.freetls.fastly.net",
+    "github-avatars.oss-cn-hongkong.aliyuncs.com",
+    "github-cloud.s3.amazonaws.com",
+    "github-production-release-asset-2e65be.s3.amazonaws.com",
+    "github-production-repository-file-5c1aeb.s3.amazonaws.com",
+    "github-production-repository-image-32fea6.s3.amazonaws.com",
+    "github-production-upload-manifest-file-7fdce7.s3.amazonaws.com",
+    "github-production-user-asset-6210df.s3.amazonaws.com",
+    "github.ai",
+    "github.blog",
+    "github.career",
+    "github.com",
+    "github.community",
+    "github.dev",
+    "github.io",
+    "githubapp.com",
+    "githubassets.com",
+    "githubcopilot.com",
+    "githubhackathon.com",
+    "githubnext.com",
+    "githubpreview.dev",
+    "githubstatus.com",
+    "githubsupport.com",
+    "githubuniverse.com",
+    "githubusercontent.com",
+    "go-disneyworldgo.com",
+    "go.com",
+    "googlevideo.com",
+    "graph.org",
+    "grok.com",
+    "groups.com",
+    "gvt1.com",
+    "gvt2.com",
+    "hackerfacebook.com",
+    "hackfacebook.com",
+    "hackfacebookid.com",
+    "hacklang.org",
+    "hammerandchisel.ssl.zendesk.com",
+    "heads-ak-spotify-com.akamaized.net",
+    "heads4-ak-spotify-com.akamaized.net",
+    "hhvm.com",
+    "hifacebook.info",
+    "hongkongdisneyland.com",
+    "hooloo.tv",
+    "hoolu.com",
+    "hoolu.tv",
+    "hotstar-cdn.net",
+    "hotstar-labs.com",
+    "hotstar.com",
+    "hotstarext.com",
+    "howtohackfacebook-account.com",
+    "hsfacebook.com",
+    "hsprepack.akamaized.net",
+    "httpfacebook.com",
+    "httpsfacebook.com",
+    "httpwwwfacebook.com",
+    "hu1u.com",
+    "huloo.cc",
+    "huloo.tv",
+    "hulu.com",
+    "hulu.jp",
+    "hulu.tv",
+    "hulu.us",
+    "huluaction.com",
+    "huluad.com",
+    "huluapp.com",
+    "huluasks.com",
+    "hulucall.com",
+    "hulufree.com",
+    "hulugans.com",
+    "hulugermany.com",
+    "hulugo.com",
+    "huluim.com",
+    "huluinstantmessenger.com",
+    "huluitaly.com",
+    "hulunet.com",
+    "hulunetwork.com",
+    "huluplus.com",
+    "hulupremium.com",
+    "hulupurchase.com",
+    "huluqa.com",
+    "hulurussia.com",
+    "huluspain.com",
+    "hulusports.com",
+    "hulustream.com",
+    "huluteam.com",
+    "hulutv.com",
+    "huluusa.com",
+    "i.org",
+    "ibytedtos.com",
+    "ibyteimg.com",
+    "ig.me",
+    "igcdn.com",
+    "igsonar.com",
+    "igtv.com",
+    "imstagram.com",
+    "imtagram.com",
+    "instaadder.com",
+    "instachecker.com",
+    "instafallow.com",
+    "instafollower.com",
+    "instagainer.com",
+    "instagda.com",
+    "instagify.com",
+    "instagmania.com",
+    "instagor.com",
+    "instagr.am",
+    "instagram-brand.com",
+    "instagram-engineering.com",
+    "instagram-help.com",
+    "instagram-press.com",
+    "instagram-press.net",
+    "instagram.com",
+    "instagramci.com",
+    "instagramcn.com",
+    "instagramdi.com",
+    "instagramhashtags.net",
+    "instagramhilecim.com",
+    "instagramhilesi.org",
+    "instagramium.com",
+    "instagramizlenme.com",
+    "instagramkusu.com",
+    "instagramlogin.com",
+    "instagramm.com",
+    "instagramn.com",
+    "instagrampartners.com",
+    "instagramphoto.com",
+    "instagramq.com",
+    "instagramsepeti.com",
+    "instagramtakipcisatinal.net",
+    "instagramtakiphilesi.com",
+    "instagramtips.com",
+    "instagramtr.com",
+    "instagran.com",
+    "instagranm.com",
+    "instagrem.com",
+    "instagrm.com",
+    "instagtram.com",
+    "instagy.com",
+    "instamgram.com",
+    "instangram.com",
+    "instanttelegram.com",
+    "instaplayer.net",
+    "instastyle.tv",
+    "instgram.com",
+    "intagram.com",
+    "intagrm.com",
+    "internet.org",
+    "intgram.com",
+    "ip6.static.sl-reverse.com",
+    "ipstatp.com",
+    "isnssdk.com",
+    "joinmaidez.com",
+    "kingstagram.com",
+    "klik.me",
+    "legra.ph",
+    "lifeatspotify.com",
+    "liverail.com",
+    "liverail.tv",
+    "lnstagram-help.com",
+    "login-account.net",
+    "lucasfilm.com",
+    "m.me",
+    "makeitopen.com",
+    "markzuckerberg.com",
+    "marscode.com",
+    "marvel.com",
+    "marvel10thanniversary.com",
+    "marveldimensionofheroes.com",
+    "marvelparty.net",
+    "marvelpinball.com",
+    "marvelsdoubleagent.com",
+    "marvelspotlightplays.com",
+    "marvelsuperheroseptember.com",
+    "marvelsuperwar.com",
+    "mbrx.app",
+    "mcrouter.net",
+    "mcrouter.org",
+    "messenger.com",
+    "messengerdevelopers.com",
+    "meta.com",
+    "mickey.tv",
+    "midentsolutions.com",
+    "mobilefacebook.com",
+    "moneywithfacebook.com",
+    "moviesanywhere.com",
+    "muscdn.com",
+    "mushymush.tv",
+    "musical.ly",
+    "myfbfans.com",
+    "myhulu.com",
+    "myoctocat.com",
+    "natgeomaps.com",
+    "nationalgeographic.com",
+    "nationalgeographicpartners.com",
+    "nbabot.net",
+    "netflix.ca",
+    "netflix.com",
+    "netflix.com.au",
+    "netflix.com.edgesuite.net",
+    "netflix.net",
+    "netflixdnstest0.com",
+    "netflixdnstest1.com",
+    "netflixdnstest10.com",
+    "netflixdnstest2.com",
+    "netflixdnstest3.com",
+    "netflixdnstest4.com",
+    "netflixdnstest5.com",
+    "netflixdnstest6.com",
+    "netflixdnstest7.com",
+    "netflixdnstest8.com",
+    "netflixdnstest9.com",
+    "netflixinvestor.com",
+    "netflixstudios.com",
+    "netflixtechblog.com",
+    "newsfeed.com",
+    "nextstop.com",
+    "nflxext.com",
+    "nflximg.com",
+    "nflximg.net",
+    "nflxsearch.net",
+    "nflxso.net",
+    "nflxvideo.net",
+    "ngeo.com",
+    "nomadlandmovie.ch",
+    "npm.community",
+    "npmjs.com",
+    "npmjs.org",
+    "octocaptcha.com",
+    "ocul.us",
+    "oculus-china.com",
+    "oculus.com",
+    "oculus2014.com",
+    "oculus3d.com",
+    "oculusblog.com",
+    "oculusbrand.com",
+    "oculuscasino.net",
+    "oculuscdn.com",
+    "oculusconnect.com",
+    "oculusdiving.com",
+    "oculusforbusiness.com",
+    "oculusrift.com",
+    "oculusvr.com",
+    "ogp.me",
+    "onetrust.com",
+    "oninstagram.com",
+    "online-deals.net",
+    "online-instagram.com",
+    "onlineinstagram.com",
+    "opencreate.org",
+    "opengraphprotocol.com",
+    "opengraphprotocol.org",
+    "opensource.guide",
+    "originalhulu.com",
+    "p16-tiktokcdn-com.akamaized.net",
+    "parse.com",
+    "payhulu.com",
+    "periscope.tv",
+    "pixar.com",
+    "playmation.com",
+    "powersunitedvr.com",
+    "productionresultssa0.blob.core.windows.net",
+    "productionresultssa1.blob.core.windows.net",
+    "productionresultssa10.blob.core.windows.net",
+    "productionresultssa11.blob.core.windows.net",
+    "productionresultssa12.blob.core.windows.net",
+    "productionresultssa13.blob.core.windows.net",
+    "productionresultssa14.blob.core.windows.net",
+    "productionresultssa15.blob.core.windows.net",
+    "productionresultssa16.blob.core.windows.net",
+    "productionresultssa17.blob.core.windows.net",
+    "productionresultssa18.blob.core.windows.net",
+    "productionresultssa19.blob.core.windows.net",
+    "productionresultssa2.blob.core.windows.net",
+    "productionresultssa3.blob.core.windows.net",
+    "productionresultssa4.blob.core.windows.net",
+    "productionresultssa5.blob.core.windows.net",
+    "productionresultssa6.blob.core.windows.net",
+    "productionresultssa7.blob.core.windows.net",
+    "productionresultssa8.blob.core.windows.net",
+    "productionresultssa9.blob.core.windows.net",
+    "pscdn.co",
+    "pscp.tv",
+    "pyrobot.org",
+    "quiz.directory",
+    "rawgit.com",
+    "rawgithub.com",
+    "reachtheworldonfacebook.com",
+    "react.com",
+    "reactjs.com",
+    "reactjs.org",
+    "recoiljs.org",
+    "redd.it",
+    "reddit.app.link",
+    "reddit.com",
+    "reddit.map.fastly.net",
+    "redditblog.com",
+    "reddithelp.com",
+    "redditinc.com",
+    "redditmail.com",
+    "redditmedia.com",
+    "redditspace.com",
+    "redditstatic.com",
+    "redditstatus.com",
+    "reddituploads.com",
+    "reddituploads.com.cdn-cf.behance.net",
+    "reddituploads.com.cdn-cf.dropbox.com",
+    "redkix.com",
+    "registerhulu.com",
+    "repo.new",
+    "rocksdb.com",
+    "rocksdb.net",
+    "rocksdb.org",
+    "scdn.co",
+    "searchlightpictures.com",
+    "sgpstatp.com",
+    "shanghaidisneyresort.com",
+    "shopdisney.com",
+    "shopfacebook.com",
+    "shops-disney.com",
+    "snssdk.com",
+    "sorcerersarena.com",
+    "spaindisney.com",
+    "sportsfacebook.com",
+    "sportstream.com",
+    "spoti.fi",
+    "spotify-com.akamaized.net",
+    "spotify-everywhere.com",
+    "spotify.app.link",
+    "spotify.com",
+    "spotify.com.edgesuite.net",
+    "spotify.design",
+    "spotify.link",
+    "spotify.map.fastly.net",
+    "spotify.map.fastlylb.net",
+    "spotifycdn.com",
+    "spotifycdn.net",
+    "spotifycharts.com",
+    "spotifycodes.com",
+    "spotifyforbrands.com",
+    "spotifyforvendors.com",
+    "spotifyjobs.com",
+    "spotifynewsroom.jp",
+    "spotilocal.com",
+    "star-brasil.com",
+    "star-latam.com",
+    "starott.com",
+    "starplus.com",
+    "starwars.com",
+    "starwarsgalacticstarcruiser.com",
+    "starwarskids.com",
+    "stel.com",
+    "streamingdisney.net",
+    "supportfacebook.com",
+    "t.co",
+    "t.me",
+    "tdesktop.com",
+    "telega.one",
+    "telegra.ph",
+    "telegram-cdn.org",
+    "telegram.dog",
+    "telegram.me",
+    "telegram.org",
+    "telegram.space",
+    "telegramdownload.com",
+    "telesco.pe",
+    "tellapart.com",
+    "terragraph.com",
+    "tg.dev",
+    "thefacebook.com",
+    "thefacebook.net",
+    "thefind.com",
+    "thegithubshop.com",
+    "thehulubraintrust.com",
+    "theinstagramhack.com",
+    "themarvelexperiencetour.com",
+    "thestationbymaker.com",
+    "thewaltdisneycompany.com",
+    "thisispolaris.com",
+    "tik-tokapi.com",
+    "tiktok-minis.com",
+    "tiktok-row.net",
+    "tiktok.com",
+    "tiktokcdn-eu.com",
+    "tiktokcdn-us.com",
+    "tiktokcdn-us.com.edgesuite.net",
+    "tiktokcdn.com",
+    "tiktokcdn.com.akamaized.net",
+    "tiktokcdn.com.edgesuite.net",
+    "tiktokd.net",
+    "tiktokd.org",
+    "tiktokeu-cdn.com",
+    "tiktokglobalshopv.com",
+    "tiktokminis.us",
+    "tiktokmusic.app",
+    "tiktokrow-cdn.com",
+    "tiktokv.com",
+    "tiktokv.com.edgekey.net",
+    "tiktokv.com.edgesuite.net",
+    "tiktokv.eu",
+    "tiktokv.us",
+    "tiktokw.eu",
+    "tiktokw.us",
+    "tokyodisneyresort.jp",
+    "ton.org",
+    "toncenter.com",
+    "toplayerserver.com",
+    "tospotify.com",
+    "trae.ai",
+    "ttcdn-us.com",
+    "ttlivecdn.com",
+    "ttoverseaus.net",
+    "ttwebview.com",
+    "ttwstatic.com",
+    "tweetdeck.com",
+    "twimg.co",
+    "twimg.com",
+    "twimg.org",
+    "twitpic.com",
+    "twitter.biz",
+    "twitter.com",
+    "twitter.jp",
+    "twitter.map.fastly.net",
+    "twittercommunity.com",
+    "twitterflightschool.com",
+    "twitterinc.com",
+    "twitteroauth.com",
+    "twitterstat.us",
+    "twtrdns.net",
+    "twttr.com",
+    "twttr.net",
+    "twvid.com",
+    "tx.me",
+    "us-west-2.amazonaws.com",
+    "usercontent.dev",
+    "video.google.com",
+    "viewpointsfromfacebook.com",
+    "vine.co",
+    "wa.me",
+    "waltdisneystudios.com",
+    "watchanimeattheoffice.com",
+    "watchdisneyfe.com",
+    "watchespn.com",
+    "web-instagram.net",
+    "whatsapp-plus.info",
+    "whatsapp-plus.me",
+    "whatsapp-plus.net",
+    "whatsapp.biz",
+    "whatsapp.cc",
+    "whatsapp.com",
+    "whatsapp.info",
+    "whatsapp.net",
+    "whatsapp.org",
+    "whatsapp.tv",
+    "whatsappbrand.com",
+    "whyfacebook.com",
+    "wide-youtube.l.google.com",
+    "withyoutube.com",
+    "workplace.com",
+    "workplaceusecases.com",
+    "worldhack.com",
+    "www-facebook.com",
+    "wwwfacebok.com",
+    "wwwfacebook.com",
+    "wwwhuluplus.com",
+    "wwwinstagram.com",
+    "wwwmfacebook.com",
+    "x.com",
+    "yogalayout.com",
+    "youtu.be",
+    "youtube-nocookie.com",
+    "youtube-ui.l.google.com",
+    "youtube.ae",
+    "youtube.al",
+    "youtube.am",
+    "youtube.at",
+    "youtube.az",
+    "youtube.ba",
+    "youtube.be",
+    "youtube.bg",
+    "youtube.bh",
+    "youtube.bo",
+    "youtube.by",
+    "youtube.ca",
+    "youtube.cat",
+    "youtube.ch",
+    "youtube.cl",
+    "youtube.co",
+    "youtube.co.ae",
+    "youtube.co.at",
+    "youtube.co.cr",
+    "youtube.co.hu",
+    "youtube.co.id",
+    "youtube.co.il",
+    "youtube.co.in",
+    "youtube.co.jp",
+    "youtube.co.ke",
+    "youtube.co.kr",
+    "youtube.co.ma",
+    "youtube.co.nz",
+    "youtube.co.th",
+    "youtube.co.tz",
+    "youtube.co.ug",
+    "youtube.co.uk",
+    "youtube.co.ve",
+    "youtube.co.za",
+    "youtube.co.zw",
+    "youtube.com",
+    "youtube.com.ar",
+    "youtube.com.au",
+    "youtube.com.az",
+    "youtube.com.bd",
+    "youtube.com.bh",
+    "youtube.com.bo",
+    "youtube.com.br",
+    "youtube.com.by",
+    "youtube.com.co",
+    "youtube.com.do",
+    "youtube.com.ec",
+    "youtube.com.ee",
+    "youtube.com.eg",
+    "youtube.com.es",
+    "youtube.com.gh",
+    "youtube.com.gr",
+    "youtube.com.gt",
+    "youtube.com.hk",
+    "youtube.com.hn",
+    "youtube.com.hr",
+    "youtube.com.jm",
+    "youtube.com.jo",
+    "youtube.com.kw",
+    "youtube.com.lb",
+    "youtube.com.lv",
+    "youtube.com.ly",
+    "youtube.com.mk",
+    "youtube.com.mt",
+    "youtube.com.mx",
+    "youtube.com.my",
+    "youtube.com.ng",
+    "youtube.com.ni",
+    "youtube.com.om",
+    "youtube.com.pa",
+    "youtube.com.pe",
+    "youtube.com.ph",
+    "youtube.com.pk",
+    "youtube.com.pt",
+    "youtube.com.py",
+    "youtube.com.qa",
+    "youtube.com.ro",
+    "youtube.com.sa",
+    "youtube.com.sg",
+    "youtube.com.sv",
+    "youtube.com.tn",
+    "youtube.com.tr",
+    "youtube.com.tw",
+    "youtube.com.ua",
+    "youtube.com.uy",
+    "youtube.com.ve",
+    "youtube.cr",
+    "youtube.cz",
+    "youtube.de",
+    "youtube.dk",
+    "youtube.ee",
+    "youtube.es",
+    "youtube.fi",
+    "youtube.fr",
+    "youtube.ge",
+    "youtube.googleapis.com",
+    "youtube.gr",
+    "youtube.gt",
+    "youtube.hk",
+    "youtube.hr",
+    "youtube.hu",
+    "youtube.ie",
+    "youtube.in",
+    "youtube.iq",
+    "youtube.is",
+    "youtube.it",
+    "youtube.jo",
+    "youtube.jp",
+    "youtube.kr",
+    "youtube.kz",
+    "youtube.la",
+    "youtube.lk",
+    "youtube.lt",
+    "youtube.lu",
+    "youtube.lv",
+    "youtube.ly",
+    "youtube.ma",
+    "youtube.md",
+    "youtube.me",
+    "youtube.mk",
+    "youtube.mn",
+    "youtube.mx",
+    "youtube.my",
+    "youtube.ng",
+    "youtube.ni",
+    "youtube.nl",
+    "youtube.no",
+    "youtube.pa",
+    "youtube.pe",
+    "youtube.ph",
+    "youtube.pk",
+    "youtube.pl",
+    "youtube.pr",
+    "youtube.pt",
+    "youtube.qa",
+    "youtube.ro",
+    "youtube.rs",
+    "youtube.ru",
+    "youtube.sa",
+    "youtube.se",
+    "youtube.sg",
+    "youtube.si",
+    "youtube.sk",
+    "youtube.sn",
+    "youtube.soy",
+    "youtube.sv",
+    "youtube.tn",
+    "youtube.tv",
+    "youtube.ua",
+    "youtube.ug",
+    "youtube.uy",
+    "youtube.vn",
+    "youtubeeducation.com",
+    "youtubeembeddedplayer.googleapis.com",
+    "youtubefanfest.com",
+    "youtubegaming.com",
+    "youtubego.co.id",
+    "youtubego.co.in",
+    "youtubego.com",
+    "youtubego.com.br",
+    "youtubego.id",
+    "youtubego.in",
+    "youtubei.googleapis.com",
+    "youtubekids.com",
+    "youtubemobilesupport.com",
+    "yt.be",
+    "yt3.googleusercontent.com",
+    "ytimg.com",
+    "zuckerberg.com",
+    "zuckerberg.net"
+  ],
+  "domain": [
+    "api.imem.app",
+    "api.swiftgram.app",
+    "e13252.dscg.akamaiedge.net",
+    "h-netflix.online-metrix.net",
+    "lf16-effectcdn.byteeffecttos-g.com",
+    "lf16-pkgcdn.pitaya-clientai.com",
+    "trae-api-sg.mchost.guru"
+  ],
+  "excluded": [
+    "adeventtracker.spotify.com",
+    "ads-twitter.com",
+    "ads-twitter.com @ads",
+    "ads.youtube.com",
+    "ads.youtube.com @ads",
+    "adstudio-assets.scdn.co",
+    "analytics.facebook.com",
+    "analytics.facebook.com @ads",
+    "analytics.tiktok.com",
+    "analytics.tiktok.com @ads",
+    "bloodhound.spotify.com",
+    "collector.github.com",
+    "collector.github.com @ads",
+    "copilot-telemetry-service.githubusercontent.com",
+    "copilot-telemetry.githubusercontent.com",
+    "disney.demdex.net",
+    "disney.my.sentry.io",
+    "facebookads.com",
+    "facebookads.com @ads",
+    "full:adeventtracker.spotify.com @ads",
+    "full:adstudio-assets.scdn.co @ads",
+    "full:bloodhound.spotify.com @ads",
+    "full:disney.my.sentry.io @ads",
+    "graph-fallback.instagram.com",
+    "graph-fallback.instagram.com @ads",
+    "graph.instagram.com",
+    "graph.instagram.com @ads",
+    "js-agent.newrelic.com",
+    "pixel.facebook.com",
+    "pixel.facebook.com @ads",
+    "roovza-launches.appsflyersdk.com",
+    "roovza.inapps.appsflyersdk.com",
+    "roovza.launches.appsflyersdk.com",
+    "roovza.skadsdk.appsflyersdk.com"
+  ],
+  "evidence": {
+    "cms-twdigitalassets.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "periscope.tv": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "pscp.tv": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "t.co": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "tellapart.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "tweetdeck.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twimg.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twitpic.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twitter.biz": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twitter.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twitter.jp": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twitter.map.fastly.net": [
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twittercommunity.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twitterflightschool.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twitterinc.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twitteroauth.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twitterstat.us": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twtrdns.net": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twttr.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twttr.net": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "twvid.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "vine.co": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "x.com": [
+      "blackmatrix7:twitter",
+      "metacubex:twitter",
+      "v2fly:twitter"
+    ],
+    "ggpht.cn": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "ggpht.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "googlevideo.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "wide-youtube.l.google.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "withyoutube.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtu.be": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube-nocookie.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube-ui.l.google.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ae": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.al": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.am": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.at": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.az": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ba": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.be": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.bg": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.bh": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.bo": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.by": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ca": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.cat": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ch": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.cl": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.ae": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.at": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.cr": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.hu": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.id": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.il": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.in": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.jp": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.ke": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.kr": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.ma": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.nz": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.th": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.tz": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.ug": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.uk": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.ve": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.za": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.co.zw": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.ar": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.au": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.az": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.bd": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.bh": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.bo": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.br": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.by": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.co": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.do": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.ec": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.ee": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.eg": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.es": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.gh": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.gr": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.gt": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.hk": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.hn": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.hr": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.jm": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.jo": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.kw": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.lb": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.lv": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.ly": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.mk": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.mt": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.mx": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.my": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.ng": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.ni": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.om": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.pa": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.pe": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.ph": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.pk": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.pt": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.py": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.qa": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.ro": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.sa": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.sg": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.sv": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.tn": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.tr": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.tw": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.ua": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.uy": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.com.ve": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.cr": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.cz": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.de": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.dk": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ee": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.es": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.fi": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.fr": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ge": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.googleapis.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.gr": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.gt": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.hk": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.hr": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.hu": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ie": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.in": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.iq": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.is": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.it": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.jo": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.jp": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.kr": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.kz": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.la": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.lk": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.lt": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.lu": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.lv": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ly": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ma": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.md": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.me": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.mk": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.mn": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.mx": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.my": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ng": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ni": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.nl": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.no": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.pa": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.pe": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ph": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.pk": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.pl": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.pr": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.pt": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.qa": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ro": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.rs": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ru": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.sa": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.se": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.sg": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.si": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.sk": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.sn": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.soy": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.sv": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.tn": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.tv": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ua": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.ug": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.uy": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtube.vn": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubeeducation.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubeembeddedplayer.googleapis.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubefanfest.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubegaming.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubego.co.id": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubego.co.in": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubego.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubego.com.br": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubego.id": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubego.in": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubei.googleapis.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubekids.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "youtubemobilesupport.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "yt.be": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "ytimg.com": [
+      "blackmatrix7:youtube",
+      "metacubex:youtube",
+      "v2fly:youtube"
+    ],
+    "yt3.googleusercontent.com": [
+      "metacubex:youtube"
+    ],
+    "cdn-telegram.org": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "comments.app": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "contest.com": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "fragment.com": [
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "graph.org": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "quiz.directory": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "t.me": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "tdesktop.com": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "telega.one": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "telegra.ph": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "telegram-cdn.org": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "telegram.dog": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "telegram.me": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "telegram.org": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "telegram.space": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "telesco.pe": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "tg.dev": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "ton.org": [
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "toncenter.com": [
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "tx.me": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "usercontent.dev": [
+      "blackmatrix7:telegram",
+      "metacubex:telegram",
+      "v2fly:telegram"
+    ],
+    "dis.gd": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord.co": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord.design": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord.dev": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord.gg": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord.gift": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord.gifts": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord.media": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord.new": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord.store": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord.tools": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord-activities.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discordactivities.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discordapp.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discordapp.net": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discordmerch.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discordpartygames.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discordsays.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discordstatus.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "airhorn.solutions": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "airhornbot.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "bigbeans.solutions": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "watchanimeattheoffice.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discordapp.io": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discordcdn.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord",
+      "v2fly:discord"
+    ],
+    "discord-attachments-uploads-prd.storage.googleapis.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord"
+    ],
+    "hammerandchisel.ssl.zendesk.com": [
+      "blackmatrix7:discord",
+      "metacubex:discord"
+    ],
+    "redd.it": [
+      "blackmatrix7:reddit",
+      "metacubex:reddit",
+      "v2fly:reddit"
+    ],
+    "reddit.app.link": [
+      "metacubex:reddit",
+      "v2fly:reddit"
+    ],
+    "reddit.com": [
+      "blackmatrix7:reddit",
+      "metacubex:reddit",
+      "v2fly:reddit"
+    ],
+    "redditblog.com": [
+      "metacubex:reddit",
+      "v2fly:reddit"
+    ],
+    "reddithelp.com": [
+      "metacubex:reddit",
+      "v2fly:reddit"
+    ],
+    "redditinc.com": [
+      "metacubex:reddit",
+      "v2fly:reddit"
+    ],
+    "redditmail.com": [
+      "blackmatrix7:reddit",
+      "metacubex:reddit",
+      "v2fly:reddit"
+    ],
+    "redditmedia.com": [
+      "blackmatrix7:reddit",
+      "metacubex:reddit",
+      "v2fly:reddit"
+    ],
+    "redditspace.com": [
+      "metacubex:reddit",
+      "v2fly:reddit"
+    ],
+    "redditstatic.com": [
+      "blackmatrix7:reddit",
+      "metacubex:reddit",
+      "v2fly:reddit"
+    ],
+    "redditstatus.com": [
+      "metacubex:reddit",
+      "v2fly:reddit"
+    ],
+    "reddit.map.fastly.net": [
+      "metacubex:reddit",
+      "v2fly:reddit"
+    ],
+    "fast.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflix.ca": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflix.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflix.net": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixinvestor.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixtechblog.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "nflxext.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "nflximg.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "nflximg.net": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "nflxsearch.net": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "nflxso.net": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "nflxvideo.net": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixdnstest0.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixdnstest1.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixdnstest2.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixdnstest3.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixdnstest4.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixdnstest5.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixdnstest6.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixdnstest7.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixdnstest8.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixdnstest9.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflixdnstest10.com": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix",
+      "v2fly:netflix"
+    ],
+    "netflix.com.edgesuite.net": [
+      "blackmatrix7:netflix",
+      "metacubex:netflix"
+    ],
+    "disney.asia": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.be": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.bg": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.ca": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.ch": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.co.il": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.co.jp": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.co.kr": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.co.th": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.co.uk": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.co.za": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.com.au": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.com.br": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.com.hk": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.com.tw": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.cz": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.de": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.dk": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.es": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.fi": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.fr": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.gr": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.hu": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.id": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.in": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.io": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.it": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.my": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.nl": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.no": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.ph": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.pl": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.pt": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.ro": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.ru": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.se": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney.sg": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyanimation.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "fxnetwork.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "fxnetworks.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "lucasfilm.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "pixar.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "searchlightpictures.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "thewaltdisneycompany.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "waltdisneystudios.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneylandparis.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "hongkongdisneyland.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "shanghaidisneyresort.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "tokyodisneyresort.jp": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "20thcenturystudios.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "20thcenturystudios.com.au": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "20thcenturystudios.com.br": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "20thcenturystudios.jp": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "adventuresbydisney.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "babble.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "babyzone.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "beautyandthebeastmusical.co.uk": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "detpress.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "dilcdn.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney-asia.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney-discount.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney-plus.net": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney-studio.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disney-studio.net": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyaccount.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyadsales.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyarena.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyaulani.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneybaby.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneycareers.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneychannelonstage.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneychannelroadtrip.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneycruisebrasil.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyenconcert.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyiejobs.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyinflight.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyinternational.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyinternationalhd.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyjunior.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyjuniortreataday.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneylatino.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymagicmoments.co.il": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymagicmoments.co.uk": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymagicmoments.co.za": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymagicmoments.de": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymagicmoments.es": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymagicmoments.fr": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymagicmoments.gen.tr": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymagicmoments.gr": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymagicmoments.it": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymagicmoments.pl": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymagicmomentsme.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyme.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymeetingsandevents.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymovieinsiders.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneymusicpromotion.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneynewseries.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneynow.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneypeoplesurveys.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyplus.bn5x.net": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyplus.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyprivacycenter.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyredirects.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneysrivieraresort.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneystore.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneystreaming.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneysubscription.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneytermsofuse.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneytickets.co.uk": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyturkiye.com.tr": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneytvajobs.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyworld-go.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "dssott.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "freeform.com": [
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "go-disneyworldgo.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "go.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "mickey.tv": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "moviesanywhere.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "nomadlandmovie.ch": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "playmation.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "shopdisney.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "shops-disney.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "sorcerersarena.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "spaindisney.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "star-brasil.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "star-latam.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "starwars.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "starwarsgalacticstarcruiser.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "starwarskids.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "streamingdisney.net": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "thestationbymaker.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "thisispolaris.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "watchdisneyfe.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney",
+      "v2fly:disney"
+    ],
+    "disneyplus.com.ssl.sc.omtrdc.net": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "byspotify.com": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "lifeatspotify.com": [
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "pscdn.co": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "scdn.co": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "spoti.fi": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "spotify-everywhere.com": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "spotify.com": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "spotify.design": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "spotify.link": [
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "spotifycdn.com": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "spotifycdn.net": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "spotifycharts.com": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "spotifycodes.com": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "spotifyforbrands.com": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "spotifyforvendors.com": [
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "spotifyjobs.com": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "tospotify.com": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify",
+      "v2fly:spotify"
+    ],
+    "audio-ak-spotify-com.akamaized.net": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify"
+    ],
+    "audio4-ak-spotify-com.akamaized.net": [
+      "metacubex:spotify"
+    ],
+    "cdn-spotify-experiments.conductrics.com": [
+      "metacubex:spotify"
+    ],
+    "heads-ak-spotify-com.akamaized.net": [
+      "metacubex:spotify"
+    ],
+    "heads4-ak-spotify-com.akamaized.net": [
+      "blackmatrix7:spotify",
+      "metacubex:spotify"
+    ],
+    "spotify.com.edgesuite.net": [
+      "metacubex:spotify"
+    ],
+    "spotify.map.fastly.net": [
+      "metacubex:spotify"
+    ],
+    "spotify.map.fastlylb.net": [
+      "metacubex:spotify"
+    ],
+    "bytedapm.com": [
+      "blackmatrix7:tiktok",
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "muscdn.com": [
+      "blackmatrix7:tiktok",
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "musical.ly": [
+      "blackmatrix7:tiktok",
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tik-tokapi.com": [
+      "blackmatrix7:tiktok",
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktok-minis.com": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktok-row.net": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktok.com": [
+      "blackmatrix7:tiktok",
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokcdn-eu.com": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokcdn-us.com": [
+      "blackmatrix7:tiktok",
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokcdn.com": [
+      "blackmatrix7:tiktok",
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokd.net": [
+      "blackmatrix7:tiktok",
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokd.org": [
+      "blackmatrix7:tiktok",
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokeu-cdn.com": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokglobalshopv.com": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokminis.us": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokrow-cdn.com": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokv.com": [
+      "blackmatrix7:tiktok",
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokv.eu": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokv.us": [
+      "blackmatrix7:tiktok",
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokw.eu": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokw.us": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "ttcdn-us.com": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "ttlivecdn.com": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "ttoverseaus.net": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "ttwstatic.com": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokcdn-us.com.edgesuite.net": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokcdn.com.akamaized.net": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokcdn.com.edgesuite.net": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokv.com.edgekey.net": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "tiktokv.com.edgesuite.net": [
+      "metacubex:tiktok",
+      "v2fly:tiktok"
+    ],
+    "p16-tiktokcdn-com.akamaized.net": [
+      "metacubex:tiktok"
+    ],
+    "atom.io": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "dependabot.com": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "gh.io": [
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "ghcr.io": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "ghe.com": [
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "git.io": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "github.ai": [
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "github.blog": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "github.career": [
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "github.com": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "github.community": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "github.dev": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "github.io": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "githubapp.com": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "githubassets.com": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "githubhackathon.com": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "githubnext.com": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "githubpreview.dev": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "githubstatus.com": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "githubsupport.com": [
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "githubuniverse.com": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "githubusercontent.com": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "myoctocat.com": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "octocaptcha.com": [
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "opensource.guide": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "repo.new": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "thegithubshop.com": [
+      "blackmatrix7:github",
+      "metacubex:github",
+      "v2fly:github"
+    ],
+    "github-api.arkoselabs.com": [
+      "metacubex:github"
+    ],
+    "github-cloud.s3.amazonaws.com": [
+      "blackmatrix7:github",
+      "metacubex:github"
+    ],
+    "github-production-release-asset-2e65be.s3.amazonaws.com": [
+      "metacubex:github"
+    ],
+    "github-production-repository-file-5c1aeb.s3.amazonaws.com": [
+      "metacubex:github"
+    ],
+    "github-production-repository-image-32fea6.s3.amazonaws.com": [
+      "metacubex:github"
+    ],
+    "github-production-upload-manifest-file-7fdce7.s3.amazonaws.com": [
+      "metacubex:github"
+    ],
+    "github-production-user-asset-6210df.s3.amazonaws.com": [
+      "metacubex:github"
+    ],
+    "productionresultssa0.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa1.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa2.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa3.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa4.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa5.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa6.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa7.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa8.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa9.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa10.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa11.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa12.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa13.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa14.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa15.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa16.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa17.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa18.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "productionresultssa19.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "achat-followers-instagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "acheter-followers-instagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "acheterdesfollowersinstagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "acheterfollowersinstagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "bookstagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "carstagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "cdninstagram.com": [
+      "blackmatrix7:facebook",
+      "blackmatrix7:instagram",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "chickstagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "ig.me": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "igcdn.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "igsonar.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "igtv.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "imstagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "imtagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instaadder.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instachecker.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instafallow.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instafollower.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagainer.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagda.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagify.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagmania.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagor.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagram-brand.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagram-engineering.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagram-help.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagram-press.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagram-press.net": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagram.com": [
+      "blackmatrix7:facebook",
+      "blackmatrix7:instagram",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramci.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramcn.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramdi.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramhashtags.net": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramhilecim.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramhilesi.org": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramium.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramizlenme.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramkusu.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramlogin.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramm.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramn.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagrampartners.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramphoto.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramq.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramsepeti.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramtakipcisatinal.net": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramtakiphilesi.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramtips.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagramtr.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagran.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagranm.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagrem.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagrm.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagtram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instagy.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instamgram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instangram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instanttelegram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instaplayer.net": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instastyle.tv": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "instgram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "intagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "intagrm.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "intgram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "kingstagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "lnstagram-help.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "theinstagramhack.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "oninstagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "online-instagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "onlineinstagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "web-instagram.net": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "wwwinstagram.com": [
+      "blackmatrix7:facebook",
+      "metacubex:instagram",
+      "v2fly:instagram"
+    ],
+    "aboutfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "accessfacebookfromschool.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "acebooik.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "acebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "advancediddetection.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "askfacebook.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "askfacebook.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "atdmt2.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "atlasdmt.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "atlasonepoint.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "buyingfacebooklikes.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "careersatfb.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "celebgramme.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "china-facebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "click-url.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "como-hackearfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "crowdtangle.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "dacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "dlfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "dotfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "dotfacebook.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "expresswifi.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faacebok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faasbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facbebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facbeok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facboo.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facbool.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facboox.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faccebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faccebookk.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facdbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facdebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "face-book.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceabook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebboc.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebboook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebcook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebdok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebgook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebhook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebkkk.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebo-ok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboak.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebock.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebocke.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebof.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboik.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebokbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebokc.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebokk.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebokok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboks.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebol.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebolk.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebomok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboo.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooa.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboob.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboobok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooc.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboock.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebood.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooe.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboof.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooi.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooik.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooik.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooj.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-corp.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-covid-19.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-ebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-forum.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-hardware.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-inc.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-login.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-newsroom.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-newsroom.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-pmdcenter.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-pmdcenter.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-pmdcenter.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-privacy.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-program.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-studio.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-support.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-texas-holdem.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook-texas-holdem.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.br": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.ca": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.cc": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.design": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.hu": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.in": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fecebook.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.nl": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.se": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.shop": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.tv": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.us": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook.wang": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook123.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook30.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook30.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook30.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebook4business.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookadvertisingsecrets.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookatschool.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookawards.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookblueprint.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookbrand.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookbrand.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookcanadianelectionintegrityinitiative.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookcareer.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookcheats.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookck.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookclub.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookcom.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookconsultant.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookcoronavirus.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookcovers.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookcredits.info": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookdating.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookdusexe.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookemail.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookenespanol.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookexchange.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookexchange.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookflow.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookgames.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookgraphsearch.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookgraphsearch.info": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookgroups.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookhome.cc": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookhome.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookhome.info": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookhub.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooki.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookinc.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookland.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooklikeexchange.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooklive.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooklivestaging.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooklivestaging.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooklogin.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooklogin.info": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookloginhelp.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooklogs.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookmail.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookmail.tv": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookmanager.info": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookmarketing.info": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookmarketingpartner.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookmarketingpartners.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookmobile.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookmsn.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooknews.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooknfl.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooknude.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookofsex.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookpaper.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookpay.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookphonenumber.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookphoto.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookphotos.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookpmdcenter.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookpoke.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookpoke.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookpoker.info": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookpokerchips.info": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookporn.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookporn.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookporno.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookportal.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooks.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooksafety.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooksecurity.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookshop.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooksignup.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooksite.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookstories.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookstudios.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookstudios.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooksupplier.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooksuppliers.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookswagemea.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookswagstore.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooksz.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookthreads.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooktv.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooktv.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookvacation.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookw.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookworld.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebool.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebool.info": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebooll.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboom.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboon.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboonk.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboooik.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboop.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboot.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceboox.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebopk.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebpook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebuk.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebuok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebvook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebyook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebzook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facecbgook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facecbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facecbook.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facecook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facecook.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facedbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceebok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceebot.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facegbok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facegbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceobk.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceobok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceobook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faceook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facerbooik.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facerbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facesbooc.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facesounds.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facetook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facevbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facewbook.co": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facewook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facfebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fackebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facnbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facrbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facvebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facwebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facxebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fadebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faebok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faebookc.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faeboook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faecebok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faesebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fafacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faicbooc.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fasebokk.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fasebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faseboox.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "favebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "faycbok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fb.careers": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fb.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fb.gg": [
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fb.me": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fb.watch": [
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbbmarket.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbboostyourbusiness.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbcdn.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbcdn.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbfeedback.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbhome.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbidb.io": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbinc.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbinnovation.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbmarketing.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbreg.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbrpms.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbsbx.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbsbx.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbsupport-covid.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbthirdpartypixel.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbthirdpartypixel.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbthirdpartypixel.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fburl.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbwat.ch": [
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbworkmail.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fcacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fcaebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fcebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fcebookk.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fcfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fdacebook.info": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "feacboo.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "feacbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "feacbooke.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "feacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fecbbok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fecbooc.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fecbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "feceboock.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "feceboox.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fececbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "feook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "ferabook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fescebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fesebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "ffacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fgacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "ficeboock.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fmcebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fnacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fosebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fpacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fqcebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fracebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "freeb.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "freebasics.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "freebasics.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "freebs.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "freefacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "freefacebook.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "freefacebookads.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "freefblikes.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "freindfeed.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "friendbook.info": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "friendfed.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "friendfeed-api.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "friendfeed-media.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "friendfeed.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "friendfeedmedia.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fsacebok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fscebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fundraisingwithfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "funnyfacebook.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "futureofbusinesssurvey.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "gacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "gameroom.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "gfacecbook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "groups.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "hackerfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "hackfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "hackfacebookid.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "hifacebook.info": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "howtohackfacebook-account.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "hsfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "httpfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "httpsfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "httpwwwfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "i.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "internet.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "klik.me": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "liverail.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "liverail.tv": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "login-account.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "markzuckerberg.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "midentsolutions.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "mobilefacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "moneywithfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "myfbfans.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "newsfeed.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "nextstop.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "online-deals.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "opencreate.org": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "reachtheworldonfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "shopfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "sportsfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "sportstream.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "supportfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "terragraph.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "thefacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "thefacebook.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "thefind.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "toplayerserver.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "viewpointsfromfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "whyfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "worldhack.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "www-facebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "wwwfacebok.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "wwwfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "wwwmfacebook.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "zuckerberg.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "zuckerberg.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "facebookwork.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "redkix.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "workplace.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "workplaceusecases.com": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook",
+      "v2fly:facebook"
+    ],
+    "fbcdn-a.akamaihd.net": [
+      "blackmatrix7:facebook",
+      "metacubex:facebook"
+    ],
+    "espn.hb.omtrdc.net": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "espndotcom.tt.omtrdc.net": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "huluqa.com": [
+      "metacubex:disney"
+    ],
+    "hotstarext.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "hotstar-labs.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "hotstar-cdn.net": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "hotstar.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "watchespn.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "espnqa.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "espncdn.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "espn.net": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "espn.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "dtci.technology": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "dtci.co": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "dmed.technology": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "bamtech.net": [
+      "metacubex:disney"
+    ],
+    "bamgrid.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "edgedatg.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "abcnews.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "abc.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "abc-studios.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "starplus.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "starott.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "ngeo.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "112263.com": [
+      "metacubex:disney"
+    ],
+    "callhulu.com": [
+      "metacubex:disney"
+    ],
+    "findyourlimits.com": [
+      "metacubex:disney"
+    ],
+    "freehulu.com": [
+      "metacubex:disney"
+    ],
+    "hooloo.tv": [
+      "metacubex:disney"
+    ],
+    "hoolu.com": [
+      "metacubex:disney"
+    ],
+    "hoolu.tv": [
+      "metacubex:disney"
+    ],
+    "hu1u.com": [
+      "metacubex:disney"
+    ],
+    "huloo.cc": [
+      "metacubex:disney"
+    ],
+    "huloo.tv": [
+      "metacubex:disney"
+    ],
+    "hulu.com": [
+      "metacubex:disney"
+    ],
+    "hulu.jp": [
+      "metacubex:disney"
+    ],
+    "hulu.tv": [
+      "metacubex:disney"
+    ],
+    "hulu.us": [
+      "metacubex:disney"
+    ],
+    "huluaction.com": [
+      "metacubex:disney"
+    ],
+    "huluad.com": [
+      "metacubex:disney"
+    ],
+    "huluapp.com": [
+      "metacubex:disney"
+    ],
+    "huluasks.com": [
+      "metacubex:disney"
+    ],
+    "hulucall.com": [
+      "metacubex:disney"
+    ],
+    "hulufree.com": [
+      "metacubex:disney"
+    ],
+    "hulugans.com": [
+      "metacubex:disney"
+    ],
+    "hulugermany.com": [
+      "metacubex:disney"
+    ],
+    "hulugo.com": [
+      "metacubex:disney"
+    ],
+    "huluim.com": [
+      "metacubex:disney"
+    ],
+    "huluinstantmessenger.com": [
+      "metacubex:disney"
+    ],
+    "huluitaly.com": [
+      "metacubex:disney"
+    ],
+    "hulunet.com": [
+      "metacubex:disney"
+    ],
+    "hulunetwork.com": [
+      "metacubex:disney"
+    ],
+    "huluplus.com": [
+      "metacubex:disney"
+    ],
+    "hulupremium.com": [
+      "metacubex:disney"
+    ],
+    "hulupurchase.com": [
+      "metacubex:disney"
+    ],
+    "hulurussia.com": [
+      "metacubex:disney"
+    ],
+    "huluspain.com": [
+      "metacubex:disney"
+    ],
+    "hulusports.com": [
+      "metacubex:disney"
+    ],
+    "hulustream.com": [
+      "metacubex:disney"
+    ],
+    "huluteam.com": [
+      "metacubex:disney"
+    ],
+    "hulutv.com": [
+      "metacubex:disney"
+    ],
+    "huluusa.com": [
+      "metacubex:disney"
+    ],
+    "joinmaidez.com": [
+      "metacubex:disney"
+    ],
+    "mushymush.tv": [
+      "metacubex:disney"
+    ],
+    "myhulu.com": [
+      "metacubex:disney"
+    ],
+    "originalhulu.com": [
+      "metacubex:disney"
+    ],
+    "payhulu.com": [
+      "metacubex:disney"
+    ],
+    "registerhulu.com": [
+      "metacubex:disney"
+    ],
+    "thehulubraintrust.com": [
+      "metacubex:disney"
+    ],
+    "wwwhuluplus.com": [
+      "metacubex:disney"
+    ],
+    "marvel.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "marvel10thanniversary.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "marveldimensionofheroes.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "marvelparty.net": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "marvelpinball.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "marvelsdoubleagent.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "marvelspotlightplays.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "marvelsuperheroseptember.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "marvelsuperwar.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "themarvelexperiencetour.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "natgeomaps.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "nationalgeographic.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "nationalgeographicpartners.com": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "hsprepack.akamaized.net": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "espn.co.uk": [
+      "blackmatrix7:disney",
+      "metacubex:disney"
+    ],
+    "copilotprodattachments.blob.core.windows.net": [
+      "metacubex:github"
+    ],
+    "githubcopilot.com": [
+      "blackmatrix7:github",
+      "metacubex:github"
+    ],
+    "npm.community": [
+      "blackmatrix7:github",
+      "metacubex:github"
+    ],
+    "npmjs.com": [
+      "blackmatrix7:github",
+      "metacubex:github"
+    ],
+    "npmjs.org": [
+      "blackmatrix7:github",
+      "metacubex:github"
+    ],
+    "grok.com": [
+      "blackmatrix7:twitter"
+    ],
+    "twimg.co": [
+      "blackmatrix7:twitter"
+    ],
+    "twimg.org": [
+      "blackmatrix7:twitter"
+    ],
+    "gvt1.com": [
+      "blackmatrix7:youtube"
+    ],
+    "gvt2.com": [
+      "blackmatrix7:youtube"
+    ],
+    "video.google.com": [
+      "blackmatrix7:youtube"
+    ],
+    "api.imem.app": [
+      "blackmatrix7:telegram"
+    ],
+    "api.swiftgram.app": [
+      "blackmatrix7:telegram"
+    ],
+    "legra.ph": [
+      "blackmatrix7:telegram"
+    ],
+    "mbrx.app": [
+      "blackmatrix7:telegram"
+    ],
+    "stel.com": [
+      "blackmatrix7:telegram"
+    ],
+    "telegramdownload.com": [
+      "blackmatrix7:telegram"
+    ],
+    "discordapp.page.link": [
+      "blackmatrix7:discord"
+    ],
+    "reddituploads.com": [
+      "blackmatrix7:reddit"
+    ],
+    "reddituploads.com.cdn-cf.behance.net": [
+      "blackmatrix7:reddit"
+    ],
+    "reddituploads.com.cdn-cf.dropbox.com": [
+      "blackmatrix7:reddit"
+    ],
+    "e13252.dscg.akamaiedge.net": [
+      "blackmatrix7:netflix"
+    ],
+    "h-netflix.online-metrix.net": [
+      "blackmatrix7:netflix"
+    ],
+    "cookielaw.org": [
+      "blackmatrix7:netflix"
+    ],
+    "flxvpn.net": [
+      "blackmatrix7:netflix"
+    ],
+    "netflix.com.au": [
+      "blackmatrix7:netflix"
+    ],
+    "netflixstudios.com": [
+      "blackmatrix7:netflix"
+    ],
+    "onetrust.com": [
+      "blackmatrix7:netflix"
+    ],
+    "us-west-2.amazonaws.com": [
+      "blackmatrix7:netflix"
+    ],
+    "abcnews.edgesuite.net": [
+      "blackmatrix7:disney"
+    ],
+    "adobedtm.com": [
+      "blackmatrix7:disney"
+    ],
+    "bam.nr-data.net": [
+      "blackmatrix7:disney"
+    ],
+    "braze.com": [
+      "blackmatrix7:disney"
+    ],
+    "cdn.optimizely.com": [
+      "blackmatrix7:disney"
+    ],
+    "conviva.com": [
+      "blackmatrix7:disney"
+    ],
+    "d9.flashtalking.com": [
+      "blackmatrix7:disney"
+    ],
+    "dlp-media.com": [
+      "blackmatrix7:disney"
+    ],
+    "dssedge.com": [
+      "blackmatrix7:disney"
+    ],
+    "execute-api.us-east-1.amazonaws.com": [
+      "blackmatrix7:disney"
+    ],
+    "spotify-com.akamaized.net": [
+      "blackmatrix7:spotify"
+    ],
+    "spotify.app.link": [
+      "blackmatrix7:spotify"
+    ],
+    "spotifynewsroom.jp": [
+      "blackmatrix7:spotify"
+    ],
+    "spotilocal.com": [
+      "blackmatrix7:spotify"
+    ],
+    "lf16-effectcdn.byteeffecttos-g.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "lf16-pkgcdn.pitaya-clientai.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "trae-api-sg.mchost.guru": [
+      "blackmatrix7:tiktok"
+    ],
+    "bytegecko-i18n.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "byteintlapi.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "byteoversea.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "capcut.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "ibytedtos.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "ibyteimg.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "ipstatp.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "isnssdk.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "marscode.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "sgpstatp.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "snssdk.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "tiktokmusic.app": [
+      "blackmatrix7:tiktok"
+    ],
+    "trae.ai": [
+      "blackmatrix7:tiktok"
+    ],
+    "ttwebview.com": [
+      "blackmatrix7:tiktok"
+    ],
+    "github-atom-io-herokuapp-com.freetls.fastly.net": [
+      "blackmatrix7:github"
+    ],
+    "github-avatars.oss-cn-hongkong.aliyuncs.com": [
+      "blackmatrix7:github"
+    ],
+    "rawgit.com": [
+      "blackmatrix7:github"
+    ],
+    "rawgithub.com": [
+      "blackmatrix7:github"
+    ],
+    "instagr.am": [
+      "blackmatrix7:facebook",
+      "blackmatrix7:instagram"
+    ],
+    "accountkit.com": [
+      "blackmatrix7:facebook"
+    ],
+    "atscaleconference.com": [
+      "blackmatrix7:facebook"
+    ],
+    "binoculus.com": [
+      "blackmatrix7:facebook"
+    ],
+    "botorch.org": [
+      "blackmatrix7:facebook"
+    ],
+    "buck.build": [
+      "blackmatrix7:facebook"
+    ],
+    "buckbuild.com": [
+      "blackmatrix7:facebook"
+    ],
+    "buyoculus.com": [
+      "blackmatrix7:facebook"
+    ],
+    "componentkit.org": [
+      "blackmatrix7:facebook"
+    ],
+    "draftjs.org": [
+      "blackmatrix7:facebook"
+    ],
+    "f8.com": [
+      "blackmatrix7:facebook"
+    ],
+    "facebookappcenter.info": [
+      "blackmatrix7:facebook"
+    ],
+    "facebookappcenter.net": [
+      "blackmatrix7:facebook"
+    ],
+    "facebookappcenter.org": [
+      "blackmatrix7:facebook"
+    ],
+    "facebookconnect.com": [
+      "blackmatrix7:facebook"
+    ],
+    "facebookdevelopergarage.com": [
+      "blackmatrix7:facebook"
+    ],
+    "facebookquotes4u.com": [
+      "blackmatrix7:facebook"
+    ],
+    "faciometrics.com": [
+      "blackmatrix7:facebook"
+    ],
+    "fasttext.cc": [
+      "blackmatrix7:facebook"
+    ],
+    "fbaddins.com": [
+      "blackmatrix7:facebook"
+    ],
+    "fbf8.com": [
+      "blackmatrix7:facebook"
+    ],
+    "fbinfer.com": [
+      "blackmatrix7:facebook"
+    ],
+    "fblitho.com": [
+      "blackmatrix7:facebook"
+    ],
+    "fbmessenger.com": [
+      "blackmatrix7:facebook"
+    ],
+    "fbredex.com": [
+      "blackmatrix7:facebook"
+    ],
+    "fbrell.com": [
+      "blackmatrix7:facebook"
+    ],
+    "flow.dev": [
+      "blackmatrix7:facebook"
+    ],
+    "flow.org": [
+      "blackmatrix7:facebook"
+    ],
+    "flowtype.org": [
+      "blackmatrix7:facebook"
+    ],
+    "frescolib.org": [
+      "blackmatrix7:facebook"
+    ],
+    "hacklang.org": [
+      "blackmatrix7:facebook"
+    ],
+    "hhvm.com": [
+      "blackmatrix7:facebook"
+    ],
+    "ip6.static.sl-reverse.com": [
+      "blackmatrix7:facebook"
+    ],
+    "m.me": [
+      "blackmatrix7:facebook"
+    ],
+    "makeitopen.com": [
+      "blackmatrix7:facebook"
+    ],
+    "mcrouter.net": [
+      "blackmatrix7:facebook"
+    ],
+    "mcrouter.org": [
+      "blackmatrix7:facebook"
+    ],
+    "messenger.com": [
+      "blackmatrix7:facebook"
+    ],
+    "messengerdevelopers.com": [
+      "blackmatrix7:facebook"
+    ],
+    "meta.com": [
+      "blackmatrix7:facebook"
+    ],
+    "nbabot.net": [
+      "blackmatrix7:facebook"
+    ],
+    "ocul.us": [
+      "blackmatrix7:facebook"
+    ],
+    "oculus-china.com": [
+      "blackmatrix7:facebook"
+    ],
+    "oculus.com": [
+      "blackmatrix7:facebook"
+    ],
+    "oculus2014.com": [
+      "blackmatrix7:facebook"
+    ],
+    "oculus3d.com": [
+      "blackmatrix7:facebook"
+    ],
+    "oculusblog.com": [
+      "blackmatrix7:facebook"
+    ],
+    "oculusbrand.com": [
+      "blackmatrix7:facebook"
+    ],
+    "oculuscasino.net": [
+      "blackmatrix7:facebook"
+    ],
+    "oculuscdn.com": [
+      "blackmatrix7:facebook"
+    ],
+    "oculusconnect.com": [
+      "blackmatrix7:facebook"
+    ],
+    "oculusdiving.com": [
+      "blackmatrix7:facebook"
+    ],
+    "oculusforbusiness.com": [
+      "blackmatrix7:facebook"
+    ],
+    "oculusrift.com": [
+      "blackmatrix7:facebook"
+    ],
+    "oculusvr.com": [
+      "blackmatrix7:facebook"
+    ],
+    "ogp.me": [
+      "blackmatrix7:facebook"
+    ],
+    "opengraphprotocol.com": [
+      "blackmatrix7:facebook"
+    ],
+    "opengraphprotocol.org": [
+      "blackmatrix7:facebook"
+    ],
+    "parse.com": [
+      "blackmatrix7:facebook"
+    ],
+    "powersunitedvr.com": [
+      "blackmatrix7:facebook"
+    ],
+    "pyrobot.org": [
+      "blackmatrix7:facebook"
+    ],
+    "react.com": [
+      "blackmatrix7:facebook"
+    ],
+    "reactjs.com": [
+      "blackmatrix7:facebook"
+    ],
+    "reactjs.org": [
+      "blackmatrix7:facebook"
+    ],
+    "recoiljs.org": [
+      "blackmatrix7:facebook"
+    ],
+    "rocksdb.com": [
+      "blackmatrix7:facebook"
+    ],
+    "rocksdb.net": [
+      "blackmatrix7:facebook"
+    ],
+    "rocksdb.org": [
+      "blackmatrix7:facebook"
+    ],
+    "wa.me": [
+      "blackmatrix7:facebook"
+    ],
+    "whatsapp-plus.info": [
+      "blackmatrix7:facebook"
+    ],
+    "whatsapp-plus.me": [
+      "blackmatrix7:facebook"
+    ],
+    "whatsapp-plus.net": [
+      "blackmatrix7:facebook"
+    ],
+    "whatsapp.biz": [
+      "blackmatrix7:facebook"
+    ],
+    "whatsapp.cc": [
+      "blackmatrix7:facebook"
+    ],
+    "whatsapp.com": [
+      "blackmatrix7:facebook"
+    ],
+    "whatsapp.info": [
+      "blackmatrix7:facebook"
+    ],
+    "whatsapp.net": [
+      "blackmatrix7:facebook"
+    ],
+    "whatsapp.org": [
+      "blackmatrix7:facebook"
+    ],
+    "whatsapp.tv": [
+      "blackmatrix7:facebook"
+    ],
+    "whatsappbrand.com": [
+      "blackmatrix7:facebook"
+    ],
+    "yogalayout.com": [
+      "blackmatrix7:facebook"
+    ]
+  }
+}

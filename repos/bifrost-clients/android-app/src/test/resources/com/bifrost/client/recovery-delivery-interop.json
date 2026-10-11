@@ -1,0 +1,44 @@
+{
+  "purpose": "TEST-ONLY synthetic Control-to-Android interoperability vector",
+  "root": {
+    "pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAKNMqset/apOBr/QhANOklUQOYn67LxdZNI4MbSEFkXs=\n-----END PUBLIC KEY-----\n",
+    "fingerprint": "bda3ac0841015fc16e1e0a3ad5f4412c4bd388415fe72876750bec38e924c5cb"
+  },
+  "state": {
+    "version": 1,
+    "purpose": "config-signing-key-state",
+    "root_key_id": "bifrost-root-v1",
+    "root_fingerprint": "bda3ac0841015fc16e1e0a3ad5f4412c4bd388415fe72876750bec38e924c5cb",
+    "generation": 1,
+    "active_key_id": "config-signing-v3",
+    "trusted_keys": [
+      {
+        "key_id": "config-signing-v3",
+        "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAVrXy2WtvBYs/gourYxHYuJPXu7sOaxVaRrak80U1XRc=\n-----END PUBLIC KEY-----\n",
+        "fingerprint": "4af0edfb4ffcc05b0bdc9ba9592245bebbdbeded38e9bdec98e0bd5e10709e5d",
+        "activation_floor": 1,
+        "retirement_floor": null
+      }
+    ],
+    "previous_state_digest": null,
+    "signature": "OuOoi0euPCQv2U8yVQ5YlE4aLEOxuTTHS2GtXGSdV0ZMyCEz6K_ESwvOAnvxQz32GLoTyjvTyCzwyxNcHeC3CQ"
+  },
+  "envelope": {
+    "version": 2,
+    "alg": "A256GCM",
+    "key_id": "recovery-delivery-v1",
+    "signing_key_id": "config-signing-v3",
+    "purpose": "recovery-delivery",
+    "aad": "bifrost|recovery-delivery|7|4102444800000",
+    "config_version": 7,
+    "expires_at": 4102444800000,
+    "ephemeral_public_key": "MCowBQYDK2VuAyEAUN7H3OpChQl1h82-qOrD3kOGM6b0pHHgg8pMZIKMLyk",
+    "salt": "PJhT451S94khWgpy2BnPMg",
+    "iv": "XtHpiHCYngTOpiXh",
+    "tag": "t5nWqOy_Gy2pFcLvrLqbJg",
+    "ciphertext": "pzThGshGlA99Y6ouoUT6xOdFi6ncBNl3ybsnIhuYRtWGUrDYL-BAzVNeVy6lZEhCVDZMAZnaHpg-Mhnh08IY5dt2zrPONNORiETOhIaf5GXJi542kI_89Qvz6TjvYsCHkXf6-kif42TpDARg67JGulE0hsqSbtOF5rHlrKD6YdRBYlLy9bZWkF825QOZkkp2-g",
+    "signature": "n1lCY7BZ4IMsO-w1ZpnjmOLB29MRINlxRMApmftx6BB9OM0L3kXo0BskzaRH1fsi2_o5241No69go_igy_u7Aw"
+  },
+  "private_key_raw": "AFeO01qObPmID9bWC-Z9ALzSKSBzsenIscpAmOM_sn0",
+  "recovery_code": "TEST-ONLY-recovery-interop-not-a-real-account"
+}

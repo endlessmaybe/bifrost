@@ -1,0 +1,20 @@
+node_modules/
+runtime/
+*.log
+*.pem
+*.key
+*.keystore
+local.properties
+.gradle/
+android-app/.kotlin/
+build/
+bin/
+obj/
+# Git Bash/Windows redirection can accidentally materialize this reserved device name.
+# It is never a source input and cannot be represented safely in portable archives.
+NUL
+
+# Locally generated visual-acceptance captures.  The source fixtures and tests
+# are versioned; these snapshots are reproducible outputs and must not make
+# normal development worktrees appear dirty.
+artifacts/

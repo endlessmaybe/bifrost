@@ -1,0 +1,99 @@
+{
+  "$id": "https://contracts.bifrost.invalid/protocol/v1/golden-vectors",
+  "contract_id": "bifrost.protocol",
+  "contract_version": "1.0.0",
+  "encoding": "UTF-8",
+  "vectors": [
+    {
+      "id": "error-basic",
+      "schema": "Error",
+      "operation": "validate",
+      "expected": "accept",
+      "canonical_json": "{\"code\":\"BF-TEST-CONTRACT\",\"message_key\":\"error.generic\",\"request_id\":\"req_TESTONLY01\"}",
+      "sha256": "255a9b536804516e042ac0750f57e5481ecf93478d8fed8e51ffa201a3b0f7ae"
+    },
+    {
+      "id": "node-ack",
+      "schema": "NodeAckSignedBytes",
+      "operation": "verify-signature-and-schema",
+      "expected": "accept",
+      "canonical_json": "{\"completed_at\":\"2026-01-01T00:00:00.000Z\",\"core_binary_sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"digest\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"generation\":\"gen-TEST-ONLY-ACK-0001\",\"node_id\":\"node-a\",\"operation_id\":\"gen-TEST-ONLY-ACK-0001\",\"probe_digest\":\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\",\"version\":7}",
+      "sha256": "9398e17c71ecdb5d820026c75e9c28329fa600f22e8428fb194f383c045f9349"
+    },
+    {
+      "id": "sse-update",
+      "schema": "SseEvent",
+      "operation": "validate",
+      "expected": "accept",
+      "canonical_json": "{\"config_version\":7,\"event\":\"config_version\"}",
+      "sha256": "4200def3d779c765c27e422e8af8f01ec81211a7f614041627918b96fe591358"
+    },
+    {
+      "id": "node-ack-signed-test-only",
+      "schema": "NodeAckSignedBytes",
+      "operation": "verify-signature-and-schema",
+      "expected": "accept",
+      "canonical_json": "{\"completed_at\":\"2026-01-01T00:00:00.000Z\",\"core_binary_sha256\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"digest\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"generation\":\"gen-TEST-ONLY-ACK-0001\",\"node_id\":\"node-a\",\"operation_id\":\"gen-TEST-ONLY-ACK-0001\",\"probe_digest\":\"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc\",\"version\":7}",
+      "sha256": "9398e17c71ecdb5d820026c75e9c28329fa600f22e8428fb194f383c045f9349",
+      "public_key_raw_base64url": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo",
+      "signature_base64url": "B6llPxEkgrNBa6OJ1cglFgzu0fU8c6IFeyRGB87JTD3dkjKVSO4IzSwMHXtt2UFqUQN7zHk35giV06mBV35ECA",
+      "test_only": true
+    },
+    {
+      "id": "config-manifest-signed-test-only",
+      "schema": "ConfigManifest",
+      "operation": "verify-signature-and-schema",
+      "expected": "accept",
+      "canonical_json": "{\"config_version\":7,\"digest\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"rollback_floor\":7,\"schema_version\":\"1.0\"}",
+      "sha256": "2ec1e1f71f2822fdc1ea4ee4da7c88817c341fed3ec991543baf302161c6cec9",
+      "public_key_raw_base64url": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo",
+      "signature_base64url": "EmyuRKzqXl9Vyo2I1_yAPfm2cVszSCKXOyXDJ8DOQieTcmcUqXG9KuSAjcDU_WxiMwvBlO852D1UsdT0NSB4CA",
+      "test_only": true
+    },
+    {
+      "id": "release-envelope-signed-test-only",
+      "schema": "ReleaseEnvelope",
+      "operation": "verify-signature-and-schema",
+      "expected": "accept",
+      "canonical_json": "{\"delegation\":{\"activation_sequence\":1,\"algorithm\":\"Ed25519\",\"channel\":\"test\",\"generation\":1,\"key_id\":\"bifrost-release-v1\",\"public_key_fingerprint\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"public_key_pem\":\"TEST-ONLY-PUBLIC-KEY-PEM-PLACEHOLDER-0001\",\"purpose\":\"release-signing\",\"retirement_sequence\":9007199254740991,\"root_key_id\":\"bifrost-root-v1\"},\"key_state\":{\"active_key_ids\":[\"bifrost-release-v1\"],\"channel\":\"test\",\"generation\":1,\"revoked_key_ids\":[],\"root_key_id\":\"bifrost-root-v1\",\"signature\":\"KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK\"},\"manifest_text\":\"TEST-ONLY-manifest-text-TEST-ONLY-manifest-text-TEST-ONLY-manifest-text-TEST-ONLY-manifest-text-\",\"root_signature\":\"RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR\",\"signature\":\"SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\"}",
+      "sha256": "f9cac2853f203d6768b9de52ccb031130ace023ef9ef3e14f3dbe99d1fda5152",
+      "public_key_raw_base64url": "-F68J2oDVxGi4pGad03WT1d8crHUmLHj_QOQsl1zIQY",
+      "signature_base64url": "BDRZMT0pqDj8vOgMX-tHX_ZLHqQF73MHqKBP6X8VKhEmZAPQeKa_1UlSAioQzfR72c5OX9NM3TnT07GGA1CRDQ",
+      "test_only": true
+    },
+    {
+      "id": "ed25519-empty-test-only",
+      "schema": "SignedBytes",
+      "operation": "verify-signature",
+      "expected": "accept",
+      "canonical_json": "",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "public_key_raw_base64url": "11qYAYKxCrfVS_7TyWQHOg7hcvPapiMlrwIaaPcHURo",
+      "signature_base64url": "5VZDAMNgrHKQhuLMgG6CioSHfx645dl02HPgZSJJAVVfuIIVkKM7rMYeOXAc-bRr0lv18FlbviRlUUFDjnoQCw",
+      "test_only": true
+    }
+  ],
+  "schema_vectors": [
+    { "id": "page-null-cursor", "schema": "Page", "operation": "validate", "expected": "accept", "json": "{\"next_cursor\":null}" },
+    { "id": "desired-state-timestamp", "schema": "DesiredState", "operation": "validate", "expected": "accept", "json": "{\"version\":2,\"schema_version\":\"2.0\",\"node_id\":\"node-a\",\"desired_version\":7,\"issued_at\":\"2026-01-01T00:00:00.000Z\",\"generation\":\"gen-TEST-ONLY-ACK-0001\",\"operation_id\":\"gen-TEST-ONLY-ACK-0001\",\"state_digest\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"content_digest\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"signing_key_id\":\"config-signing-v1\",\"state_envelope\":{\"version\":2,\"alg\":\"A256GCM\",\"purpose\":\"node-desired-state\",\"key_id\":\"node-state-v1\",\"aad\":\"node-a|7\",\"schema_version\":\"2.0\",\"node_id\":\"node-a\",\"desired_version\":7,\"payload\":{\"version\":2,\"alg\":\"A256GCM\",\"key_id\":\"node-state-v1\",\"purpose\":\"node-desired-state\",\"aad\":\"node-a|7\",\"iv\":\"AAAAAAAAAAAAAAAAAAAAAA\",\"ciphertext\":\"A\",\"tag\":\"AAAAAAAAAAAAAAAAAAAAAA\"},\"signing_key_id\":\"config-signing-v1\",\"signature\":\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"},\"signature\":\"AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\"}" },
+    { "id": "page-min-properties", "schema": "Page", "operation": "validate", "expected": "reject", "json": "{}", "reason": "minProperties" },
+    { "id": "admin-result-min-properties", "schema": "AdminResult", "operation": "validate", "expected": "reject", "json": "{}", "reason": "minProperties" }
+  ],
+  "signature_vectors": [
+    { "id": "node-ack-tampered-message", "base": "node-ack-signed-test-only", "schema": "NodeAckSignedBytes", "input_encoding": "canonical-utf8", "operation": "verify-signature", "mutation": "message-byte", "expected": "reject", "expected_crypto_stage": "signature-verification" },
+    { "id": "node-ack-tampered-signature", "base": "node-ack-signed-test-only", "schema": "NodeAckSignedBytes", "input_encoding": "canonical-utf8", "operation": "verify-signature", "mutation": "signature-byte", "expected": "reject", "expected_crypto_stage": "signature-verification" },
+    { "id": "node-ack-wrong-key", "base": "node-ack-signed-test-only", "schema": "NodeAckSignedBytes", "input_encoding": "canonical-utf8", "operation": "verify-signature", "mutation": "wrong-key", "expected": "reject", "expected_crypto_stage": "signature-verification" },
+    { "id": "node-ack-truncated-signature", "base": "node-ack-signed-test-only", "schema": "NodeAckSignedBytes", "input_encoding": "canonical-utf8", "operation": "verify-signature", "mutation": "truncate-signature", "expected": "reject", "expected_crypto_stage": "signature-verification" }
+  ],
+  "negative_vectors": [
+    { "id": "duplicate-key", "schema": "Error", "operation": "parse", "expected": "reject", "raw_utf8_base64": "eyJjb2RlIjoiQkYtVEVTVCIsImNvZGUiOiJCRi1UUkFNIiJ9", "reason": "duplicate JSON key" },
+    { "id": "unknown-field", "schema": "Error", "operation": "validate", "expected": "reject", "json": "{\"code\":\"BF-TEST-CONTRACT\",\"message_key\":\"error.generic\",\"request_id\":\"req_TESTONLY01\",\"extra\":true}", "reason": "unknown field" },
+    { "id": "invalid-utf8", "schema": "Error", "operation": "parse", "expected": "reject", "raw_utf8_base64": "eyJjb2RlIjoiBFkifQ==", "reason": "invalid UTF-8" },
+    { "id": "noncanonical-number", "schema": "SseEvent", "operation": "validate", "expected": "reject", "json": "{\"config_version\":1.0}", "reason": "non-integer number" },
+    { "id": "missing-required", "schema": "Error", "operation": "validate", "expected": "reject", "json": "{\"code\":\"BF-TEST-CONTRACT\"}", "reason": "missing required property" },
+    { "id": "release-envelope-missing-authority", "schema": "ReleaseEnvelope", "operation": "validate", "expected": "reject", "json": "{\"manifest_text\":\"TEST-ONLY\",\"signature\":\"SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS\"}", "reason": "release envelope requires delegation, root signature, and key state" },
+    { "id": "null-required", "schema": "Error", "operation": "validate", "expected": "reject", "json": "{\"code\":null,\"message_key\":\"error.generic\",\"request_id\":\"req_TESTONLY01\"}", "reason": "null where string required" },
+    { "id": "oversize-string", "schema": "Error", "operation": "validate", "expected": "reject", "json": "{\"code\":\"BF-TEST-CONTRACT\",\"message_key\":\"error.generic\",\"request_id\":\"req_TESTONLY01\",\"message\":\"<oversize>\"}", "reason": "budget exceeded" },
+    { "id": "unicode-non-normalized", "schema": "Error", "operation": "canonical-bytes", "expected": "reject", "json": "{\"code\":\"BF-TEST-CONTRACT\",\"message_key\":\"error.generic\",\"request_id\":\"req_TESTONLY01\",\"message\":\"e\\u0301\"}", "reason": "signed bytes must remain exact UTF-8" }
+  ]
+}

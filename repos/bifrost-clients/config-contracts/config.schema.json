@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bifrost.invalid/schema/client-config-1.0.json",
+  "title": "Bifrost device configuration",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "config_version", "anti_rollback", "account", "sources", "countries", "routing", "core_policy"],
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0"},
+    "config_version": {"type": "integer", "minimum": 1},
+    "anti_rollback": {"type": "integer", "minimum": 1},
+    "account": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["public_id", "plan", "expires_at"],
+      "properties": {
+        "public_id": {"type": "string", "pattern": "^BF-[A-Z0-9]{4}-[A-Z0-9]{4}$"},
+        "plan": {"type": "string", "enum": ["permanent", "time_limited"]},
+        "expires_at": {"type": ["string", "null"], "format": "date-time"}
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "display_name", "server_name", "candidates", "profiles"],
+        "properties": {
+          "code": {"type": "string", "enum": ["A", "B"]},
+          "display_name": {"type": "string"},
+          "server_name": {"type": "string", "minLength": 1},
+          "ws_path": {"type": ["string", "null"], "pattern": "^/[^\\s]*$"},
+          "configured": {"type": "boolean"},
+          "transport": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["type", "network", "tls", "security", "alter_id"],
+            "properties": {
+              "type": {"type": "string", "const": "vmess"},
+              "network": {"type": "string", "const": "ws"},
+              "tls": {"type": "boolean", "const": true},
+              "security": {"type": "string", "minLength": 1},
+              "alter_id": {"type": "integer", "const": 0},
+              "host": {"type": "string", "minLength": 1},
+              "sni": {"type": "string", "minLength": 1},
+              "alpn": {"type": "string"},
+              "fingerprint": {"type": "string"},
+              "header_type": {"type": "string"}
+            }
+          },
+          "candidates": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["label", "dial_address", "port"],
+              "properties": {
+                "label": {"type": "string", "pattern": "^[AB]-[0-9]{2}$"},
+                "dial_address": {"type": "string", "minLength": 1},
+                "port": {"type": "integer", "minimum": 1, "maximum": 65535}
+              }
+            }
+          },
+          "profiles": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["direct", "countries"],
+            "properties": {
+              "direct": {"$ref": "#/$defs/profile"},
+              "countries": {
+                "type": "object",
+                "additionalProperties": {"$ref": "#/$defs/profile"}
+              }
+            }
+          }
+        }
+      }
+    },
+    "countries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+      "required": ["code", "name_zh", "tcp", "udp", "status", "front_source_code", "front_source_options"],
+        "properties": {
+          "code": {"type": "string", "pattern": "^[A-Z]{2}$"},
+          "name_zh": {"type": "string"},
+          "tcp": {"type": "boolean"},
+          "udp": {"type": "boolean"},
+          "status": {"type": "string", "enum": ["enabled", "maintenance", "fault", "disabled"]},
+          "front_source_code": {"type": ["string", "null"], "enum": ["A", "B", null]},
+          "front_source_options": {"type": "array", "items": {"type": "string", "enum": ["A", "B"]}, "uniqueItems": true},
+          "socks": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["scheme", "host", "port", "user", "password"],
+            "properties": {
+              "scheme": {"type": "string", "enum": ["socks5", "socks5h"]},
+              "host": {"type": "string", "minLength": 1, "maxLength": 253},
+              "port": {"type": "integer", "minimum": 1, "maximum": 65535},
+              "user": {"type": "string", "maxLength": 128},
+              "password": {"type": "string", "maxLength": 256}
+            }
+          }
+        }
+      }
+    },
+    "routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["ruleset_version", "smart_gate_remote_dns", "kill_switch_default", "dns_policy"],
+      "properties": {
+        "ruleset_version": {"type": "string"},
+        "smart_gate_remote_dns": {"type": "boolean", "const": true},
+        "kill_switch_default": {"type": "string", "enum": ["normal", "strict"]},
+        "dns_policy": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["version", "remote", "direct", "smart_gate_remote", "plaintext_fallback", "ipv4", "ipv6", "failure"],
+          "properties": {
+            "version": {"const": "dns-policy-v1"},
+            "remote": {"type": "string", "pattern": "^https:"},
+            "direct": {"type": "string", "pattern": "^https:"},
+            "smart_gate_remote": {"const": true},
+            "plaintext_fallback": {"const": false},
+            "ipv4": {"type": "string", "enum": ["proxy", "block"]},
+            "ipv6": {"type": "string", "enum": ["proxy", "block"]},
+            "failure": {"const": "block"}
+          }
+        },
+        "ipv6_policy": {"type": "string", "enum": ["proxy_or_block", "direct", "block"]},
+        "udp_policy": {"type": "string", "enum": ["capability", "block", "proxy"]}
+      }
+    },
+    "core_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed", "default"],
+      "properties": {
+        "allowed": {"type": "array", "items": {"type": "string", "const": "mihomo"}, "minItems": 1, "maxItems": 1},
+        "default": {"type": "string", "const": "mihomo"}
+      }
+    }
+  },
+  "$defs": {
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile_id", "uuid"],
+      "properties": {
+        "profile_id": {"type": "string", "minLength": 8},
+        "uuid": {"type": "string", "format": "uuid"}
+      }
+    }
+  }
+}

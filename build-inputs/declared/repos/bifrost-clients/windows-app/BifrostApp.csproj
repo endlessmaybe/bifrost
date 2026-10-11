@@ -1,0 +1,140 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <UseWindowsForms>true</UseWindowsForms>
+    <Platforms>x64</Platforms>
+    <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);NU1510</NoWarn>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>Bifrost</AssemblyName>
+    <Version>2.2.63</Version>
+    <AssemblyVersion>2.2.63.0</AssemblyVersion>
+    <FileVersion>2.2.63.0</FileVersion>
+    <InformationalVersion>2.2.63</InformationalVersion>
+    <ApplicationIcon>Assets\bifrost.ico</ApplicationIcon>
+    <!-- Shipping is self-contained/single-file, so cold start otherwise pays
+         more JIT work on top of bundle extraction. ReadyToRun keeps the WPF
+         deployment model unchanged while precompiling the hot framework/app
+         path used to create the first interactive window. -->
+    <PublishReadyToRun Condition="'$(Configuration)' == 'Release'">true</PublishReadyToRun>
+    <PublishReadyToRunComposite Condition="'$(Configuration)' == 'Release'">true</PublishReadyToRunComposite>
+    <!-- The desktop spends most of its hot time in async control/probe/update
+         paths after startup. Keep R2R for first paint, then let tiered PGO
+         promote genuinely hot code instead of pinning the process to generic
+         precompiled code for the whole session. -->
+    <TieredCompilation Condition="'$(Configuration)' == 'Release'">true</TieredCompilation>
+    <TieredPGO Condition="'$(Configuration)' == 'Release'">true</TieredPGO>
+    <TieredCompilationQuickJit Condition="'$(Configuration)' == 'Release'">true</TieredCompilationQuickJit>
+    <TieredCompilationQuickJitForLoops Condition="'$(Configuration)' == 'Release'">true</TieredCompilationQuickJitForLoops>
+    <ConcurrentGarbageCollection Condition="'$(Configuration)' == 'Release'">true</ConcurrentGarbageCollection>
+    <!-- WPF loads native Presentation/graphics components at startup. Keep
+         them inside the self-contained single-file bundle and extract them
+         before the first HWND is created. Managed assemblies/resources stay
+         in the bundle and ordinary license content stays beside the app;
+         extracting every managed/content file measurably slowed first paint. -->
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <IncludeAllContentForSelfExtract>false</IncludeAllContentForSelfExtract>
+    <!-- Maximum-performance Windows builds deliberately trade artifact size
+         for lower cold-start CPU/latency. Keep the single-file deployment
+         contract, but do not compress managed/runtime payloads that would
+         otherwise need to be decompressed again on every process start. -->
+    <EnableCompressionInSingleFile Condition="'$(Configuration)' == 'Release'">false</EnableCompressionInSingleFile>
+    <!-- LocalEvaluation is an explicit, immutable internal variant.  It is
+         the only build allowed to bind the client to the loopback Control;
+         production/promotion builds remain canonical https DNS only. -->
+    <BifrostLocalEvaluation Condition="'$(BifrostLocalEvaluation)' == ''">false</BifrostLocalEvaluation>
+  <BifrostLocalEvaluationFixture Condition="'$(BifrostLocalEvaluationFixture)' == ''">false</BifrostLocalEvaluationFixture>
+  <!-- TEST-HARNESS-only overrides.  They are rejected for every ordinary
+       build and are used only by the isolated R5 loopback fixture. -->
+  <BifrostTestConfigSigningPublicKey Condition="'$(BifrostTestConfigSigningPublicKey)' == ''"></BifrostTestConfigSigningPublicKey>
+    <BifrostTrustedControlOrigin Condition="'$(BifrostLocalEvaluation)' == 'true' and '$(BifrostLocalEvaluationFixture)' != 'true' and '$(BifrostTrustedControlOrigin)' == ''">http://127.0.0.1:17880</BifrostTrustedControlOrigin>
+    <BifrostTrustedControlOrigin Condition="'$(BifrostTrustedControlOrigin)' == ''"></BifrostTrustedControlOrigin>
+    <BifrostRequireTrustedControlOrigin Condition="'$(BifrostRequireTrustedControlOrigin)' == ''">false</BifrostRequireTrustedControlOrigin>
+    <BifrostGeneratedConfiguration>$(MSBuildProjectExtensionsPath)BifrostBuildConstants.g.cs</BifrostGeneratedConfiguration>
+    <BifrostReleaseTrustRootFile Condition="'$(BifrostReleaseTrustRootFile)' == ''"></BifrostReleaseTrustRootFile>
+    <BifrostGeneratedReleaseTrustBinding>$(MSBuildProjectDirectory)\obj\$(Configuration)\ReleaseTrustBinding.g.cs</BifrostGeneratedReleaseTrustBinding>
+    <BifrostReleaseTrustRootTestOnly Condition="'$(BifrostReleaseTrustRootTestOnly)' == ''">false</BifrostReleaseTrustRootTestOnly>
+    <BifrostInternalLiveValidation Condition="'$(BifrostInternalLiveValidation)' == ''">false</BifrostInternalLiveValidation>
+    <DefineConstants Condition="'$(BifrostTestHarness)' == 'true'">$(DefineConstants);BIFROST_TEST_HARNESS</DefineConstants>
+    <DefineConstants Condition="'$(BifrostInternalLiveValidation)' == 'true'">$(DefineConstants);BIFROST_INTERNAL_LIVE_VALIDATION</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- WinForms is used only for the notification-area shell. Keep its SDK-added
+         global usings out of the WPF compilation unit so Application, Button,
+         Point, Brush and Pen continue to resolve to their existing WPF types. -->
+    <Using Remove="System.Drawing" />
+    <Using Remove="System.Windows.Forms" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="10.0.0" />
+    <!-- The PE/apphost icon is consumed at build time, while WPF's Window.Icon
+         must resolve from the assembly resource in single-file mode. Keeping
+         the ICO as Resource avoids a relative Content path being resolved from
+         the temporary extraction directory at startup. -->
+    <Resource Include="Assets\bifrost.ico" />
+    <Resource Include="Assets\bifrost-rune-medallion-v2.png" />
+    <Resource Include="Assets\bifrost-rune-medallion-light-v1.png" />
+    <Resource Include="Assets\bifrost-sidebar-forest-v3.png" />
+    <Resource Include="Assets\bifrost-teal-rune-background-v1.png" />
+    <Resource Include="Assets\aurora-bg.b64" />
+    <Resource Include="Assets\bifrost-teal-rune-symbol-v1.png" />
+    <Resource Include="Assets\bifrost-teal-rune-medallion-v1.png" />
+    <Resource Include="Assets\Brand\bifrost-direction-a-*.png" />
+    <Content Include="..\COPYING" Link="licenses\COPYING" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\licenses\GPL-3.0-only.txt" Link="licenses\GPL-3.0-only.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\licenses\Apache-2.0.txt" Link="licenses\Apache-2.0.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\licenses\MPL-2.0.txt" Link="licenses\MPL-2.0.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\licenses\MIT.txt" Link="licenses\MIT.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\LICENSES.txt" Link="licenses\LICENSES.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\THIRD_PARTY_NOTICES.md" Link="licenses\THIRD_PARTY_NOTICES.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\INSTALLATION_INFORMATION.md" Link="licenses\INSTALLATION_INFORMATION.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\CORE_PROVENANCE.md" Link="licenses\CORE_PROVENANCE.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Compile Include="..\release\ReleaseUpdateManager.cs" Link="ReleaseUpdateManager.cs" />
+    <Compile Include="..\release\ReleaseStateAuthority.cs" Link="ReleaseStateAuthority.cs" />
+    <Compile Include="..\release\ReleaseContract.cs" Link="ReleaseContract.cs" />
+    <Compile Include="..\release\ReleaseArtifactPolicy.cs" Link="ReleaseArtifactPolicy.cs" />
+    <Compile Include="..\release\ReleaseTrustBinding.cs" Link="ReleaseTrustBinding.cs" Condition="'$(BifrostReleaseTrustRootFile)' == ''" />
+    <Compile Include="$(BifrostGeneratedReleaseTrustBinding)" AutoGen="true" DesignTime="false" Condition="'$(BifrostReleaseTrustRootFile)' != ''" />
+    <Compile Include="..\windows-service\ApplicationPolicySnapshot.cs" Link="Shared\ApplicationPolicySnapshot.cs" />
+    <Compile Include="..\windows-service\ServiceStatusProtocol.cs" Link="Shared\ServiceStatusProtocol.cs" />
+    <Compile Include="..\windows-service\BifrostIpcWire.cs" Link="Shared\BifrostIpcWire.cs" />
+    <Compile Include="$(BifrostGeneratedConfiguration)" AutoGen="true" DesignTime="false" />
+  </ItemGroup>
+  <Target Name="GenerateBifrostBuildConstants" BeforeTargets="CoreCompile">
+    <Error Condition="'$(BifrostTestHarness)' == 'true' and '$(Configuration)' == 'Release'" Text="BIFROST_TEST_HARNESS is forbidden in shipping Release builds; use the isolated fixture project." />
+    <Error Condition="'$(BifrostRequireTrustedControlOrigin)' == 'true' and '$(BifrostTrustedControlOrigin)' == ''"
+           Text="BifrostTrustedControlOrigin is required for a promotion build." />
+    <!-- Empty is the intentional offline audit build. Any non-empty override
+         is validated even outside promotion so malformed authority can never
+         silently produce a binary with ambiguous enrollment behavior. -->
+    <Error Condition="'$(BifrostLocalEvaluation)' != 'true' and '$(BifrostTrustedControlOrigin)' != '' and '$([System.Text.RegularExpressions.Regex]::IsMatch(&quot;$(BifrostTrustedControlOrigin)&quot;, &quot;^https://[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$&quot;))' != 'True'"
+           Text="BifrostTrustedControlOrigin must be a canonical https DNS origin on port 443 outside LocalEvaluation." />
+    <Error Condition="'$(BifrostLocalEvaluation)' != 'true' and '$(BifrostTrustedControlOrigin)' != '' and '$([System.Text.RegularExpressions.Regex]::IsMatch(&quot;$(BifrostTrustedControlOrigin)&quot;, &quot;^https://[^/]*[a-z][^/]*$&quot;))' != 'True'"
+           Text="BifrostTrustedControlOrigin must name a DNS host, not an IP literal or loopback outside LocalEvaluation." />
+    <Error Condition="'$(BifrostLocalEvaluation)' == 'true' and '$(BifrostLocalEvaluationFixture)' != 'true' and '$(BifrostTrustedControlOrigin)' != 'http://127.0.0.1:17880'"
+           Text="LocalEvaluation requires the immutable http://127.0.0.1:17880 Control origin unless the TEST-HARNESS-only fixture variant is enabled." />
+    <Error Condition="'$(BifrostLocalEvaluation)' == 'true' and '$(BifrostLocalEvaluationFixture)' != 'true' and '$(BifrostReleaseTrustRootFile)' == ''"
+           Text="LocalEvaluation requires an explicit release trust root; otherwise an already-enrolled DPAPI client state containing verified config-key state is rejected as corrupt on the next launch." />
+    <Error Condition="'$(BifrostLocalEvaluationFixture)' == 'true' and '$(BifrostTestHarness)' != 'true'"
+           Text="LocalEvaluationFixture is TEST-HARNESS-only and cannot enter a normal build." />
+    <Error Condition="'$(BifrostLocalEvaluationFixture)' == 'true' and '$(BifrostLocalEvaluation)' != 'true'"
+           Text="LocalEvaluationFixture requires LocalEvaluation=true." />
+  <Error Condition="'$(BifrostLocalEvaluationFixture)' == 'true' and '$([System.Text.RegularExpressions.Regex]::IsMatch(&quot;$(BifrostTrustedControlOrigin)&quot;, &quot;^http://127\.0\.0\.1:[1-9][0-9]{0,4}$&quot;))' != 'True'"
+           Text="LocalEvaluationFixture requires a TEST-ONLY http://127.0.0.1 dynamic port origin." />
+  <Error Condition="'$(BifrostTestConfigSigningPublicKey)' != '' and ('$(BifrostLocalEvaluationFixture)' != 'true' or '$(BifrostTestHarness)' != 'true')"
+           Text="BifrostTestConfigSigningPublicKey is TEST-HARNESS-only and cannot enter a normal build." />
+    <Error Condition="'$(BifrostTrustedControlOrigin)' != '' and '$([System.Text.RegularExpressions.Regex]::IsMatch(&quot;$(BifrostTrustedControlOrigin)&quot;, &quot;^https://(?:[^/]+\.)?localhost$&quot;))' == 'True'"
+           Text="BifrostTrustedControlOrigin must not use the localhost namespace." />
+    <MakeDir Directories="$(IntermediateOutputPath)" />
+    <WriteLinesToFile File="$(BifrostGeneratedConfiguration)" Overwrite="true" Encoding="UTF-8"
+      Lines="namespace Bifrost%3B internal static class BifrostBuildConstants { internal const string TrustedControlOrigin = &quot;$(BifrostTrustedControlOrigin)&quot;%3B internal const string TestConfigSigningPublicKey = &quot;$(BifrostTestConfigSigningPublicKey)&quot;%3B internal static readonly bool LocalEvaluation = $(BifrostLocalEvaluation)%3B internal static readonly bool LocalEvaluationFixture = $(BifrostLocalEvaluationFixture)%3B }" />
+  </Target>
+  <Target Name="GenerateBifrostReleaseTrustBinding" BeforeTargets="CoreCompile" Condition="'$(BifrostReleaseTrustRootFile)' != ''">
+    <Error Condition="'$(Configuration)' == 'Release' and '$(BifrostReleaseTrustRootTestOnly)' == 'true' and '$(BifrostLocalEvaluation)' != 'true'" Text="TEST-ONLY release trust roots are forbidden in shipping Release builds; only the explicit LocalEvaluation variant may consume its protected local root." />
+    <PropertyGroup><BifrostTrustTestFlag Condition="'$(BifrostReleaseTrustRootTestOnly)' == 'true'">--test-only</BifrostTrustTestFlag></PropertyGroup>
+    <Error Condition="!$([System.IO.Path]::IsPathFullyQualified('$(BifrostReleaseTrustRootFile)'))" Text="BifrostReleaseTrustRootFile must be an absolute ceremony artifact path" />
+    <Exec Command="node &quot;$(MSBuildThisFileDirectory)..\tools\provision-release-root.mjs&quot; --input &quot;$(BifrostReleaseTrustRootFile)&quot; --csharp-output &quot;$(BifrostGeneratedReleaseTrustBinding)&quot; $(BifrostTrustTestFlag)" />
+  </Target>
+</Project>

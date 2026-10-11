@@ -1,0 +1,267 @@
+{
+  "format": "BIFROST-ANDROID-ROUTING-1",
+  "source_commit": "4178770badecb1b349fbcd62c737e0d7a2079729",
+  "source_assets": [
+    {
+      "id": "geosite",
+      "file": "geosite.dat",
+      "asset_id": 580216706,
+      "bytes": 4248636,
+      "sha256": "9ac232ceb7e350f31e05c0d1a973a4b12eab96726f7fc1b59cb052bc5c6519ca"
+    },
+    {
+      "id": "geoip",
+      "file": "geoip.metadb",
+      "asset_id": 580216691,
+      "bytes": 8510129,
+      "sha256": "6eef2fedc2dae7091c112be13895968135ec01e702df2f5b4b1161b07d714720"
+    }
+  ],
+  "files": [
+    {
+      "name": "geosite-geolocation-!cn.json",
+      "bytes": 461164,
+      "sha256": "32826820772da691fd7e6cebfa057b746f1a8b615084900c5363d43a2f298431"
+    },
+    {
+      "name": "geosite-instagram.json",
+      "bytes": 1492,
+      "sha256": "b49dea52100be080ac9b7140b72f5f1d1c00f7dd7277aed6757a7375014fef03"
+    },
+    {
+      "name": "geosite-biliintl.json",
+      "bytes": 355,
+      "sha256": "9d7ec000b244701a4852a18f596e3863ecb5d0d94d3f024b3e798606fb9306d3"
+    },
+    {
+      "name": "geosite-category-ai-cn.json",
+      "bytes": 1775,
+      "sha256": "488989bbd4eb89074908c76e5386dcec13880d229a855bcffbc76db739c67b57"
+    },
+    {
+      "name": "geosite-youtube.json",
+      "bytes": 2801,
+      "sha256": "31e91dec852e20d92ed998258e0e4e1b953d461aa877e2ba5c815e859640f43a"
+    },
+    {
+      "name": "geosite-tld-cn.json",
+      "bytes": 628,
+      "sha256": "603a3778fb2dfa7bc3bf0b512c39ba8bc281265e11a4b50c2e82abe607b580ec"
+    },
+    {
+      "name": "geosite-category-games-!cn.json",
+      "bytes": 16613,
+      "sha256": "a2aeb33d66ee4bfaf7ce3385efcc0f206eb7396eca02bf810b6d96eec3d3b4da"
+    },
+    {
+      "name": "geosite-category-ads-all.json",
+      "bytes": 18081,
+      "sha256": "a918c02121f44e8cdd8741b546f9659eca7a841250aa9f66086438a26814aa26"
+    },
+    {
+      "name": "geosite-category-bank-cn.json",
+      "bytes": 878,
+      "sha256": "4a39110c20b6bb962cb8fee692ece08d7ade757605ac90ab90f33d034f01a471"
+    },
+    {
+      "name": "geosite-github.json",
+      "bytes": 2044,
+      "sha256": "8db83188b1c132de325f25ebb36eae24305c3b8e5d0851653485de39566d6e9f"
+    },
+    {
+      "name": "geosite-category-ecommerce@cn.json",
+      "bytes": 1381,
+      "sha256": "c428dcab1a8062f382d6dc4a0a8fb5b1e30b09deedcdb79f90502bc0a7de39ef"
+    },
+    {
+      "name": "geosite-category-blog-cn.json",
+      "bytes": 392,
+      "sha256": "c993f5bff5750614888bdc814074038df30d9d6a65c8ba4369d2d7a123f073ca"
+    },
+    {
+      "name": "geosite-steam@cn.json",
+      "bytes": 469,
+      "sha256": "f1d91c828aa71f6598cd2b42f09568c6656b7e46d38ad8e25c5bf286771f4eb3"
+    },
+    {
+      "name": "geosite-category-cdn-cn.json",
+      "bytes": 1380,
+      "sha256": "4e392d2429f400c23d66c219a484d534310027cfe7aa4b80f36abadba2a03c3e"
+    },
+    {
+      "name": "geosite-spotify.json",
+      "bytes": 700,
+      "sha256": "7fbce2e1f3773d8f3488549bb586ed9b731dd5148ec464e3669771c8007a2c8c"
+    },
+    {
+      "name": "geosite-category-browser-!cn.json",
+      "bytes": 686,
+      "sha256": "963d68fe056c4934a43c1e845d9419ecaf8d1bc6e4b30f3af9800cc1410fbbc5"
+    },
+    {
+      "name": "geosite-google.json",
+      "bytes": 18972,
+      "sha256": "39c6f1ed9d09d3a28c85ce0c9f5912fd23d0eba8d28006e0f1c956e178c5be38"
+    },
+    {
+      "name": "geosite-twitter.json",
+      "bytes": 414,
+      "sha256": "eb3ac2cf2a8b707131df06b25206bb729818b7778a5c60399858360aa08ce37d"
+    },
+    {
+      "name": "geosite-telegram.json",
+      "bytes": 338,
+      "sha256": "b0d9209c8134cbcc5d50f01560f3663a29d96841b56a945ebe1f7e6f6b5db58e"
+    },
+    {
+      "name": "geosite-category-doh.json",
+      "bytes": 2543,
+      "sha256": "4609c847b67334f7322a9c3ccc9f9d7ffb47706df02ac2e686a295ae4f29001c"
+    },
+    {
+      "name": "geosite-category-cdn-!cn.json",
+      "bytes": 3484,
+      "sha256": "c9704f6e9d6b6996f8c8e738091682ffca15acaf6f410a285b1bfcc93ebde818"
+    },
+    {
+      "name": "geosite-category-companies@!cn.json",
+      "bytes": 383,
+      "sha256": "09d8bd4b1dbe4d1c2568c9417192e9495ec35187a3522850445bf023e911f4bc"
+    },
+    {
+      "name": "geosite-category-companies@cn.json",
+      "bytes": 20033,
+      "sha256": "2d969f095a444062b4eb1d0a39c831a0e05e86fe9065186eea7c5702e80a3aa5"
+    },
+    {
+      "name": "geosite-category-anticensorship.json",
+      "bytes": 2017,
+      "sha256": "1deb7e05ac7df5756b8a61a7889198cf6f3ba07edff5f76677ccc7d0f8d9370e"
+    },
+    {
+      "name": "geosite-category-electronic-cn.json",
+      "bytes": 1225,
+      "sha256": "fc74d51718598045223a511502500b780c4361075aa8aef3730657e584b15de0"
+    },
+    {
+      "name": "geosite-category-social-media-!cn.json",
+      "bytes": 11086,
+      "sha256": "9693f4e1099f1547f973ecd880c2cc3fdcdb11b21ff81ea7ba6cfe2d6a5417d5"
+    },
+    {
+      "name": "geosite-facebook.json",
+      "bytes": 7190,
+      "sha256": "67177836d140503a712df15292adf9590750db5f9e6ac0e3dc0f14f8dc203813"
+    },
+    {
+      "name": "geosite-netflix.json",
+      "bytes": 747,
+      "sha256": "f80c37e3b7bf7c2804ce1f6da2fd0f62165b0da3cbcfc032d082ed6d3389a0db"
+    },
+    {
+      "name": "geosite-category-automobile-cn.json",
+      "bytes": 593,
+      "sha256": "93265ea8168f0c239b50e6cff7cda851c862e0557ec6c2feec623be57ccbf27e"
+    },
+    {
+      "name": "geosite-discord.json",
+      "bytes": 602,
+      "sha256": "63bf0b327a7bb401c76d26efa8fa243463c8b0e53d734de5488ec50338ef3018"
+    },
+    {
+      "name": "geosite-reddit.json",
+      "bytes": 250,
+      "sha256": "210efd225890eeaf252912adf71101f09b9adc57eabba2f1a8d336ec8547d1db"
+    },
+    {
+      "name": "geosite-private.json",
+      "bytes": 2821,
+      "sha256": "66b0c656ca4bd5c3509e0f6cd23879b5ac60f7926428596978f677b178e45301"
+    },
+    {
+      "name": "geosite-category-ai-!cn.json",
+      "bytes": 3661,
+      "sha256": "fb5a5a49bc35d4f298aaf06e3a41a8aeb30b3f5dd3b24c7e2fcb651a821f4a24"
+    },
+    {
+      "name": "geosite-tiktok.json",
+      "bytes": 841,
+      "sha256": "6875b9fd28dbb048a578c65f8bf6f6047d84e9a844bad2a87693f95316c7b964"
+    },
+    {
+      "name": "geosite-category-documents-cn.json",
+      "bytes": 358,
+      "sha256": "078a10c6c05ebf8bbd32e10efa1924a2d97dfce9c37fa0f2fa30b9c7adda3dd9"
+    },
+    {
+      "name": "geosite-category-education-cn.json",
+      "bytes": 2878,
+      "sha256": "f39eb92a3612cf50fe0933139dc39a1994c6ede55290b13a4473be987a4e20f5"
+    },
+    {
+      "name": "geosite-category-httpdns-cn.json",
+      "bytes": 1252,
+      "sha256": "7f8a30f1d07b82a5a0458edc7aee14bf1ab8ce7c5f30ce5779c3ab3a2cddea7d"
+    },
+    {
+      "name": "geosite-category-scholar-!cn.json",
+      "bytes": 8546,
+      "sha256": "2227c1c38ff3dfeef36642000757538548a9f68734207cf20c6cd0fc786d2186"
+    },
+    {
+      "name": "geosite-disney.json",
+      "bytes": 4240,
+      "sha256": "ed3fc2f782308f0a0c6c6124f3ea66a2c906d9de129ccdc6738173f51101d841"
+    },
+    {
+      "name": "geosite-onedrive.json",
+      "bytes": 400,
+      "sha256": "d14fefea9561aab2e7494eb55f19003cc05bc46c39a728f17dde82a68a73eaaf"
+    },
+    {
+      "name": "geosite-apple-cn.json",
+      "bytes": 4462,
+      "sha256": "3144e7c95d40f6ed78680ccdfb3372803de0366227247219b8bb79c6856ab5ad"
+    },
+    {
+      "name": "geosite-openai.json",
+      "bytes": 678,
+      "sha256": "e5212b86c53be9bd0c47105953bcfae1d55120c1a05d2aa4d2fb0f9b1d1b5543"
+    },
+    {
+      "name": "geosite-category-collaborate-cn.json",
+      "bytes": 384,
+      "sha256": "ccb5f9095036df6a35037bd422564d56045d46f90f8bc0eb663ca34e0875f302"
+    },
+    {
+      "name": "geosite-cn.json",
+      "bytes": 1627782,
+      "sha256": "e030106c0c39597543f440b293c24578ef5bb6d2c95d31821c4383670ace108a"
+    },
+    {
+      "name": "geosite-pixiv.json",
+      "bytes": 196,
+      "sha256": "c509305ac934bc4d076e10cff4e99a66fdd0357487685d1d6a6dd4d365568d53"
+    },
+    {
+      "name": "geosite-microsoft@cn.json",
+      "bytes": 4391,
+      "sha256": "5d9c03e5decc471344f62ff0003145924bdd6aa815c450d4801b51718e25e763"
+    },
+    {
+      "name": "geosite-category-dev@cn.json",
+      "bytes": 641,
+      "sha256": "31d67e693fb2a069be6bc0e371d290d70b754a435c405c20517c176cdaa6fa5c"
+    },
+    {
+      "name": "geosite-category-games@cn.json",
+      "bytes": 967,
+      "sha256": "0ed142778627d1a9602c9f1877a374c3e2f4f8c7babdd68caf05524ea8d40102"
+    },
+    {
+      "name": "geoip-cn.json",
+      "bytes": 116987,
+      "sha256": "a3f0c36faeb25bd2b8270baf04fdd218a77d45e93f5e181ca2315d02ea39e140"
+    }
+  ]
+}

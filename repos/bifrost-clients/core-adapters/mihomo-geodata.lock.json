@@ -1,0 +1,29 @@
+{
+  "format": "BIFROST-MIHOMO-GEODATA-LOCK-1",
+  "repository": "https://github.com/MetaCubeX/meta-rules-dat",
+  "release_id": 393387661,
+  "release_tag": "latest",
+  "release_published_at": "2026-09-22T01:01:18Z",
+  "commit": "4178770badecb1b349fbcd62c737e0d7a2079729",
+  "source_archive": {
+    "file": "meta-rules-dat-4178770badecb1b349fbcd62c737e0d7a2079729.tar.gz",
+    "bytes": 23264,
+    "sha256": "6e8d87b0439cfe46618a55f0d8c90fea07450c59f586d1dab48d920f2e5db0a0"
+  },
+  "assets": [
+    {
+      "id": "geosite",
+      "file": "geosite.dat",
+      "asset_id": 580216706,
+      "bytes": 4248636,
+      "sha256": "9ac232ceb7e350f31e05c0d1a973a4b12eab96726f7fc1b59cb052bc5c6519ca"
+    },
+    {
+      "id": "geoip",
+      "file": "geoip.metadb",
+      "asset_id": 580216691,
+      "bytes": 8510129,
+      "sha256": "6eef2fedc2dae7091c112be13895968135ec01e702df2f5b4b1161b07d714720"
+    }
+  ]
+}

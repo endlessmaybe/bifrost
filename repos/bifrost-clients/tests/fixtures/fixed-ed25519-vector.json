@@ -1,0 +1,7 @@
+{
+  "id": "TEST-ONLY-bifrost-release-ed25519-v1",
+  "test_only": true,
+  "message_utf8": "BIFROST-ED25519-FIXED-VECTOR-v1\\nmanifest payload bytes",
+  "signature_base64url": "mzlMQU4Js_EkK2kq71k8vKgx-SsXhWv4OeGRhQS9GYXBZk1fMj9LTNwFHOyNs4mWWkHnDQnf-NjeifhzpiAfBA",
+  "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAHOvPHzgTfkusEObQQacilPrv7a6HdQlDVqLYZNxpyLE=\n-----END PUBLIC KEY-----\n"
+}

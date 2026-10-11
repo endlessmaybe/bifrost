@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);NU1510</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="..\fixtures\routing-services-v1.json" Link="routing-services-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <Content Include="..\..\android-app\src\main\assets\routing\geosite-*.json" Link="routing-geodata\%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" />
+    <Compile Include="..\..\windows-service\ApplicationPolicySnapshot.cs" Link="ApplicationPolicySnapshot.cs" />
+    <Compile Include="..\..\windows-service\MihomoModels.cs" Link="MihomoModels.cs" />
+    <Compile Include="..\..\windows-service\MihomoWindowsContract.cs" Link="MihomoWindowsContract.cs" />
+    <Compile Include="..\..\windows-service\MihomoConfigCompiler.cs" Link="MihomoConfigCompiler.cs" />
+    <Compile Include="..\..\windows-service\MihomoProviderCompiler.cs" Link="MihomoProviderCompiler.cs" />
+    <Compile Include="..\..\windows-service\MihomoPolicyCompiler.cs" Link="MihomoPolicyCompiler.cs" />
+    <Compile Include="..\..\windows-service\BifrostServiceRouting.cs" Link="BifrostServiceRouting.cs" />
+    <Compile Include="..\..\windows-service\MihomoConfigValidator.cs" Link="MihomoConfigValidator.cs" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,41 @@
+{
+  "format": "BIFROST-ANDROID-RUNTIME-1",
+  "go": "1.26.5",
+  "sing_box": "1.13.16",
+  "xray": "26.3.27",
+  "artifacts": [
+    {
+      "path": "repos/bifrost-clients/android-app/libs/libbox.aar",
+      "bytes": 199649966,
+      "sha256": "d03a7dd7a8c6fdaf0385e8450da5d4696e2cefb7c114fb1ef08520c22572fb8b"
+    },
+    {
+      "path": "repos/bifrost-infra/scripts/libbox-xray-bridge.go",
+      "sha256": "595c545237f8732a1782df274d598beff1b4551a1ae4d878a6c69d4cabbaf7a2",
+      "bytes": 4581
+    },
+    {
+      "path": "build-inputs/core/sing-box-v1.13.16.tar",
+      "sha256": "0f595ab0b87ff71acd7d4aacd111b2ff4a53a6c1384be285c35a9e88ccc387d6",
+      "bytes": 4894720
+    },
+    {
+      "path": "build-inputs/core/xray-v1.260327.0.tar",
+      "sha256": "fdef7d411c11f9b43468597db73bad3eacab855fe190e424e62868e210c21f84",
+      "bytes": 4782080
+    },
+    {
+      "path": "build-inputs/core/sing-tun-3a09076491df-bifrost-detach.tar",
+      "bytes": 2672640,
+      "sha256": "914f3a6d86d9ba59f254aeb933e7f6a823b763e28861095a53cb9dab6f17fa1e"
+    },
+    {
+      "path": "repos/bifrost-infra/scripts/sing-tun-gvisor-filter_bifrost.go",
+      "bytes": 1643,
+      "sha256": "0000ce99c9ac5e0c0a923ea7419d20b8c34af396537a62545b58045463ab671c"
+    }
+  ],
+  "build_command": "scripts/build-unified-libbox.ps1",
+  "origin": "Pinned sing-box/Xray runtime with the existing gVisor detach fix and Bifrost scoped IPv6 TProxy DNS reply fix. The complete patched source, overlay and regression test are release-bound; Root DNS TCP handshakes and UDP replies are tested on Android.",
+  "sing_tun": "0.8.12-0.20260727151122-3a09076491df+bifrost-detach"
+}

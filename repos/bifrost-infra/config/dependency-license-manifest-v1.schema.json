@@ -1,0 +1,26 @@
+{
+  "$id": "bifrost.dependency-license-manifest.v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "components"],
+  "properties": {
+    "format": {"const": "BIFROST-DEPENDENCY-LICENSES-1"},
+    "components": {
+      "type": "array", "minItems": 1, "maxItems": 4096,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["bom_ref", "purl", "license_expression", "copyright", "notice", "source", "modified"],
+        "properties": {
+          "bom_ref": {"type": "string", "minLength": 1, "maxLength": 240},
+          "purl": {"type": "string", "pattern": "^pkg:"},
+          "license_expression": {"type": "string", "minLength": 1, "maxLength": 256},
+          "copyright": {"type": "string", "minLength": 1, "maxLength": 512},
+          "notice": {"type": "string", "minLength": 1, "maxLength": 512},
+          "source": {"type": "string", "minLength": 1, "maxLength": 512},
+          "modified": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

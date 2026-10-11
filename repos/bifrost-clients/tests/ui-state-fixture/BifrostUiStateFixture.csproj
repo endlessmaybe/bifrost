@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);NU1510</NoWarn>
+    <AssemblyName>Bifrost.UiStateFixture</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="10.0.0" />
+    <ProjectReference Include="..\..\windows-app\BifrostApp.csproj">
+      <!-- Keep the deliberately harness-enabled app assembly in a fixture-only
+           output tree; never overwrite the shipping windows-app Release bytes. -->
+      <AdditionalProperties>Configuration=Debug;BifrostTestHarness=true;BaseOutputPath=$(MSBuildProjectDirectory)\bin\BifrostAppFixture\;BifrostTrustedControlOrigin=$(BifrostTrustedControlOrigin);BifrostRequireTrustedControlOrigin=$(BifrostRequireTrustedControlOrigin);BifrostReleaseTrustRootFile=$(BifrostReleaseTrustRootFile);BifrostReleaseTrustRootTestOnly=$(BifrostReleaseTrustRootTestOnly)</AdditionalProperties>
+    </ProjectReference>
+    <None Include="..\..\windows-app\tests\protocol-golden-vectors-v1.json" Link="protocol-golden-vectors-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\windows-app\tests\release-golden-vectors-v1.json" Link="release-golden-vectors-v1.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\windows-app\tests\release-envelope-corpus-v2.json" Link="release-envelope-corpus-v2.json" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+</Project>

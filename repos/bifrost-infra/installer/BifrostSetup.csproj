@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>false</PublishTrimmed>
+    <EnableCompressionInSingleFile Condition="'$(Configuration)' == 'Release'">true</EnableCompressionInSingleFile>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AssemblyName>BifrostSetup</AssemblyName>
+    <Version>2.2.53</Version>
+    <AssemblyVersion>2.2.53.0</AssemblyVersion>
+    <FileVersion>2.2.53.0</FileVersion>
+    <InformationalVersion>2.2.53</InformationalVersion>
+    <ApplicationIcon>Assets\bifrost.ico</ApplicationIcon>
+    <InvariantGlobalization>true</InvariantGlobalization>
+    <BifrostReleaseTrustRootFile Condition="'$(BifrostReleaseTrustRootFile)' == ''"></BifrostReleaseTrustRootFile>
+    <BifrostGeneratedReleaseTrustBinding>$(MSBuildProjectDirectory)\obj\$(Configuration)\ReleaseTrustBinding.g.cs</BifrostGeneratedReleaseTrustBinding>
+    <BifrostReleaseTrustRootTestOnly Condition="'$(BifrostReleaseTrustRootTestOnly)' == ''">false</BifrostReleaseTrustRootTestOnly>
+    <BifrostLegacyReleaseDelegationFile Condition="'$(BifrostLegacyReleaseDelegationFile)' == ''">$(MSBuildThisFileDirectory)..\..\..\secrets\release-delegation.json</BifrostLegacyReleaseDelegationFile>
+    <BifrostLegacyReleaseKeyStateFile Condition="'$(BifrostLegacyReleaseKeyStateFile)' == ''">$(MSBuildThisFileDirectory)..\..\..\secrets\release-key-state.json</BifrostLegacyReleaseKeyStateFile>
+    <DefineConstants Condition="'$(BifrostTestHarness)' == 'true'">$(DefineConstants);BIFROST_TEST_HARNESS</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Include="Assets\bifrost.ico" />
+    <Content Include="..\..\bifrost-clients\COPYING" Link="licenses\COPYING" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\..\bifrost-clients\licenses\GPL-3.0-only.txt" Link="licenses\GPL-3.0-only.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\..\bifrost-clients\licenses\Apache-2.0.txt" Link="licenses\Apache-2.0.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\..\bifrost-clients\licenses\MPL-2.0.txt" Link="licenses\MPL-2.0.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\..\bifrost-clients\licenses\MIT.txt" Link="licenses\MIT.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\..\bifrost-clients\LICENSES.txt" Link="licenses\LICENSES.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\..\bifrost-clients\THIRD_PARTY_NOTICES.md" Link="licenses\THIRD_PARTY_NOTICES.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\..\bifrost-clients\INSTALLATION_INFORMATION.md" Link="licenses\INSTALLATION_INFORMATION.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Content Include="..\..\bifrost-clients\CORE_PROVENANCE.md" Link="licenses\CORE_PROVENANCE.md" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="Always" />
+    <Compile Include="..\..\bifrost-clients\release\ReleaseUpdateManager.cs" Link="ReleaseUpdateManager.cs" />
+    <Compile Include="..\..\bifrost-clients\release\ReleaseArtifactPolicy.cs" Link="ReleaseArtifactPolicy.cs" />
+    <Compile Include="..\..\bifrost-clients\release\ReleaseStateAuthority.cs" Link="ReleaseStateAuthority.cs" />
+    <Compile Include="..\..\bifrost-clients\release\ReleaseContract.cs" Link="ReleaseContract.cs" />
+    <Compile Include="..\..\bifrost-clients\windows-service\BifrostIpcWire.cs" Link="BifrostIpcWire.cs" />
+    <Compile Include="..\..\bifrost-clients\release\ReleaseTrustBinding.cs" Link="ReleaseTrustBinding.cs" Condition="'$(BifrostReleaseTrustRootFile)' == ''" />
+    <Compile Include="$(BifrostGeneratedReleaseTrustBinding)" AutoGen="true" DesignTime="false" Condition="'$(BifrostReleaseTrustRootFile)' != ''" />
+    <!-- Public ceremony records let the current installer reconstruct the full
+         authenticated envelope produced by pre-transaction clients. They do
+         not contain signing secrets and remain rooted in ReleaseTrustBinding. -->
+    <EmbeddedResource Include="$(BifrostLegacyReleaseDelegationFile)" LogicalName="Bifrost.LegacyReleaseDelegation.json" />
+    <EmbeddedResource Include="$(BifrostLegacyReleaseKeyStateFile)" LogicalName="Bifrost.LegacyReleaseKeyState.json" />
+  </ItemGroup>
+  <Target Name="ValidateBifrostLegacyReleaseAuthority" BeforeTargets="CoreCompile">
+    <Error Condition="!Exists('$(BifrostLegacyReleaseDelegationFile)')" Text="Bifrost legacy release delegation artifact is missing" />
+    <Error Condition="!Exists('$(BifrostLegacyReleaseKeyStateFile)')" Text="Bifrost legacy release key-state artifact is missing" />
+  </Target>
+  <Target Name="GenerateBifrostReleaseTrustBinding" BeforeTargets="CoreCompile" Condition="'$(BifrostReleaseTrustRootFile)' != ''">
+    <Error Condition="'$(Configuration)' == 'Release' and '$(BifrostReleaseTrustRootTestOnly)' == 'true'" Text="TEST-ONLY release trust roots are forbidden in shipping Release builds; use the isolated test variant." />
+    <PropertyGroup><BifrostTrustTestFlag Condition="'$(BifrostReleaseTrustRootTestOnly)' == 'true'">--test-only</BifrostTrustTestFlag></PropertyGroup>
+    <Error Condition="!$([System.IO.Path]::IsPathFullyQualified('$(BifrostReleaseTrustRootFile)'))" Text="BifrostReleaseTrustRootFile must be an absolute ceremony artifact path" />
+    <Exec Command="node &quot;$(MSBuildThisFileDirectory)..\..\bifrost-clients\tools\provision-release-root.mjs&quot; --input &quot;$(BifrostReleaseTrustRootFile)&quot; --csharp-output &quot;$(BifrostGeneratedReleaseTrustBinding)&quot; $(BifrostTrustTestFlag)" />
+  </Target>
+  <Target Name="RejectShippingTestHarness" BeforeTargets="CoreCompile">
+    <Error Condition="'$(BifrostTestHarness)' == 'true' and '$(Configuration)' == 'Release'" Text="BIFROST_TEST_HARNESS is forbidden in shipping Release builds; use the isolated fixture project." />
+  </Target>
+</Project>

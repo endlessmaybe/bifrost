@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><TargetFramework>net10.0</TargetFramework><ImplicitUsings>enable</ImplicitUsings><Nullable>enable</Nullable></PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../../windows-service/BifrostServiceRouting.cs" Link="BifrostServiceRouting.cs" />
+    <Compile Include="../../windows-service/MihomoConfigCompiler.cs" Link="MihomoConfigCompiler.cs" />
+    <Compile Include="../../windows-service/MihomoProviderCompiler.cs" Link="MihomoProviderCompiler.cs" />
+    <Compile Include="../../windows-service/MihomoPolicyCompiler.cs" Link="MihomoPolicyCompiler.cs" />
+    <Compile Include="../../windows-service/MihomoConfigValidator.cs" Link="MihomoConfigValidator.cs" />
+    <Compile Include="../../windows-service/NodeQualityPolicy.cs" Link="NodeQualityPolicy.cs" />
+    <Compile Include="../../windows-service/MihomoConnectionMemory.cs" Link="MihomoConnectionMemory.cs" />
+    <Compile Include="../../windows-service/NodeQualityRecoveryGate.cs" Link="NodeQualityRecoveryGate.cs" />
+    <Compile Include="../../windows-service/NodeQualityForegroundGuard.cs" Link="NodeQualityForegroundGuard.cs" />
+    <Compile Include="../../windows-service/NodeQualityProbeBudget.cs" Link="NodeQualityProbeBudget.cs" />
+    <Compile Include="../../windows-service/MihomoQualityOptimizer.cs" Link="MihomoQualityOptimizer.cs" />
+    <Compile Include="../../windows-service/WindowsInterfaceReadback.cs" Link="WindowsInterfaceReadback.cs" />
+    <Compile Include="../../windows-service/MihomoControllerClient.cs" Link="MihomoControllerClient.cs" />
+    <Compile Include="../../windows-service/MihomoModels.cs" Link="MihomoModels.cs" />
+    <Compile Include="../../windows-service/MihomoWindowsContract.cs" Link="MihomoWindowsContract.cs" />
+    <Compile Include="../../windows-service/ApplicationPolicySnapshot.cs" Link="ApplicationPolicySnapshot.cs" />
+  </ItemGroup>
+</Project>

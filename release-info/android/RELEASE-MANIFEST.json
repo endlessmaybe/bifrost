@@ -1,0 +1,102 @@
+{
+  "format": "BIFROST-RELEASE-MANIFEST-2",
+  "generated_at": "2026-10-01T05:37:56.014Z",
+  "release_sequence": 1790832587,
+  "minimum_client_version": "0.1.0",
+  "build": {
+    "android_signing_key_alias": "bifrost-android-release",
+    "android_signing_scope": "operator",
+    "artifact_root": "releases",
+    "artifacts": [
+      {
+        "arch": "arm64-v8a",
+        "bytes": 85084286,
+        "id": "android-arm64-v8a-apk",
+        "install_path": "android/BifrostAndroid-arm64-v8a-release.apk",
+        "kind": "apk",
+        "path": "android/BifrostAndroid-arm64-v8a-release.apk",
+        "platform": "android",
+        "sha256": "b1ad7a1000de2f2a71689a6b56b372c42f38c171fa4a792bde9b0435a41511db",
+        "source_bundle": "bifrost-release-source",
+        "notice": "bifrost-release-notice",
+        "dependencies": []
+      },
+      {
+        "arch": "armeabi-v7a",
+        "bytes": 76965424,
+        "id": "android-armeabi-v7a-apk",
+        "install_path": "android/BifrostAndroid-armeabi-v7a-release.apk",
+        "kind": "apk",
+        "path": "android/BifrostAndroid-armeabi-v7a-release.apk",
+        "platform": "android",
+        "sha256": "09cf239221bbfc565f68a3c178405b8b0a0a1d93449d7c9e15b805b1f525eb5c",
+        "source_bundle": "bifrost-release-source",
+        "notice": "bifrost-release-notice",
+        "dependencies": []
+      },
+      {
+        "arch": "x86_64",
+        "bytes": 89485549,
+        "id": "android-x86_64-apk",
+        "install_path": "android/BifrostAndroid-x86_64-release.apk",
+        "kind": "apk",
+        "path": "android/BifrostAndroid-x86_64-release.apk",
+        "platform": "android",
+        "sha256": "51c6b86f9e4d7248e20feeca530ffb161cc52477b5055a38fd9b79c0abee771c",
+        "source_bundle": "bifrost-release-source",
+        "notice": "bifrost-release-notice",
+        "dependencies": []
+      },
+      {
+        "id": "bifrost-release-source",
+        "path": "SOURCE-BUNDLE.tar",
+        "install_path": "SOURCE-BUNDLE.tar",
+        "platform": "windows",
+        "arch": "x64",
+        "kind": "source",
+        "bytes": 91952128,
+        "sha256": "c8426ee82c898b14004331693cc36adb69d77db6900cb9e4a7614d439f0f5c86",
+        "source_bundle": "bifrost-release-source",
+        "notice": "bifrost-release-notice",
+        "dependencies": []
+      },
+      {
+        "id": "bifrost-release-notice",
+        "path": "LICENSES.txt",
+        "install_path": "LICENSES.txt",
+        "platform": "windows",
+        "arch": "x64",
+        "kind": "notice",
+        "bytes": 764,
+        "sha256": "c11f0f44a2178ee8dbd015f89559899c01875f422dc32cf05a52c643de244544",
+        "source_bundle": "bifrost-release-source",
+        "notice": "bifrost-release-notice",
+        "dependencies": []
+      }
+    ],
+    "configuration": "Release",
+    "format": "BIFROST-BUILD-MANIFEST-2",
+    "generated_at": "2026-10-01T05:35:56.928004Z"
+  },
+  "sbom_sha256": "545aa3957a69d1c4a01e3dbd6a66666b179cb3e41a7cb5bad50b811967b57e55",
+  "licenses_sha256": "c11f0f44a2178ee8dbd015f89559899c01875f422dc32cf05a52c643de244544",
+  "signing_algorithm": "Ed25519",
+  "channel": "stable",
+  "minimum_config_version": 0,
+  "rollback_floor": 1790832587,
+  "signing_key_id": "bifrost-release-v1",
+  "trust_root_key_id": "bifrost-root-v1",
+  "rollback_policy": {
+    "reject_sequence_below_last_seen": true,
+    "reject_config_version_below_rollback_floor": true
+  },
+  "source_bundle_id": "bifrost-release-source",
+  "notice_artifact_id": "bifrost-release-notice",
+  "source_manifest_sha256": "f4aa8d7b24cd45b799a253d148c8217914fcabd3ef910b8373fbaa1edf8025fb",
+  "build_plan_sha256": "e096f08e95ace27c7957c39614b66a15bba29360f618add0a37409f2acd3c768",
+  "source_policy_sha256": "94fe35c390a84de727672bce44936fbdd69290659b9a2e7e830c67237af26599",
+  "core_provenance_sha256": "879104a8d4ad3abb4ea6fc2967009dac44b7eef2556119cd723b056aa8f92f06",
+  "build_inputs_sha256": "2abebb8c98e9513c1729dfd250d694241d9dbfecb6daee81f4e5832fe7edf149",
+  "toolchain_sha256": "d9e4aa54e5e0ff5c4aadad8afe26cc743837d5a5ccc82e8d5ce7a5fa1001dc18",
+  "dependency_license_manifest_sha256": "27b815e9dd32f7f331422099f60dbf775db8f7d9eaf1bc4c0237dc635224cdcc"
+}

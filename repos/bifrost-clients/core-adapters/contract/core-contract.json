@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://bifrost.invalid/schema/core-contract-1.0.json",
+  "title": "Bifrost core adapter contract",
+  "type": "object",
+  "required": ["core", "tun", "dns", "route", "kill_switch", "transport"],
+  "additionalProperties": false,
+  "properties": {
+    "core": {"type": "string", "enum": ["sing-box", "xray"]},
+    "tun": {"type": "object", "required": ["enabled", "protected_sockets"], "properties": {"enabled": {"const": true}, "protected_sockets": {"type": "integer", "minimum": 1}}},
+    "dns": {"type": "object", "required": ["mode", "plaintext_fallback"], "properties": {"mode": {"type": "string", "enum": ["doh", "remote_socks"]}, "plaintext_fallback": {"const": false}}},
+    "route": {"type": "object", "required": ["mode", "unmatched_action"], "properties": {"mode": {"type": "string", "enum": ["smart", "global", "smart_gate"]}, "unmatched_action": {"type": "string", "enum": ["proxy", "block"]}}},
+    "kill_switch": {"type": "object", "required": ["enabled", "scope"], "properties": {"enabled": {"const": true}, "scope": {"type": "string", "enum": ["normal", "strict"]}}},
+    "transport": {"type": "object", "required": ["vmess_aead", "wss", "strict_tls", "session_header"], "properties": {"vmess_aead": {"const": true}, "wss": {"const": true}, "strict_tls": {"const": true}, "session_header": {"const": "X-Bifrost-Session"}}}
+  }
+}

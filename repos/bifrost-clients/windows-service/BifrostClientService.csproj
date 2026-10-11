@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <Version>2.2.63</Version>
+    <AssemblyVersion>2.2.63.0</AssemblyVersion>
+    <FileVersion>2.2.63.0</FileVersion>
+    <InformationalVersion>2.2.63</InformationalVersion>
+    <!-- The LocalSystem service sits on the connect critical path whenever it
+         is started after boot/update. Precompile the Release image so IPC and
+         core orchestration do not pay avoidable first-use JIT latency. -->
+    <PublishReadyToRun Condition="'$(Configuration)' == 'Release'">true</PublishReadyToRun>
+    <PublishReadyToRunComposite Condition="'$(Configuration)' == 'Release'">true</PublishReadyToRunComposite>
+    <!-- This is the long-lived, multi-core data-plane coordinator. Prefer
+         throughput over the workstation-GC memory minimum and allow hot
+         paths to be re-optimized by tiered PGO after R2R startup. -->
+    <TieredCompilation Condition="'$(Configuration)' == 'Release'">true</TieredCompilation>
+    <TieredPGO Condition="'$(Configuration)' == 'Release'">true</TieredPGO>
+    <TieredCompilationQuickJit Condition="'$(Configuration)' == 'Release'">true</TieredCompilationQuickJit>
+    <TieredCompilationQuickJitForLoops Condition="'$(Configuration)' == 'Release'">true</TieredCompilationQuickJitForLoops>
+    <ServerGarbageCollection Condition="'$(Configuration)' == 'Release'">true</ServerGarbageCollection>
+    <ConcurrentGarbageCollection Condition="'$(Configuration)' == 'Release'">true</ConcurrentGarbageCollection>
+    <!-- The LocalSystem service is latency-sensitive on boot, reconnect and
+         update recovery. Prefer startup/CPU performance over package size. -->
+    <EnableCompressionInSingleFile Condition="'$(Configuration)' == 'Release'">false</EnableCompressionInSingleFile>
+    <Nullable>enable</Nullable>
+    <NoWarn>$(NoWarn);NU1510</NoWarn>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <BifrostReleaseTrustRootFile Condition="'$(BifrostReleaseTrustRootFile)' == ''"></BifrostReleaseTrustRootFile>
+    <BifrostGeneratedReleaseTrustBinding>$(MSBuildProjectDirectory)\obj\$(Configuration)\ReleaseTrustBinding.g.cs</BifrostGeneratedReleaseTrustBinding>
+    <BifrostReleaseTrustRootTestOnly Condition="'$(BifrostReleaseTrustRootTestOnly)' == ''">false</BifrostReleaseTrustRootTestOnly>
+    <BifrostLocalEvaluation Condition="'$(BifrostLocalEvaluation)' == ''">false</BifrostLocalEvaluation>
+    <DefineConstants Condition="'$(BifrostReleaseTrustRootTestOnly)' == 'true'">$(DefineConstants);BIFROST_RELEASE_TRUST_ROOT_TEST_ONLY</DefineConstants>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="10.0.0" />
+    <Compile Include="..\windows-app\ControlledRuntimeCoordinator.cs" Link="Shared\ControlledRuntimeCoordinator.cs" />
+    <Compile Include="..\windows-app\ConfigKeyTrust.cs" Link="Shared\ConfigKeyTrust.cs" />
+    <Compile Include="..\release\ReleaseUpdateManager.cs" Link="ReleaseUpdateManager.cs" />
+    <Compile Include="..\release\ReleaseArtifactPolicy.cs" Link="ReleaseArtifactPolicy.cs" />
+    <Compile Include="..\release\ReleaseStateAuthority.cs" Link="ReleaseStateAuthority.cs" />
+    <Compile Include="..\release\ReleaseContract.cs" Link="ReleaseContract.cs" />
+    <Compile Include="..\release\ReleaseTrustBinding.cs" Link="ReleaseTrustBinding.cs" Condition="'$(BifrostReleaseTrustRootFile)' == ''" />
+    <Compile Include="$(BifrostGeneratedReleaseTrustBinding)" AutoGen="true" DesignTime="false" Condition="'$(BifrostReleaseTrustRootFile)' != ''" />
+    <!-- This API ships as a preview package in the available offline NuGet
+         feed; it is the maintained PipeSecurity/ACL surface and is
+         binary-compatible with net10.0. -->
+    <PackageReference Include="System.IO.Pipes.AccessControl" Version="6.0.0-preview.5.21301.5" />
+  </ItemGroup>
+  <Target Name="GenerateBifrostReleaseTrustBinding" BeforeTargets="CoreCompile" Condition="'$(BifrostReleaseTrustRootFile)' != ''">
+    <Error Condition="'$(Configuration)' == 'Release' and '$(BifrostReleaseTrustRootTestOnly)' == 'true' and '$(BifrostLocalEvaluation)' != 'true'" Text="TEST-ONLY release trust roots are forbidden in shipping Release builds; only the explicit LocalEvaluation variant may consume its protected local root." />
+    <PropertyGroup><BifrostTrustTestFlag Condition="'$(BifrostReleaseTrustRootTestOnly)' == 'true'">--test-only</BifrostTrustTestFlag></PropertyGroup>
+    <Error Condition="!$([System.IO.Path]::IsPathFullyQualified('$(BifrostReleaseTrustRootFile)'))" Text="BifrostReleaseTrustRootFile must be an absolute ceremony artifact path" />
+    <Exec Command="node &quot;$(MSBuildThisFileDirectory)..\tools\provision-release-root.mjs&quot; --input &quot;$(BifrostReleaseTrustRootFile)&quot; --csharp-output &quot;$(BifrostGeneratedReleaseTrustBinding)&quot; $(BifrostTrustTestFlag)" />
+  </Target>
+  <Target Name="RejectShippingTestHarness" BeforeTargets="CoreCompile">
+    <Error Condition="'$(BifrostTestHarness)' == 'true' and '$(Configuration)' == 'Release'" Text="BIFROST_TEST_HARNESS is forbidden in shipping Release builds; use the isolated fixture project." />
+  </Target>
+</Project>

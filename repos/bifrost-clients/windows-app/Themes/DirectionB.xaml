@@ -1,0 +1,21 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <!-- B · Spatial — larger breathing room, lifted surfaces, softer grouping. -->
+  <sys:Double x:Key="SidebarWidth">224</sys:Double>
+  <sys:Double x:Key="CompactSidebarWidth">160</sys:Double>
+  <sys:Double x:Key="HeroDialSize">248</sys:Double>
+  <sys:Double x:Key="ModeControlWidth">382</sys:Double>
+  <sys:Double x:Key="PanelGap">16</sys:Double>
+  <sys:Double x:Key="ShellInset">8</sys:Double>
+  <sys:Double x:Key="BrandArtworkOpacity">0.34</sys:Double>
+  <sys:Double x:Key="DirectionPageTitle">26</sys:Double>
+  <sys:Double x:Key="DirectionCardLift">1</sys:Double>
+  <CornerRadius x:Key="CardRadius">18</CornerRadius>
+  <CornerRadius x:Key="ControlRadius">12</CornerRadius>
+  <Thickness x:Key="PagePadding">28</Thickness>
+  <Thickness x:Key="CardPadding">20</Thickness>
+  <Thickness x:Key="DirectionNavPadding">16,0</Thickness>
+  <SolidColorBrush x:Key="DirectionWashBrush" Color="#105B86D8" />
+  <SolidColorBrush x:Key="DirectionSignalBrush" Color="#245B86D8" />
+</ResourceDictionary>

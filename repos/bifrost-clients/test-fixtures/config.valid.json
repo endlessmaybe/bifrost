@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "config_version": 1,
+  "anti_rollback": 1,
+  "account": {"public_id": "BF-AB12-CD34", "plan": "permanent", "expires_at": null},
+  "sources": [{
+    "code": "A",
+    "display_name": "源站 A",
+    "server_name": "source-a.example.invalid",
+    "candidates": [{"label": "A-01", "dial_address": "<CLOUDFLARE_EDGE_IP>", "port": 443}],
+    "profiles": {"direct": {"profile_id": "dev_profile_a", "uuid": "00000000-0000-4000-8000-000000000001"}, "countries": {}}
+  }],
+  "countries": [],
+  "routing": {"ruleset_version": "fixture", "smart_gate_remote_dns": true, "kill_switch_default": "normal", "dns_policy": {"version": "dns-policy-v1", "remote": "https://resolver.example.invalid/dns-query", "direct": "https://direct.example.invalid/dns-query", "smart_gate_remote": true, "plaintext_fallback": false, "ipv4": "proxy", "ipv6": "proxy", "failure": "block"}, "ipv6_policy": "proxy_or_block", "udp_policy": "capability"},
+  "core_policy": {"allowed": ["mihomo"], "default": "mihomo"}
+}

@@ -1,0 +1,6 @@
+BIFROST-WINDOWS-CORE-PATCH-ATTESTATION-1
+component=mihomo
+version=1.19.30
+variant=windows-amd64-compatible
+patches=none
+binary_source=official-upstream-release

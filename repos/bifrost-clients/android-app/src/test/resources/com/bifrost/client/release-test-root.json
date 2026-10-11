@@ -1,0 +1,7 @@
+{
+  "key_id": "bifrost-root-v1",
+  "purpose": "release-trust-root",
+  "algorithm": "Ed25519",
+  "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAA6EHv/POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg=\n-----END PUBLIC KEY-----\n",
+  "fingerprint": "a050837d85070582ccf7394b0988847cc312cb88259b894899f6f239cf1791a5"
+}

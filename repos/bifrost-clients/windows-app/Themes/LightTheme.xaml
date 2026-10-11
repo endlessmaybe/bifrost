@@ -1,0 +1,79 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <sys:Double x:Key="ShellShadowBlur">22</sys:Double>
+  <sys:Double x:Key="ShellShadowDepth">5</sys:Double>
+  <sys:Double x:Key="ShellShadowOpacity">0.18</sys:Double>
+  <!-- Warm parchment and restrained antique bronze mirror the obsidian theme
+       without turning light mode into an unrelated grey office application. -->
+  <SolidColorBrush x:Key="CanvasBrush" Color="#E6DED1" />
+  <LinearGradientBrush x:Key="ShellBrush" StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#FBF7EF" Offset="0" /><GradientStop Color="#EFE7DA" Offset="0.54" /><GradientStop Color="#E2D8C9" Offset="1" /></LinearGradientBrush>
+  <LinearGradientBrush x:Key="ToolbarBrush" StartPoint="0,0" EndPoint="0,1"><GradientStop Color="#FFFDF8" Offset="0" /><GradientStop Color="#F0E8DC" Offset="1" /></LinearGradientBrush>
+  <LinearGradientBrush x:Key="SidebarBrush" StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#F5EEE3" Offset="0" /><GradientStop Color="#E8DECF" Offset="1" /></LinearGradientBrush>
+  <RadialGradientBrush x:Key="WorkspaceBrush" Center="0.5,0.42" GradientOrigin="0.42,0.34" RadiusX="0.82" RadiusY="0.86">
+    <GradientStop Color="#FCF8F0" Offset="0" />
+    <GradientStop Color="#EEE6D9" Offset="0.66" />
+    <GradientStop Color="#E2D8C9" Offset="1" />
+  </RadialGradientBrush>
+  <LinearGradientBrush x:Key="InspectorBrush" StartPoint="0,0" EndPoint="1,0"><GradientStop Color="#F4EDE2" Offset="0" /><GradientStop Color="#E6DCCD" Offset="1" /></LinearGradientBrush>
+  <SolidColorBrush x:Key="SurfaceBrush" Color="#FAF6EE" />
+  <SolidColorBrush x:Key="SurfaceElevatedBrush" Color="#FFFDF8" />
+  <SolidColorBrush x:Key="InputBrush" Color="#F2EBDD" />
+  <SolidColorBrush x:Key="TextBrush" Color="#241F18" />
+  <SolidColorBrush x:Key="MutedTextBrush" Color="#5F5649" />
+  <SolidColorBrush x:Key="SubtleTextBrush" Color="#7D7161" />
+  <SolidColorBrush x:Key="InspectorDividerBrush" Color="#D6C9B7" />
+  <SolidColorBrush x:Key="HairlineBrush" Color="#D8CCBA" />
+  <SolidColorBrush x:Key="StrokeBrush" Color="#BBA887" />
+  <SolidColorBrush x:Key="FocusBrush" Color="#855923" />
+  <SolidColorBrush x:Key="SurfaceHoverBrush" Color="#F0E4D2" />
+  <SolidColorBrush x:Key="SurfacePressedBrush" Color="#E6D6BE" />
+  <SolidColorBrush x:Key="ScrimBrush" Color="#5A000000" />
+  <SolidColorBrush x:Key="SelectedBrush" Color="#E9D9BE" />
+  <SolidColorBrush x:Key="ToolbarSegmentBrush" Color="#EDE3D4" />
+  <SolidColorBrush x:Key="ToolbarSegmentSelectedBrush" Color="#E1CEAF" />
+  <SolidColorBrush x:Key="ModeSelectedBrush" Color="#E8D7BA" />
+  <SolidColorBrush x:Key="InspectorCardBrush" Color="#F7F0E5" />
+  <SolidColorBrush x:Key="AccentBrush" Color="#946127" />
+  <SolidColorBrush x:Key="AccentSoftBrush" Color="#CFAE7B" />
+  <SolidColorBrush x:Key="PrimaryActionTextBrush" Color="#FFF9EE" />
+  <SolidColorBrush x:Key="PositiveBrush" Color="#208159" />
+  <SolidColorBrush x:Key="WarningBrush" Color="#A56517" />
+  <SolidColorBrush x:Key="ErrorBrush" Color="#B24A4D" />
+  <SolidColorBrush x:Key="InfoBrush" Color="#356E91" />
+  <SolidColorBrush x:Key="ChartBrush" Color="#4C8278" />
+  <SolidColorBrush x:Key="ChartSecondaryBrush" Color="#A2733D" />
+  <SolidColorBrush x:Key="LogoBrush" Color="#D7C6AC" />
+  <SolidColorBrush x:Key="DialBrush" Color="#EFE4D2" />
+  <SolidColorBrush x:Key="DialInnerBrush" Color="#F8F0E2" />
+  <SolidColorBrush x:Key="DialHighlightBrush" Color="#B18A57" />
+  <SolidColorBrush x:Key="DialMarkBrush" Color="#6B5235" />
+  <SolidColorBrush x:Key="DialShadowBrush" Color="#B59F81" />
+  <SolidColorBrush x:Key="DialOuterBrush" Color="#C6AD86" />
+  <SolidColorBrush x:Key="DialRimBrush" Color="#DDCBAE" />
+  <SolidColorBrush x:Key="DialTickBedBrush" Color="#E9DDCA" />
+  <SolidColorBrush x:Key="DialInsetBrush" Color="#F2E9DA" />
+  <SolidColorBrush x:Key="DialPlateBrush" Color="#E3D3BB" />
+  <SolidColorBrush x:Key="DialRecessBrush" Color="#CFB994" />
+  <SolidColorBrush x:Key="DialCenterBrush" Color="#BEA175" />
+  <SolidColorBrush x:Key="DialTickBrush" Color="#5D472E" />
+  <SolidColorBrush x:Key="DialLogoBrush" Color="#33281B" />
+  <SolidColorBrush x:Key="DialMetalDark" Color="#9A7647" />
+  <SolidColorBrush x:Key="DialMetalMid" Color="#D2B888" />
+  <SolidColorBrush x:Key="DialMetalLight" Color="#FBF2E3" />
+  <SolidColorBrush x:Key="ConnectingBrush" Color="#356E91" />
+  <SolidColorBrush x:Key="SwitchingBrush" Color="#78569B" />
+  <SolidColorBrush x:Key="IdleBrush" Color="#766C5E" />
+  <SolidColorBrush x:Key="DialStatusBrush" Color="#356E91" />
+  <SolidColorBrush x:Key="DialPositiveBrush" Color="#208159" />
+  <SolidColorBrush x:Key="DialWarningBrush" Color="#A56517" />
+  <SolidColorBrush x:Key="DialSwitchingBrush" Color="#78569B" />
+  <SolidColorBrush x:Key="DialIdleBrush" Color="#766C5E" />
+  <SolidColorBrush x:Key="DialErrorBrush" Color="#B24A4D" />
+  <SolidColorBrush x:Key="DialPressedOverlay" Color="#26000000" />
+  <RadialGradientBrush x:Key="DialVignetteBrush" Center="0.34,0.26" GradientOrigin="0.28,0.2" RadiusX="0.86" RadiusY="0.86">
+    <GradientStop Color="#00000000" Offset="0" />
+    <GradientStop Color="#10000000" Offset="0.64" />
+    <GradientStop Color="#28000000" Offset="1" />
+  </RadialGradientBrush>
+  <SolidColorBrush x:Key="WindowBackgroundBrush" Color="#E6DED1" />
+</ResourceDictionary>

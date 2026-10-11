@@ -1,0 +1,19 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:sys="clr-namespace:System;assembly=mscorlib">
+  <!--
+    Legacy direction compatibility dictionary.
+    The product now ships one owner-approved obsidian composition, so this file
+    must never override the master semantic palette, sidebar width, radii or
+    control geometry.  It only supplies the few direction-only resources still
+    referenced by the production view while old persisted A/B/C values migrate.
+  -->
+  <sys:Double x:Key="DirectionPageTitle">23</sys:Double>
+  <sys:Double x:Key="DirectionCardLift">0</sys:Double>
+  <Thickness x:Key="DirectionNavPadding">12,0</Thickness>
+  <LinearGradientBrush x:Key="DirectionWashBrush" StartPoint="0,0" EndPoint="1,1">
+    <GradientStop Color="#1619CDD3" Offset="0" />
+    <GradientStop Color="#00000000" Offset="0.58" />
+  </LinearGradientBrush>
+  <SolidColorBrush x:Key="DirectionSignalBrush" Color="#19CDD3" />
+</ResourceDictionary>

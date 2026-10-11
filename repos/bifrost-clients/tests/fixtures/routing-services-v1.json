@@ -1,0 +1,771 @@
+{
+  "version": 1,
+  "description": "Behavior expectations for service dependencies; regional Apple/Microsoft CDNs intentionally stay direct in smart mode. Global and per-app policies override domain categories.",
+  "cases": [
+    {
+      "category": "x-media",
+      "host": "x.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "x-media",
+      "host": "api.x.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "x-media",
+      "host": "twitter.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "x-media",
+      "host": "api.twitter.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "x-media",
+      "host": "pbs.twimg.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "x-media",
+      "host": "video.twimg.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "x-media",
+      "host": "abs.twimg.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "x-media",
+      "host": "t.co",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "google.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "accounts.google.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "play.google.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "play.googleapis.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "android.clients.google.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "android.apis.google.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "dl.google.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "dl-ssl.google.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "rr1---sn.test.gvt1.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "gvt2-cn.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "gvt3.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "googleusercontent.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "ggpht.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "gstatic.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "youtube.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "ytimg.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "googlevideo.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "google-play-youtube",
+      "host": "youtubei.googleapis.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "microsoft",
+      "host": "login.live.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "microsoft",
+      "host": "login.microsoftonline.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "microsoft",
+      "host": "microsoft.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "microsoft",
+      "host": "bing.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "microsoft",
+      "host": "msedge.net",
+      "smart": "proxy"
+    },
+    {
+      "category": "microsoft",
+      "host": "office.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "microsoft",
+      "host": "onedrive.live.com",
+      "smart": "direct"
+    },
+    {
+      "category": "microsoft",
+      "host": "download.windowsupdate.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "microsoft",
+      "host": "dl.delivery.mp.microsoft.com",
+      "smart": "direct"
+    },
+    {
+      "category": "microsoft",
+      "host": "storeedgefd.dsx.mp.microsoft.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "apple",
+      "host": "apple.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "apple",
+      "host": "icloud.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "apple",
+      "host": "itunes.apple.com",
+      "smart": "direct"
+    },
+    {
+      "category": "apple",
+      "host": "mzstatic.com",
+      "smart": "direct"
+    },
+    {
+      "category": "apple",
+      "host": "apps.apple.com",
+      "smart": "direct"
+    },
+    {
+      "category": "apple",
+      "host": "updates.cdn-apple.com",
+      "smart": "direct"
+    },
+    {
+      "category": "apple",
+      "host": "push.apple.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "meta-messaging",
+      "host": "facebook.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "meta-messaging",
+      "host": "fbcdn.net",
+      "smart": "proxy"
+    },
+    {
+      "category": "meta-messaging",
+      "host": "instagram.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "meta-messaging",
+      "host": "cdninstagram.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "meta-messaging",
+      "host": "whatsapp.net",
+      "smart": "proxy"
+    },
+    {
+      "category": "meta-messaging",
+      "host": "telegram.org",
+      "smart": "proxy"
+    },
+    {
+      "category": "meta-messaging",
+      "host": "t.me",
+      "smart": "proxy"
+    },
+    {
+      "category": "meta-messaging",
+      "host": "discord.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "meta-messaging",
+      "host": "discord.gg",
+      "smart": "proxy"
+    },
+    {
+      "category": "meta-messaging",
+      "host": "discordapp.net",
+      "smart": "proxy"
+    },
+    {
+      "category": "meta-messaging",
+      "host": "signal.org",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "netflix.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "nflxvideo.net",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "nflximg.net",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "twitch.tv",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "ttvnw.net",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "spotify.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "scdn.co",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "tiktok.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "tiktokcdn.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "steampowered.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "steamcontent.com",
+      "smart": "direct"
+    },
+    {
+      "category": "stream-games",
+      "host": "steamstatic.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "epicgames.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "stream-games",
+      "host": "epicgames-download1.akamaized.net",
+      "smart": "proxy"
+    },
+    {
+      "category": "development",
+      "host": "github.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "development",
+      "host": "raw.githubusercontent.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "development",
+      "host": "objects.githubusercontent.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "development",
+      "host": "githubassets.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "development",
+      "host": "npmjs.org",
+      "smart": "proxy"
+    },
+    {
+      "category": "development",
+      "host": "registry.npmjs.org",
+      "smart": "proxy"
+    },
+    {
+      "category": "development",
+      "host": "pypi.org",
+      "smart": "proxy"
+    },
+    {
+      "category": "development",
+      "host": "files.pythonhosted.org",
+      "smart": "proxy"
+    },
+    {
+      "category": "development",
+      "host": "docker.io",
+      "smart": "proxy"
+    },
+    {
+      "category": "development",
+      "host": "docker.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "development",
+      "host": "huggingface.co",
+      "smart": "proxy"
+    },
+    {
+      "category": "development",
+      "host": "cdn-lfs.huggingface.co",
+      "smart": "proxy"
+    },
+    {
+      "category": "ai",
+      "host": "chatgpt.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "ai",
+      "host": "files.oaiusercontent.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "ai",
+      "host": "cdn.oaistatic.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "ai",
+      "host": "auth.openai.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "ai",
+      "host": "claude.ai",
+      "smart": "proxy"
+    },
+    {
+      "category": "ai",
+      "host": "anthropic.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "ai",
+      "host": "claudeusercontent.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "ai",
+      "host": "gemini.google.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "ai",
+      "host": "generativelanguage.googleapis.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "domestic",
+      "host": "qq.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "qpic.cn",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "gtimg.cn",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "qlogo.cn",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "weixin.qq.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "dldir1.qq.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "weixin.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "tencent.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "myqcloud.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "bilibili.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic-share",
+      "host": "b23.tv",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "hdslb.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic-media",
+      "host": "bilivideo.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic-media",
+      "host": "biliapi.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic-media",
+      "host": "biliapi.net",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "douyin.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "douyinvod.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "byteimg.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "taobao.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "alicdn.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "alipay.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "jd.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "360buyimg.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "baidu.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "bdstatic.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "mi.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "xiaomi.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "163.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic",
+      "host": "126.com",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic-long-tail",
+      "host": "test.ustc.edu.cn",
+      "smart": "direct"
+    },
+    {
+      "category": "domestic-long-tail",
+      "host": "unlisted-campus-service.example.cn",
+      "smart": "direct"
+    },
+    {
+      "category": "local-ads",
+      "host": "localhost",
+      "smart": "direct"
+    },
+    {
+      "category": "local-ads",
+      "host": "router.local",
+      "smart": "direct"
+    },
+    {
+      "category": "local-ads",
+      "host": "printer.lan",
+      "smart": "direct"
+    },
+    {
+      "category": "local-ads",
+      "host": "connectivitycheck.gstatic.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "local-ads",
+      "host": "connectivitycheck.platform.hicloud.com",
+      "smart": "direct"
+    },
+    {
+      "category": "local-ads",
+      "host": "msftconnecttest.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "local-ads",
+      "host": "doubleclick.net",
+      "smart": "reject"
+    },
+    {
+      "category": "local-ads",
+      "host": "googleadservices.com",
+      "smart": "reject"
+    },
+    {
+      "category": "x-media",
+      "host": "twimg.co",
+      "smart": "proxy"
+    },
+    {
+      "category": "x-media",
+      "host": "twimg.org",
+      "smart": "proxy"
+    },
+    {
+      "category": "x-media",
+      "host": "ton.twitter.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "x-media",
+      "host": "twitter.map.fastly.net",
+      "smart": "proxy"
+    },
+    {
+      "category": "cross-source",
+      "host": "discord.media",
+      "smart": "proxy"
+    },
+    {
+      "category": "cross-source",
+      "host": "redditstatic.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "cross-source",
+      "host": "redd.it",
+      "smart": "proxy"
+    },
+    {
+      "category": "cross-source",
+      "host": "telesco.pe",
+      "smart": "proxy"
+    },
+    {
+      "category": "cross-source",
+      "host": "disneyplus.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "cross-source",
+      "host": "bamgrid.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "cross-source",
+      "host": "ttwstatic.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "cross-source",
+      "host": "githubusercontent.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "youtubei-att.googleapis.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "oauth2.googleapis.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "apis.google.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "clients4.google.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "client-channel.google.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "ads.youtube.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "googleads.g.doubleclick.net",
+      "smart": "proxy"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "static.doubleclick.net",
+      "smart": "proxy"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "r1---sn-a5meknek.googlevideo.com",
+      "smart": "proxy"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "youtubei.googleapis.com.evil.example",
+      "smart": "direct"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "ads.youtube.com.evil.example",
+      "smart": "direct"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "ads.doubleclick.net",
+      "smart": "reject"
+    },
+    {
+      "category": "youtube-playback-regression",
+      "host": "unrelated.doubleclick.net",
+      "smart": "reject"
+    }
+  ]
+}

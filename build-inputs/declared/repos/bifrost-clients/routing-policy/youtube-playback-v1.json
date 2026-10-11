@@ -1,0 +1,42 @@
+{
+  "format": "BIFROST-YOUTUBE-PLAYBACK-1",
+  "reviewed_at": "2026-09-15",
+  "purpose": "Keep YouTube playback, authentication, attestation and bounded player ad dependencies on the selected proxy before broad ad/CN rules. Other advertising domains retain the normal policy.",
+  "sources": [
+    "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/a1bf9c5ed492b6c4603636a0383b9698757d25a5/geo/geosite/youtube.list",
+    "https://www.youtube.com/?hl=en",
+    "https://support.google.com/youtube/answer/3037019?hl=en",
+    "https://support.google.com/youtube/answer/14129599?hl=en"
+  ],
+  "domain_suffix": [
+    "ggpht.com",
+    "googlevideo.com",
+    "youtu.be",
+    "youtube-nocookie.com",
+    "youtube.com",
+    "ytimg.com"
+  ],
+  "domain": [
+    "accounts.google.com",
+    "apis.google.com",
+    "client-channel.google.com",
+    "clients4.google.com",
+    "googleads.g.doubleclick.net",
+    "oauth2.googleapis.com",
+    "static.doubleclick.net",
+    "wide-youtube.l.google.com",
+    "youtube-ui.l.google.com",
+    "youtube.googleapis.com",
+    "youtubeembeddedplayer.googleapis.com",
+    "youtubei-att.googleapis.com",
+    "youtubei.googleapis.com"
+  ],
+  "android_packages": [
+    "com.google.android.apps.youtube.kids",
+    "com.google.android.apps.youtube.music",
+    "com.google.android.youtube",
+    "com.google.android.youtube.tv"
+  ],
+  "udp_idle_timeout": "3m",
+  "udp_idle_rationale": "The pinned sing-box core otherwise expires sniffed QUIC sessions after 30 seconds. Preserve the selected UDP egress across buffered playback pauses without disabling QUIC or changing unrelated UDP traffic."
+}

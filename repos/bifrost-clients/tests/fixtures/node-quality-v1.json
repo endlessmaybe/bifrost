@@ -1,0 +1,707 @@
+{
+  "now": 10000000,
+  "cases": [
+    {
+      "name": "throughput beats small latency advantage",
+      "incumbent": "slow",
+      "allowed": [
+        "slow",
+        "fast"
+      ],
+      "healthy": [
+        "slow",
+        "fast"
+      ],
+      "expected": "fast",
+      "samples": {
+        "slow": [
+          [
+            true,
+            80,
+            65536,
+            400
+          ],
+          [
+            true,
+            85,
+            65536,
+            450
+          ]
+        ],
+        "fast": [
+          [
+            true,
+            180,
+            4194304,
+            20
+          ],
+          [
+            true,
+            190,
+            4194304,
+            20
+          ]
+        ]
+      }
+    },
+    {
+      "name": "unreliable fast path cannot win",
+      "incumbent": "stable",
+      "allowed": [
+        "stable",
+        "flaky"
+      ],
+      "healthy": [
+        "stable",
+        "flaky"
+      ],
+      "expected": null,
+      "samples": {
+        "stable": [
+          [
+            true,
+            200,
+            1048576,
+            20
+          ],
+          [
+            true,
+            200,
+            1048576,
+            20
+          ]
+        ],
+        "flaky": [
+          [
+            false,
+            0,
+            0,
+            0
+          ],
+          [
+            false,
+            0,
+            0,
+            0
+          ],
+          [
+            true,
+            10,
+            8388608,
+            0
+          ],
+          [
+            false,
+            0,
+            0,
+            0
+          ],
+          [
+            true,
+            10,
+            8388608,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "one fast burst cannot win",
+      "incumbent": "stable",
+      "allowed": [
+        "stable",
+        "burst"
+      ],
+      "healthy": [
+        "stable",
+        "burst"
+      ],
+      "expected": null,
+      "samples": {
+        "stable": [
+          [
+            true,
+            100,
+            1048576,
+            20
+          ],
+          [
+            true,
+            100,
+            1048576,
+            20
+          ]
+        ],
+        "burst": [
+          [
+            true,
+            20,
+            32768,
+            1000
+          ],
+          [
+            true,
+            20,
+            16777216,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "failed transfer path replaced despite healthy HEAD",
+      "incumbent": "broken",
+      "allowed": [
+        "broken",
+        "good"
+      ],
+      "healthy": [
+        "broken",
+        "good"
+      ],
+      "expected": "good",
+      "samples": {
+        "broken": [
+          [
+            false,
+            0,
+            0,
+            0
+          ],
+          [
+            false,
+            0,
+            0,
+            0
+          ]
+        ],
+        "good": [
+          [
+            true,
+            200,
+            1048576,
+            20
+          ],
+          [
+            true,
+            200,
+            1048576,
+            20
+          ]
+        ]
+      }
+    },
+    {
+      "name": "measurable sustained throughput improvement replaces the working exit",
+      "incumbent": "current",
+      "allowed": [
+        "current",
+        "other"
+      ],
+      "healthy": [
+        "current",
+        "other"
+      ],
+      "expected": "other",
+      "samples": {
+        "current": [
+          [
+            true,
+            100,
+            1048576,
+            20
+          ],
+          [
+            true,
+            100,
+            1048576,
+            20
+          ]
+        ],
+        "other": [
+          [
+            true,
+            80,
+            1200000,
+            15
+          ],
+          [
+            true,
+            80,
+            1200000,
+            15
+          ]
+        ]
+      }
+    },
+    {
+      "name": "source boundary wins over score",
+      "incumbent": "A",
+      "allowed": [
+        "A"
+      ],
+      "healthy": [
+        "A",
+        "B"
+      ],
+      "expected": null,
+      "samples": {
+        "A": [
+          [
+            true,
+            300,
+            65536,
+            400
+          ],
+          [
+            true,
+            300,
+            65536,
+            400
+          ]
+        ],
+        "B": [
+          [
+            true,
+            10,
+            8388608,
+            0
+          ],
+          [
+            true,
+            10,
+            8388608,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "unknown incumbent is not treated as slow",
+      "incumbent": "unknown",
+      "allowed": [
+        "unknown",
+        "good"
+      ],
+      "healthy": [
+        "unknown",
+        "good"
+      ],
+      "expected": null,
+      "samples": {
+        "good": [
+          [
+            true,
+            10,
+            8388608,
+            0
+          ],
+          [
+            true,
+            10,
+            8388608,
+            0
+          ]
+        ]
+      }
+    },
+    {
+      "name": "299ms fast node beats 30ms slow node",
+      "incumbent": "current",
+      "allowed": [
+        "current",
+        "other"
+      ],
+      "healthy": [
+        "current",
+        "other"
+      ],
+      "expected": "other",
+      "samples": {
+        "current": [
+          [
+            true,
+            30,
+            1000000,
+            0
+          ],
+          [
+            true,
+            30,
+            1000000,
+            0
+          ]
+        ],
+        "other": [
+          [
+            true,
+            299,
+            4000000,
+            999
+          ],
+          [
+            true,
+            299,
+            4000000,
+            999
+          ]
+        ]
+      }
+    },
+    {
+      "name": "300ms fast node remains eligible",
+      "incumbent": "current",
+      "allowed": [
+        "current",
+        "other"
+      ],
+      "healthy": [
+        "current",
+        "other"
+      ],
+      "expected": "other",
+      "samples": {
+        "current": [
+          [
+            true,
+            30,
+            1000000,
+            0
+          ],
+          [
+            true,
+            30,
+            1000000,
+            0
+          ]
+        ],
+        "other": [
+          [
+            true,
+            300,
+            4000000,
+            999
+          ],
+          [
+            true,
+            300,
+            4000000,
+            999
+          ]
+        ]
+      }
+    },
+    {
+      "name": "301ms fast node remains eligible",
+      "incumbent": "current",
+      "allowed": [
+        "current",
+        "other"
+      ],
+      "healthy": [
+        "current",
+        "other"
+      ],
+      "expected": "other",
+      "samples": {
+        "current": [
+          [
+            true,
+            30,
+            1000000,
+            0
+          ],
+          [
+            true,
+            30,
+            1000000,
+            0
+          ]
+        ],
+        "other": [
+          [
+            true,
+            301,
+            4000000,
+            999
+          ],
+          [
+            true,
+            301,
+            4000000,
+            999
+          ]
+        ]
+      }
+    },
+    {
+      "name": "unknown latency is not eligible",
+      "incumbent": "current",
+      "allowed": [
+        "current",
+        "other"
+      ],
+      "healthy": [
+        "current",
+        "other"
+      ],
+      "expected": null,
+      "samples": {
+        "current": [
+          [
+            true,
+            30,
+            1000000,
+            0
+          ],
+          [
+            true,
+            30,
+            1000000,
+            0
+          ]
+        ],
+        "other": [
+          [
+            true,
+            0,
+            4000000,
+            999
+          ],
+          [
+            true,
+            0,
+            4000000,
+            999
+          ]
+        ]
+      }
+    },
+    {
+      "name": "latency and stalls do not rank qualified equal download speeds",
+      "incumbent": "current",
+      "allowed": [
+        "current",
+        "other"
+      ],
+      "healthy": [
+        "current",
+        "other"
+      ],
+      "expected": null,
+      "samples": {
+        "current": [
+          [
+            true,
+            30,
+            1000000,
+            0
+          ],
+          [
+            true,
+            30,
+            1000000,
+            0
+          ]
+        ],
+        "other": [
+          [
+            true,
+            299,
+            1000000,
+            999
+          ],
+          [
+            true,
+            299,
+            1000000,
+            999
+          ]
+        ]
+      }
+    },
+    {
+      "name": "1500ms fast node remains eligible",
+      "incumbent": "current",
+      "allowed": [
+        "current",
+        "other"
+      ],
+      "healthy": [
+        "current",
+        "other"
+      ],
+      "expected": "other",
+      "samples": {
+        "current": [
+          [
+            true,
+            30,
+            1000000,
+            0
+          ],
+          [
+            true,
+            30,
+            1000000,
+            0
+          ]
+        ],
+        "other": [
+          [
+            true,
+            1500,
+            4000000,
+            999
+          ],
+          [
+            true,
+            1500,
+            4000000,
+            999
+          ]
+        ]
+      }
+    },
+    {
+      "name": "15000ms fast node remains eligible",
+      "incumbent": "current",
+      "allowed": [
+        "current",
+        "other"
+      ],
+      "healthy": [
+        "current",
+        "other"
+      ],
+      "expected": "other",
+      "samples": {
+        "current": [
+          [
+            true,
+            30,
+            1000000,
+            0
+          ],
+          [
+            true,
+            30,
+            1000000,
+            0
+          ]
+        ],
+        "other": [
+          [
+            true,
+            15000,
+            4000000,
+            999
+          ],
+          [
+            true,
+            15000,
+            4000000,
+            999
+          ]
+        ]
+      }
+    },
+    {
+      "name": "slow image path rejects a video-only burst winner",
+      "incumbent": "stable",
+      "allowed": [
+        "stable",
+        "burst"
+      ],
+      "healthy": [
+        "stable",
+        "burst"
+      ],
+      "expected": null,
+      "samples": {
+        "stable": [
+          [
+            true,
+            210,
+            400000,
+            20
+          ],
+          [
+            true,
+            230,
+            450000,
+            20
+          ]
+        ],
+        "burst": [
+          [
+            true,
+            150,
+            40000,
+            900
+          ],
+          [
+            true,
+            180,
+            5000000,
+            20
+          ]
+        ]
+      }
+    },
+    {
+      "name": "one slow incumbent sample cannot trigger a switch",
+      "incumbent": "stable",
+      "allowed": [
+        "stable",
+        "other"
+      ],
+      "healthy": [
+        "stable",
+        "other"
+      ],
+      "expected": null,
+      "samples": {
+        "stable": [
+          [
+            true,
+            180,
+            1000000,
+            20
+          ],
+          [
+            true,
+            180,
+            500000,
+            20
+          ]
+        ],
+        "other": [
+          [
+            true,
+            180,
+            900000,
+            20
+          ],
+          [
+            true,
+            180,
+            950000,
+            20
+          ]
+        ]
+      }
+    },
+    {
+      "name": "one percent sustained throughput gain replaces incumbent",
+      "incumbent": "current",
+      "allowed": ["current", "other"],
+      "healthy": ["current", "other"],
+      "expected": "other",
+      "samples": {
+        "current": [[true, 100, 1000000, 20], [true, 100, 1000000, 20]],
+        "other": [[true, 120, 1010000, 20], [true, 120, 1010000, 20]]
+      }
+    }
+  ]
+}

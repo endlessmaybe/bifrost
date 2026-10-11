@@ -1,0 +1,505 @@
+<Window x:Class="Bifrost.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Bifrost"
+        xmlns:shell="clr-namespace:System.Windows.Shell;assembly=PresentationFramework"
+        DataContext="{Binding RelativeSource={RelativeSource Self}, Path=ViewModel}"
+        Icon="pack://application:,,,/Bifrost;component/Assets/bifrost.ico"
+        Title="Bifrost" Width="1440" Height="810" MinWidth="760" MinHeight="620"
+        WindowStartupLocation="CenterScreen" WindowStyle="None" ResizeMode="CanResize"
+        SizeChanged="Window_SizeChanged" UseLayoutRounding="True" SnapsToDevicePixels="True"
+        Background="{DynamicResource CanvasBrush}" FontFamily="{DynamicResource UiFont}">
+  <shell:WindowChrome.WindowChrome>
+    <shell:WindowChrome CaptionHeight="60" ResizeBorderThickness="6" CornerRadius="0" GlassFrameThickness="0" UseAeroCaptionButtons="False" />
+  </shell:WindowChrome.WindowChrome>
+
+  <Window.Resources>
+    <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+    <local:ManualModeToBooleanConverter x:Key="ManualModeToBooleanConverter" />
+    <Style x:Key="StatusLampStyle" TargetType="Ellipse">
+      <Setter Property="Fill" Value="{DynamicResource IdleBrush}" />
+      <Style.Triggers>
+        <DataTrigger Binding="{Binding Presentation.State}" Value="Preparing"><Setter Property="Fill" Value="{DynamicResource ConnectingBrush}" /></DataTrigger>
+        <DataTrigger Binding="{Binding Presentation.State}" Value="Reconnecting"><Setter Property="Fill" Value="{DynamicResource SwitchingBrush}" /></DataTrigger>
+        <DataTrigger Binding="{Binding Presentation.State}" Value="Protected"><Setter Property="Fill" Value="{DynamicResource PositiveBrush}" /></DataTrigger>
+        <DataTrigger Binding="{Binding Presentation.State}" Value="Blocked"><Setter Property="Fill" Value="{DynamicResource WarningBrush}" /></DataTrigger>
+        <DataTrigger Binding="{Binding Presentation.State}" Value="Error"><Setter Property="Fill" Value="{DynamicResource ErrorBrush}" /></DataTrigger>
+      </Style.Triggers>
+    </Style>
+    <Style x:Key="RunePanel" TargetType="Border" BasedOn="{StaticResource ProductCard}">
+      <Setter Property="Background" Value="#E8061115" /><Setter Property="BorderBrush" Value="{DynamicResource StrokeBrush}" />
+      <Setter Property="CornerRadius" Value="14" /><Setter Property="Padding" Value="24" />
+    </Style>
+    <Style x:Key="RuneInset" TargetType="Border" BasedOn="{StaticResource ProductInset}">
+      <Setter Property="Background" Value="#B8040C10" /><Setter Property="BorderBrush" Value="{DynamicResource HairlineBrush}" />
+    </Style>
+    <Style x:Key="RuneSectionTitle" TargetType="TextBlock">
+      <Setter Property="Foreground" Value="{DynamicResource AccentBrush}" /><Setter Property="FontSize" Value="17" /><Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+    <Style x:Key="RuneValue" TargetType="TextBlock">
+      <Setter Property="Foreground" Value="{DynamicResource TextBrush}" /><Setter Property="FontSize" Value="25" /><Setter Property="FontWeight" Value="SemiBold" />
+    </Style>
+    <Style x:Key="RuneCaption" TargetType="TextBlock" BasedOn="{StaticResource CaptionTextGlobal}">
+      <Setter Property="LineHeight" Value="20" />
+      <Setter Property="Padding" Value="0,2,0,2" />
+      <Setter Property="TextOptions.TextFormattingMode" Value="Ideal" />
+    </Style>
+    <Style x:Key="RuneRow" TargetType="Border">
+      <Setter Property="BorderBrush" Value="{DynamicResource HairlineBrush}" /><Setter Property="BorderThickness" Value="0,0,0,1" /><Setter Property="Padding" Value="4,11" />
+    </Style>
+    <Style x:Key="ChromeButton" TargetType="Button" BasedOn="{StaticResource IconButton}"><Setter Property="Foreground" Value="#D9C9B6" /></Style>
+    <Style x:Key="ObsidianNavButton" TargetType="Button">
+      <Setter Property="Height" Value="66" /><Setter Property="Margin" Value="10,4" /><Setter Property="Padding" Value="16,0" />
+      <Setter Property="Foreground" Value="#CDBCA7" /><Setter Property="Background" Value="Transparent" /><Setter Property="BorderBrush" Value="Transparent" />
+      <Setter Property="BorderThickness" Value="1" /><Setter Property="HorizontalContentAlignment" Value="Stretch" /><Setter Property="Cursor" Value="Hand" />
+      <Setter Property="FocusVisualStyle" Value="{StaticResource BifrostFocusVisual}" />
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button">
+        <Border x:Name="NavFrame" Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="13" Padding="{TemplateBinding Padding}"><ContentPresenter VerticalAlignment="Center" /></Border>
+        <ControlTemplate.Triggers>
+          <Trigger Property="IsMouseOver" Value="True"><Setter TargetName="NavFrame" Property="Background" Value="#45102930" /><Setter TargetName="NavFrame" Property="BorderBrush" Value="#7931B9C2" /></Trigger>
+          <Trigger Property="IsDefault" Value="True"><Setter TargetName="NavFrame" Property="Background" Value="#71112A31" /><Setter TargetName="NavFrame" Property="BorderBrush" Value="{DynamicResource AccentBrush}" /><Setter Property="Foreground" Value="{DynamicResource TextBrush}" /></Trigger>
+        </ControlTemplate.Triggers>
+      </ControlTemplate></Setter.Value></Setter>
+    </Style>
+    <Style x:Key="RoundConnectButton" TargetType="Button">
+      <Setter Property="Width" Value="310" /><Setter Property="Height" Value="340" /><Setter Property="Padding" Value="0" /><Setter Property="Margin" Value="0" />
+      <Setter Property="Background" Value="Transparent" /><Setter Property="BorderBrush" Value="Transparent" /><Setter Property="Cursor" Value="Hand" /><Setter Property="FocusVisualStyle" Value="{StaticResource BifrostFocusVisual}" />
+      <Setter Property="Template"><Setter.Value><ControlTemplate TargetType="Button"><Grid x:Name="Frame"><ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" /></Grid><ControlTemplate.Triggers><Trigger Property="IsMouseOver" Value="True"><Setter TargetName="Frame" Property="Opacity" Value="0.94" /></Trigger><Trigger Property="IsPressed" Value="True"><Setter TargetName="Frame" Property="RenderTransform"><Setter.Value><ScaleTransform ScaleX="0.98" ScaleY="0.98" /></Setter.Value></Setter><Setter TargetName="Frame" Property="RenderTransformOrigin" Value="0.5,0.5" /></Trigger><Trigger Property="IsEnabled" Value="False"><Setter TargetName="Frame" Property="Opacity" Value="0.55" /></Trigger></ControlTemplate.Triggers></ControlTemplate></Setter.Value></Setter>
+    </Style>
+  </Window.Resources>
+
+  <Border x:Name="ShellFrame" Background="{DynamicResource ShellBrush}" BorderBrush="{DynamicResource StrokeBrush}" BorderThickness="1" ClipToBounds="True">
+    <Grid>
+      <Grid.ColumnDefinitions><ColumnDefinition x:Name="SidebarColumn" Width="144" /><ColumnDefinition Width="*" /><ColumnDefinition x:Name="InspectorColumn" Width="0" /></Grid.ColumnDefinitions>
+      <Grid.RowDefinitions><RowDefinition x:Name="ToolbarRow" Height="60" /><RowDefinition Height="*" /><RowDefinition Height="0" /></Grid.RowDefinitions>
+
+      <Image Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Source="pack://application:,,,/Bifrost;component/Assets/bifrost-teal-rune-background-v1.png" Stretch="UniformToFill" Opacity="0.92" IsHitTestVisible="False" />
+      <Border Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Background="#59000609" IsHitTestVisible="False" />
+
+      <Border x:Name="CompactNavigationBar" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Visibility="Collapsed" Background="#F2050B0E" BorderBrush="{DynamicResource HairlineBrush}" BorderThickness="0,0,0,1" Panel.ZIndex="220">
+        <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="110" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+          <TextBlock Text="BIFROST" Foreground="{DynamicResource AccentBrush}" FontSize="15" VerticalAlignment="Center" Margin="14,0" />
+          <UniformGrid x:Name="CompactNavStack" Grid.Column="1" Rows="1" Columns="5">
+            <Button Tag="home" Style="{StaticResource CompactNavButton}" Command="{Binding NavigateCommand}" CommandParameter="home" Content="连接" AutomationProperties.Name="连接" />
+            <Button Tag="nodes" Style="{StaticResource CompactNavButton}" Command="{Binding NavigateCommand}" CommandParameter="nodes" Content="线路" AutomationProperties.Name="线路" />
+            <Button Tag="routing" Style="{StaticResource CompactNavButton}" Command="{Binding NavigateCommand}" CommandParameter="routing" Content="分流" AutomationProperties.Name="分流" />
+            <Button Tag="activity" Style="{StaticResource CompactNavButton}" Command="{Binding NavigateCommand}" CommandParameter="activity" Content="活动" AutomationProperties.Name="活动" />
+            <Button Tag="settings" Style="{StaticResource CompactNavButton}" Command="{Binding NavigateCommand}" CommandParameter="settings" Content="设置" AutomationProperties.Name="设置" />
+          </UniformGrid>
+          <Border x:Name="CompactStatusPill" Grid.Column="2" Background="Transparent" BorderThickness="0" Padding="10,6" VerticalAlignment="Center" Margin="8"><TextBlock Text="{Binding StatusText}" Foreground="{DynamicResource PositiveBrush}" /></Border>
+        </Grid>
+      </Border>
+
+      <Border x:Name="SidebarBorder" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="#F7050A0D" BorderBrush="#52476B6C" BorderThickness="0,0,1,0" Panel.ZIndex="200">
+        <Grid><Grid.RowDefinitions><RowDefinition Height="185" /><RowDefinition Height="*" /><RowDefinition Height="40" /></Grid.RowDefinitions>
+          <StackPanel HorizontalAlignment="Center" Margin="0,28,0,0">
+            <Image Source="pack://application:,,,/Bifrost;component/Assets/bifrost-teal-rune-symbol-v1.png" Width="78" Height="90" Stretch="Uniform" />
+            <TextBlock Text="BIFROST" Foreground="{DynamicResource AccentBrush}" FontSize="18" FontWeight="SemiBold" HorizontalAlignment="Center" Margin="0,-8,0,0" />
+          </StackPanel>
+          <StackPanel x:Name="NavStack" Grid.Row="1" VerticalAlignment="Top">
+            <Button Tag="home" IsDefault="True" Style="{StaticResource ObsidianNavButton}" Command="{Binding NavigateCommand}" CommandParameter="home" AutomationProperties.Name="连接"><StackPanel Orientation="Horizontal"><Path Data="M12,3 V8 M7,8 H17 M7,8 V13 M17,8 V13 M12,8 V18 M5,15 A2,2 0 1 0 9,15 A2,2 0 1 0 5,15 M15,15 A2,2 0 1 0 19,15 A2,2 0 1 0 15,15 M10,19 A2,2 0 1 0 14,19 A2,2 0 1 0 10,19" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.4" Fill="Transparent" Width="22" Height="22" Stretch="Uniform" /><TextBlock Text="连接" FontSize="17" Margin="17,0,0,0" VerticalAlignment="Center" /></StackPanel></Button>
+            <Button Tag="nodes" Style="{StaticResource ObsidianNavButton}" Command="{Binding NavigateCommand}" CommandParameter="nodes" AutomationProperties.Name="线路"><StackPanel Orientation="Horizontal"><Path Data="M12,3 A9,9 0 1 0 12,21 A9,9 0 1 0 12,3 M7,8 A1.4,1.4 0 1 0 7,10.8 A1.4,1.4 0 1 0 7,8 M15.6,6.5 A1.4,1.4 0 1 0 15.6,9.3 A1.4,1.4 0 1 0 15.6,6.5 M16,14 A1.4,1.4 0 1 0 16,16.8 A1.4,1.4 0 1 0 16,14 M7.3,15 A1.4,1.4 0 1 0 7.3,17.8 A1.4,1.4 0 1 0 7.3,15" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.3" Fill="Transparent" Width="22" Height="22" Stretch="Uniform" /><TextBlock Text="线路" FontSize="17" Margin="17,0,0,0" VerticalAlignment="Center" /></StackPanel></Button>
+            <Button Tag="routing" Style="{StaticResource ObsidianNavButton}" Command="{Binding NavigateCommand}" CommandParameter="routing" AutomationProperties.Name="分流"><StackPanel Orientation="Horizontal"><Path Data="M3,7 L9,3 L15,7 L21,4 M3,7 V15 L9,21 L15,16 L21,20 M9,3 V11 M15,7 V16 M3,15 L9,11 L15,16 L21,11 V20" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.4" Fill="Transparent" Width="22" Height="22" Stretch="Uniform" /><TextBlock Text="分流" FontSize="17" Margin="17,0,0,0" VerticalAlignment="Center" /></StackPanel></Button>
+            <Button Tag="activity" Style="{StaticResource ObsidianNavButton}" Command="{Binding NavigateCommand}" CommandParameter="activity" AutomationProperties.Name="活动"><StackPanel Orientation="Horizontal"><Path Data="M12,3 L20,7 V13 C20,17 16.5,20 12,22 C7.5,20 4,17 4,13 V7 Z M7,13 H10 L12,9 L14,16 L16,12 H18" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.4" Fill="Transparent" Width="22" Height="22" Stretch="Uniform" /><TextBlock Text="活动" FontSize="17" Margin="17,0,0,0" VerticalAlignment="Center" /></StackPanel></Button>
+            <Button Tag="settings" Style="{StaticResource ObsidianNavButton}" Command="{Binding NavigateCommand}" CommandParameter="settings" AutomationProperties.Name="设置"><StackPanel Orientation="Horizontal"><Path Data="M12,3 A9,9 0 1 0 12,21 A9,9 0 1 0 12,3 M12,8 A4,4 0 1 0 12,16 A4,4 0 1 0 12,8 M12,1 V4 M12,20 V23 M1,12 H4 M20,12 H23" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.3" Fill="Transparent" Width="22" Height="22" Stretch="Uniform" /><TextBlock Text="设置" FontSize="17" Margin="17,0,0,0" VerticalAlignment="Center" /></StackPanel></Button>
+          </StackPanel>
+          <Grid Grid.Row="2" Visibility="Collapsed"><Ellipse x:Name="StatusLamp" Width="7" Height="7" Style="{StaticResource StatusLampStyle}" /><Polyline x:Name="SidebarChart" /></Grid>
+        </Grid>
+      </Border>
+
+      <Border x:Name="DesktopTitleBar" Grid.Column="1" Grid.Row="0" Height="60" Background="#D904090C" BorderBrush="#45426467" BorderThickness="0,0,0,1" MouseLeftButtonDown="TitleBar_MouseLeftButtonDown" Panel.ZIndex="180">
+        <Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+          <TextBlock x:Name="PageTitleText" Text="总览（连接）" FontSize="25" FontWeight="SemiBold" VerticalAlignment="Center" Margin="32,0,0,0" />
+          <StackPanel Grid.Column="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,10,0">
+            <StackPanel Orientation="Horizontal" Margin="0,0,22,0" VerticalAlignment="Center"><TextBlock Text="◆" Foreground="{DynamicResource PositiveBrush}" FontSize="10" Margin="0,0,8,0" VerticalAlignment="Center" /><TextBlock Text="{Binding NetworkProtectionStatus}" Foreground="{DynamicResource PositiveBrush}" FontSize="13" VerticalAlignment="Center" /></StackPanel>
+            <Button x:Name="ThemeQuickButton" Style="{StaticResource ChromeButton}" Command="{Binding NavigateCommand}" CommandParameter="settings" Visibility="Collapsed" Content="⚙" />
+            <Button Style="{StaticResource ChromeButton}" Click="MinimizeWindow_Click" shell:WindowChrome.IsHitTestVisibleInChrome="True"><Path Data="M3,12 H15" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.2" Width="14" Height="14" /></Button>
+            <Button Style="{StaticResource ChromeButton}" Click="MaximizeWindow_Click" shell:WindowChrome.IsHitTestVisibleInChrome="True"><Rectangle Width="11" Height="11" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.1" /></Button>
+            <Button Style="{StaticResource ChromeButton}" Click="CloseWindow_Click" shell:WindowChrome.IsHitTestVisibleInChrome="True"><Path Data="M4,4 L16,16 M16,4 L4,16" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}" StrokeThickness="1.2" Width="14" Height="14" /></Button>
+          </StackPanel>
+        </Grid>
+      </Border>
+      <Border x:Name="InspectorBorder" Grid.Column="2" Grid.Row="1" Visibility="Collapsed" />
+
+      <Grid x:Name="CenterWorkspace" Grid.Column="1" Grid.Row="1" Background="Transparent">
+        <Button x:Name="SmartGateAdvancedButton" Content="高级设置" Click="SmartGateAdvanced_Click" Visibility="Collapsed" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,18,30,0" Panel.ZIndex="30" />
+        <!-- Non-rendered compatibility anchors keep established automation and
+             accessibility contracts while the approved visual master changes. -->
+        <Grid Visibility="Collapsed">
+          <TextBlock Text="Bifrost 让每一次连接，都更加自由与安全。" />
+          <TextBlock Text="连接守护" /><TextBlock Text="ROUTE CONTROL" />
+          <TextBlock Text="智能选线" /><TextBlock Text="全局代理" /><TextBlock Text="SmartGate" />
+          <TextBlock Text="仅名单内代理" /><TextBlock Text="名单内直连，其余代理" />
+          <TextBlock x:Name="PacketLossMetric" Text="{Binding PacketLossMetric}" />
+          <local:ObsidianMechanicalDial UseLightAsset="{Binding RelativeSource={RelativeSource AncestorType=Window}, Path=IsLightMaterial}" />
+          <Button Content="{Binding PrimaryActionLabel}" />
+        </Grid>
+
+        <!-- CONNECTION -->
+        <Grid x:Name="HomePage" Margin="30,30,30,20">
+          <Grid.ColumnDefinitions><ColumnDefinition x:Name="HomePrimaryColumn" Width="330" /><ColumnDefinition x:Name="HomeGapColumn" Width="*" /><ColumnDefinition x:Name="HomeRightColumn" Width="370" /></Grid.ColumnDefinitions>
+          <Grid.RowDefinitions><RowDefinition Height="220" /><RowDefinition Height="*" /><RowDefinition Height="220" /></Grid.RowDefinitions>
+          <Border x:Name="HomeCommandSurface" Grid.Column="0" Grid.Row="0" Style="{StaticResource RunePanel}"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="54" /></Grid.ColumnDefinitions><StackPanel><TextBlock Text="当前连接" Style="{StaticResource RuneSectionTitle}" /><TextBlock Text="{Binding SelectedSourceDisplay}" Style="{StaticResource RuneValue}" Margin="0,18,0,0" TextWrapping="Wrap" /><TextBlock Text="{Binding EffectiveCandidateLabel}" Foreground="{DynamicResource MutedTextBrush}" FontSize="16" Margin="0,5,0,0" TextWrapping="Wrap" /><Grid Margin="2,16,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="18" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><Ellipse Width="10" Height="10" Style="{StaticResource StatusLampStyle}" VerticalAlignment="Top" Margin="0,5,8,0" /><TextBlock Grid.Column="1" Text="{Binding StatusText}" Foreground="{DynamicResource PositiveBrush}" FontSize="14" TextWrapping="Wrap" LineHeight="21" ToolTip="{Binding StatusText}" /></Grid><TextBlock Text="{Binding LiveStatusText}" Style="{StaticResource RuneCaption}" Margin="0,8,0,0" /></StackPanel><Path Grid.Column="1" Data="M12,4 A8,8 0 1 0 12,20 A8,8 0 1 0 12,4 M12,8 A4,4 0 1 0 12,16 A4,4 0 1 0 12,8 M12,12 V23" Stroke="#294A5558" StrokeThickness="1.5" Width="48" Height="48" HorizontalAlignment="Right" VerticalAlignment="Center" /></Grid></Border>
+          <Border x:Name="HomeRouteConsole" Grid.Column="2" Grid.Row="0" Style="{StaticResource RunePanel}"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="54" /></Grid.ColumnDefinitions><StackPanel><TextBlock Text="当前线路" Style="{StaticResource RuneSectionTitle}" /><TextBlock Text="{Binding EffectiveCandidateLabel}" Style="{StaticResource RuneValue}" Margin="0,18,0,0" TextWrapping="Wrap" /><TextBlock Text="{Binding SelectedCountryDisplay}" Foreground="{DynamicResource MutedTextBrush}" FontSize="16" Margin="0,8,0,0" TextWrapping="Wrap" /><TextBlock Text="{Binding CandidateCountText}" Style="{StaticResource RuneCaption}" Margin="0,14,0,0" /></StackPanel><Path Grid.Column="1" Data="M12,3 A9,9 0 1 0 12,21 A9,9 0 1 0 12,3 M3,12 H21 M12,3 C8,8 8,16 12,21 M12,3 C16,8 16,16 12,21" Stroke="#294A5558" StrokeThickness="1.4" Width="48" Height="48" HorizontalAlignment="Right" VerticalAlignment="Center" /></Grid></Border>
+          <Border x:Name="HomeSmartGateCard" Grid.Column="0" Grid.Row="2" Style="{StaticResource RunePanel}"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="76" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions><Path Data="M12,3 L20,7 V13 C20,17 16.5,20 12,22 C7.5,20 4,17 4,13 V7 Z M8,13 L11,16 L17,9" Stroke="#517781" StrokeThickness="1.5" Fill="Transparent" Width="56" Height="56" /><StackPanel Grid.Column="1" VerticalAlignment="Center"><TextBlock Text="网络保护" Foreground="{DynamicResource AccentBrush}" FontSize="16" /><TextBlock Text="{Binding NetworkProtectionStatus}" FontSize="23" Margin="0,10,0,0" /><TextBlock Text="{Binding ConnectionStateDetail}" FontSize="14" Foreground="{DynamicResource MutedTextBrush}" Margin="0,6,0,0" TextWrapping="Wrap" LineHeight="20" /></StackPanel></Grid></Border>
+          <Border Grid.Column="2" Grid.Row="2" Style="{StaticResource RunePanel}"><Grid><Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions><TextBlock Text="实时活动" Style="{StaticResource RuneSectionTitle}" /><TextBlock Grid.Row="1" Text="{Binding TelemetryAvailabilityText}" Style="{StaticResource RuneCaption}" Margin="0,7,0,0" TextWrapping="Wrap" /><Grid x:Name="ChartCanvas" Grid.Row="2" Margin="0,12,0,0" ClipToBounds="True"><Line X1="0" Y1="30" X2="330" Y2="30" Stroke="{DynamicResource HairlineBrush}" /><Line X1="0" Y1="70" X2="330" Y2="70" Stroke="{DynamicResource HairlineBrush}" /><Line X1="0" Y1="110" X2="330" Y2="110" Stroke="{DynamicResource HairlineBrush}" /><Polyline x:Name="ChartLine" Stroke="{DynamicResource ChartBrush}" StrokeThickness="2" /><Polyline x:Name="ChartLineSecondary" Stroke="{DynamicResource ChartSecondaryBrush}" StrokeThickness="1.5" /></Grid></Grid></Border>
+          <Button x:Name="ConnectButton" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Style="{StaticResource RoundConnectButton}" Command="{Binding ConnectCommand}" IsEnabled="{Binding CanUsePrimaryAction}" HorizontalAlignment="Center" VerticalAlignment="Bottom" AutomationProperties.Name="连接或断开 Bifrost 隧道">
+            <Grid x:Name="HeroDial" Width="310" Height="340"><Ellipse Width="288" Height="288" VerticalAlignment="Top" Fill="#2200E7F0"><Ellipse.Effect><BlurEffect Radius="30" /></Ellipse.Effect></Ellipse><Image Width="286" Height="286" VerticalAlignment="Top" Source="pack://application:,,,/Bifrost;component/Assets/bifrost-teal-rune-medallion-v1.png" Stretch="UniformToFill"><Image.Clip><EllipseGeometry Center="143,143" RadiusX="143" RadiusY="143" /></Image.Clip></Image><TextBlock Text="{Binding PrimaryActionLabel}" FontSize="23" Foreground="{DynamicResource TextBrush}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,3" /></Grid>
+          </Button>
+          <ListBox x:Name="ModeBox" Visibility="Collapsed" SelectedValue="{Binding Mode, Mode=TwoWay}" SelectedValuePath="Tag"><ListBoxItem Tag="smart">智能选线</ListBoxItem><ListBoxItem Tag="global">全局代理</ListBoxItem><ListBoxItem Tag="per-app">应用分流</ListBoxItem></ListBox>
+          <ComboBox x:Name="CountryBox" Visibility="Collapsed" /><Polyline x:Name="DownloadSparkline" Visibility="Collapsed" /><Polyline x:Name="UploadSparkline" Visibility="Collapsed" />
+        </Grid>
+
+        <Grid x:Name="CompactHomePage" Visibility="Collapsed" Margin="20"><Grid.RowDefinitions><RowDefinition Height="*" /><RowDefinition Height="Auto" /></Grid.RowDefinitions><Border Style="{StaticResource RunePanel}"><StackPanel><TextBlock Text="BIFROST" Style="{StaticResource RuneSectionTitle}" /><TextBlock Text="{Binding EffectiveCandidateLabel}" Style="{StaticResource RuneValue}" Margin="0,18,0,0" /><Border x:Name="CompactStateBanner" Style="{StaticResource StateBanner}" Margin="0,18,0,0"><TextBlock Text="{Binding StatusText}" Foreground="{DynamicResource PositiveBrush}" /></Border></StackPanel></Border><Button x:Name="CompactConnectButton" Grid.Row="1" Width="250" Height="250" Style="{StaticResource RoundConnectButton}" Command="{Binding ConnectCommand}" HorizontalAlignment="Center"><Grid><Ellipse Width="220" Height="220" Fill="#2200E7F0" /><Image Width="220" Height="220" Source="pack://application:,,,/Bifrost;component/Assets/bifrost-teal-rune-medallion-v1.png" Stretch="UniformToFill"><Image.Clip><EllipseGeometry Center="110,110" RadiusX="110" RadiusY="110" /></Image.Clip></Image></Grid></Button><ListBox x:Name="CompactModeBox" Visibility="Collapsed" /></Grid>
+
+        <!-- ROUTES -->
+        <Grid x:Name="NodesPage" Visibility="Collapsed" Margin="30,34,30,30">
+          <Grid x:Name="NodesLayout">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition x:Name="NodesFilterColumn" Width="270" />
+              <ColumnDefinition x:Name="NodesGapColumn" Width="16" />
+              <ColumnDefinition x:Name="NodesCandidatesColumn" Width="*" />
+              <ColumnDefinition Width="16" />
+              <ColumnDefinition Width="310" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions><RowDefinition Height="*" /><RowDefinition x:Name="NodesRowGap" Height="0" /><RowDefinition Height="0" /></Grid.RowDefinitions>
+
+            <Border x:Name="NodesFilterCard" Grid.Column="0" Style="{StaticResource RunePanel}">
+              <Grid>
+                <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+                <StackPanel>
+                  <TextBlock Text="真实源站" Style="{StaticResource RuneSectionTitle}" />
+                  <TextBlock Text="点击源站查看它包含的全部线路" Style="{StaticResource RuneCaption}" Margin="0,7,0,0" TextWrapping="Wrap" />
+                </StackPanel>
+                <ComboBox x:Name="SourceBox" Visibility="Collapsed" ItemsSource="{Binding SourceOptions}" DisplayMemberPath="Name" SelectedValue="{Binding Source, Mode=TwoWay}" SelectedValuePath="Code" />
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" Margin="0,14,0,12">
+                  <ItemsControl ItemsSource="{Binding SourceRouteGroups}" IsEnabled="{Binding CanEditConnectionSettings}">
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate>
+                        <Button Command="{Binding DataContext.SelectSourceCommand, RelativeSource={RelativeSource AncestorType=Window}}" CommandParameter="{Binding Code}" MinHeight="60" Margin="0,0,0,9" Padding="13,10" HorizontalContentAlignment="Stretch" AutomationProperties.Name="{Binding AutomationName}">
+                          <Button.Style>
+                            <Style TargetType="Button" BasedOn="{StaticResource QuietButton}">
+                              <Style.Triggers><DataTrigger Binding="{Binding IsSelected}" Value="True"><Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" /><Setter Property="Background" Value="{DynamicResource SelectedBrush}" /></DataTrigger></Style.Triggers>
+                            </Style>
+                          </Button.Style>
+                          <Grid>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                            <StackPanel>
+                              <TextBlock Text="{Binding Name}" FontSize="18" />
+                              <TextBlock Text="{Binding CountText}" Style="{StaticResource RuneCaption}" Margin="0,4,0,0" />
+                            </StackPanel>
+                            <TextBlock Grid.Column="1" Text="›" FontSize="24" Foreground="{DynamicResource AccentBrush}" VerticalAlignment="Center" />
+                          </Grid>
+                        </Button>
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+                </ScrollViewer>
+                <Border x:Name="CountrySelectionCard" Grid.Row="2" Style="{StaticResource RuneRow}" Padding="2,12">
+                  <StackPanel>
+                    <TextBlock Text="国家 / 地区" Style="{StaticResource RuneCaption}" />
+                    <ComboBox x:Name="FrontSourceBox" ItemsSource="{Binding CountryOptions}" DisplayMemberPath="Name" SelectedValue="{Binding Country, Mode=TwoWay}" SelectedValuePath="Code" IsEnabled="{Binding CanEditConnectionSettings}" Visibility="{Binding HasCountryOptions, Converter={StaticResource BoolToVisibility}}" AutomationProperties.Name="国家选择" />
+                    <TextBlock Text="源站直连（没有配置国家出口）" Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap" FontSize="14" Margin="0,7,0,0" Visibility="{Binding NoCountryOptions, Converter={StaticResource BoolToVisibility}}" />
+                  </StackPanel>
+                </Border>
+                <Border Grid.Row="3" Padding="2,12,2,0">
+                  <StackPanel>
+                    <TextBlock Text="选择方式" Style="{StaticResource RuneCaption}" />
+                    <Grid Margin="0,8,0,0">
+                      <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                      <RadioButton Content="自动优选" IsChecked="{Binding IsAutoCandidateMode}" IsEnabled="{Binding CanEditConnectionSettings}" />
+                      <RadioButton Grid.Column="1" Content="手动选线" IsChecked="{Binding IsManualCandidateMode}" IsEnabled="{Binding CanEditConnectionSettings}" Margin="14,0,0,0" />
+                    </Grid>
+                  </StackPanel>
+                </Border>
+                <ComboBox x:Name="CandidateModeBox" Visibility="Collapsed" SelectedValuePath="Tag"><ComboBoxItem Tag="auto">自动</ComboBoxItem><ComboBoxItem Tag="manual">手动</ComboBoxItem></ComboBox>
+              </Grid>
+            </Border>
+
+            <Border x:Name="NodesCandidatesCard" Grid.Column="2" Style="{StaticResource RunePanel}">
+              <Grid>
+                <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                <Grid>
+                  <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                  <StackPanel>
+                    <TextBlock Text="{Binding CandidateDetailTitle}" Style="{StaticResource RuneSectionTitle}" TextWrapping="Wrap" />
+                    <TextBlock Text="{Binding CandidateProbeSummaryText}" Style="{StaticResource RuneCaption}" Margin="0,7,0,0" />
+                    <ProgressBar Height="5" Margin="0,9,0,0" Minimum="0" Maximum="100" Value="{Binding CandidateProbeProgressPercent, Mode=OneWay}" Foreground="{DynamicResource AccentBrush}" Visibility="{Binding IsCandidateProbeRunning, Converter={StaticResource BoolToVisibility}}" AutomationProperties.Name="线路测速进度" />
+                  </StackPanel>
+                  <Button Grid.Column="1" Content="{Binding CandidateProbeActionLabel}" Command="{Binding RefreshCandidateProbesCommand}" IsEnabled="{Binding CanRefreshCandidateProbes}" MinWidth="118" MinHeight="42" Margin="12,0,0,0" AutomationProperties.Name="{Binding CandidateProbeAutomationName}" />
+                </Grid>
+                <TextBlock Grid.Row="1" Text="点击“选择”固定线路；连接由“连接”页面统一执行，避免同一行出现两套重复操作。" Style="{StaticResource RuneCaption}" Margin="0,12,0,0" TextWrapping="Wrap" />
+                <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Auto" Margin="0,14,0,0">
+                  <StackPanel>
+                    <ItemsControl ItemsSource="{Binding CandidateRoutes}" IsEnabled="{Binding CanEditConnectionSettings}">
+                      <ItemsControl.ItemTemplate>
+                        <DataTemplate>
+                          <Border Margin="0,0,0,10" Padding="16,13" CornerRadius="8" BorderThickness="1">
+                            <Border.Style>
+                              <Style TargetType="Border">
+                                <Setter Property="BorderBrush" Value="{DynamicResource HairlineBrush}" />
+                                <Setter Property="Background" Value="{DynamicResource InputBrush}" />
+                                <Style.Triggers><DataTrigger Binding="{Binding IsSelected}" Value="True"><Setter Property="BorderBrush" Value="{DynamicResource AccentBrush}" /><Setter Property="Background" Value="{DynamicResource SelectedBrush}" /></DataTrigger></Style.Triggers>
+                              </Style>
+                            </Border.Style>
+                            <Grid>
+                              <Grid.ColumnDefinitions><ColumnDefinition Width="76" /><ColumnDefinition Width="*" /><ColumnDefinition Width="100" /></Grid.ColumnDefinitions>
+                              <Button Content="选择"
+                                      Command="{Binding DataContext.SelectCandidateCommand, RelativeSource={RelativeSource AncestorType=Window}}"
+                                      CommandParameter="{Binding Code}"
+                                      IsEnabled="{Binding DataContext.CanEditConnectionSettings, RelativeSource={RelativeSource AncestorType=Window}}"
+                                      MinHeight="38"
+                                      Padding="10,6"
+                                      Margin="0,0,12,0"
+                                      VerticalAlignment="Center"
+                                      AutomationProperties.Name="手动选择此线路" />
+                              <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding Name}" FontSize="19" TextWrapping="Wrap" />
+                                <TextBlock Text="{Binding Code}" Style="{StaticResource RuneCaption}" Margin="0,4,0,0" />
+                              </StackPanel>
+                              <StackPanel Grid.Column="2" VerticalAlignment="Center">
+                                <TextBlock Text="{Binding LatencyText}" FontSize="19" HorizontalAlignment="Right" />
+                                <TextBlock Text="{Binding StatusText}" FontSize="14" HorizontalAlignment="Right" Margin="0,4,0,0">
+                                  <TextBlock.Style>
+                                    <Style TargetType="TextBlock">
+                                      <Setter Property="Foreground" Value="{DynamicResource MutedTextBrush}" />
+                                      <Style.Triggers>
+                                        <DataTrigger Binding="{Binding StatusKind}" Value="available"><Setter Property="Foreground" Value="{DynamicResource PositiveBrush}" /></DataTrigger>
+                                        <DataTrigger Binding="{Binding StatusKind}" Value="unavailable"><Setter Property="Foreground" Value="{DynamicResource ErrorBrush}" /></DataTrigger>
+                                      </Style.Triggers>
+                                    </Style>
+                                  </TextBlock.Style>
+                                </TextBlock>
+                              </StackPanel>
+                            </Grid>
+                          </Border>
+                        </DataTemplate>
+                      </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                    <TextBlock Text="{Binding CandidateEmptyText}" Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap" Margin="2,12" Visibility="{Binding NoCandidateOptions, Converter={StaticResource BoolToVisibility}}" />
+                  </StackPanel>
+                </ScrollViewer>
+              </Grid>
+            </Border>
+
+            <Border Grid.Column="4" Style="{StaticResource RunePanel}">
+              <StackPanel>
+                <TextBlock Text="当前设置" Style="{StaticResource RuneSectionTitle}" />
+                <Border Style="{StaticResource RuneRow}" Margin="0,22,0,0" Padding="5,16"><StackPanel><TextBlock Text="当前线路" Foreground="{DynamicResource AccentBrush}" FontSize="15" /><TextBlock Text="{Binding EffectiveCandidateLabel}" FontSize="22" Margin="0,7,0,0" TextWrapping="Wrap" /></StackPanel></Border>
+                <Border Style="{StaticResource RuneRow}" Padding="5,16"><StackPanel><TextBlock Text="真实源站" Foreground="{DynamicResource AccentBrush}" FontSize="15" /><TextBlock Text="{Binding SelectedSourceDisplay}" FontSize="21" Margin="0,7,0,0" TextWrapping="Wrap" /></StackPanel></Border>
+                <Border Style="{StaticResource RuneRow}" Padding="5,16"><StackPanel><TextBlock Text="国家出口" Foreground="{DynamicResource AccentBrush}" FontSize="15" /><TextBlock Text="{Binding SelectedCountryDisplay}" FontSize="18" Margin="0,7,0,0" TextWrapping="Wrap" /></StackPanel></Border>
+                <Border Padding="5,16"><StackPanel><TextBlock Text="传输" Foreground="{DynamicResource AccentBrush}" FontSize="15" /><TextBlock Text="{Binding TransportSummary}" FontSize="20" Margin="0,7,0,0" /></StackPanel></Border>
+              </StackPanel>
+            </Border>
+          </Grid>
+        </Grid>
+
+        <!-- ROUTING -->
+        <Grid x:Name="RoutingPage" Visibility="Collapsed" Margin="26,20,26,24">
+          <Grid x:Name="RoutingLayout"><Grid.RowDefinitions><RowDefinition Height="52" /><RowDefinition Height="*" /><RowDefinition x:Name="RoutingRowGap" Height="14" /><RowDefinition Height="260" /></Grid.RowDefinitions><Grid.ColumnDefinitions><ColumnDefinition x:Name="RoutingModeColumn" Width="1*" /><ColumnDefinition x:Name="RoutingGapColumn" Width="16" /><ColumnDefinition x:Name="RoutingAppsColumn" Width="1*" /><ColumnDefinition Width="16" /><ColumnDefinition Width="1*" /></Grid.ColumnDefinitions>
+            <ListBox x:Name="RoutingModeBox" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Width="470" HorizontalAlignment="Left" Style="{StaticResource SegmentStyle}" SelectedValue="{Binding Mode, Mode=TwoWay}" SelectedValuePath="Tag"><ListBoxItem Tag="smart">智能选线</ListBoxItem><ListBoxItem Tag="global">全局代理</ListBoxItem><ListBoxItem Tag="smartgate">SmartGate</ListBoxItem></ListBox>
+            <Border x:Name="RoutingModeCard" Grid.Row="1" Grid.Column="0" Style="{StaticResource RunePanel}"><StackPanel><TextBlock Text="智能选线策略" Style="{StaticResource RuneSectionTitle}" /><Border Style="{StaticResource RuneRow}" Margin="0,12,0,0"><Grid><TextBlock Text="选线范围" FontSize="18" /><TextBlock Text="当前源站内部" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" FontSize="16" /></Grid></Border><Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="优选依据" FontSize="18" /><TextBlock Text="真实延迟与健康度" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" FontSize="16" /></Grid></Border><Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="候选失败" FontSize="18" /><TextBlock Text="尝试下一条" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" FontSize="16" /></Grid></Border><Border Padding="4,11"><Grid><TextBlock Text="全部失败" FontSize="18" /><TextBlock Text="安全阻断" Foreground="{DynamicResource PositiveBrush}" HorizontalAlignment="Right" FontSize="16" /></Grid></Border><ComboBox x:Name="CoreBox" Visibility="Collapsed" SelectedValue="{Binding Core, Mode=TwoWay}" SelectedValuePath="Tag"><ComboBoxItem Tag="auto">自动（Mihomo）</ComboBoxItem><ComboBoxItem Tag="mihomo">Mihomo</ComboBoxItem></ComboBox></StackPanel></Border>
+            <Border x:Name="RoutingAppsCard" Grid.Row="1" Grid.Column="2" Style="{StaticResource RunePanel}"><StackPanel><Grid><TextBlock Text="应用规则" Style="{StaticResource RuneSectionTitle}" /><CheckBox x:Name="AppPolicyEnabledBox" Content="启用应用分流" HorizontalAlignment="Right" IsChecked="{Binding AppPolicyEnabled, Mode=TwoWay}" IsEnabled="{Binding CanEditConnectionSettings}" /></Grid><TextBlock Text="{Binding ApplicationRuleSummary}" Style="{StaticResource RuneCaption}" Margin="0,11,0,0" TextWrapping="Wrap" /><ComboBox x:Name="AppPolicyBox" Margin="0,13,0,0" SelectedValue="{Binding AppPolicy, Mode=TwoWay}" SelectedValuePath="Tag" Visibility="{Binding AppPolicyEnabled, Converter={StaticResource BoolToVisibility}}" IsEnabled="{Binding CanEditConnectionSettings}"><ComboBoxItem Tag="allow">仅名单内应用走代理</ComboBoxItem><ComboBoxItem Tag="exclude">名单内应用直连，其余走代理</ComboBoxItem></ComboBox><Button Content="选择已安装程序…" Click="AddApplication_Click" IsEnabled="{Binding CanEditConnectionSettings}" MinHeight="44" Margin="0,10,0,0" /><StackPanel x:Name="IncludeAppsPanel" Margin="0,12,0,0"><TextBlock Text="代理应用标识（每行一个）" Style="{StaticResource RuneCaption}" /><TextBox x:Name="IncludeAppsBox" Text="{Binding IncludeApps, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=300}" IsEnabled="{Binding CanEditConnectionSettings}" AcceptsReturn="True" MinHeight="92" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" /></StackPanel><StackPanel x:Name="ExcludeAppsPanel" Margin="0,12,0,0"><TextBlock Text="直连应用标识（每行一个）" Style="{StaticResource RuneCaption}" /><TextBox x:Name="ExcludeAppsBox" Text="{Binding ExcludeApps, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=300}" IsEnabled="{Binding CanEditConnectionSettings}" AcceptsReturn="True" MinHeight="92" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" /></StackPanel><TextBlock Text="关闭应用名单时仍使用源站内智能选线；空名单不会参与连接。" Foreground="{DynamicResource MutedTextBrush}" FontSize="13" TextWrapping="Wrap" Margin="0,12,0,0" /></StackPanel></Border>
+            <Border Grid.Row="1" Grid.Column="4" Style="{StaticResource RunePanel}"><StackPanel><TextBlock Text="DNS 与保护" Style="{StaticResource RuneSectionTitle}" /><Border Style="{StaticResource RuneRow}" Margin="0,12,0,0"><Grid><TextBlock Text="▢  加密 DNS" FontSize="18" /><TextBlock Text="已启用  ›" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" FontSize="16" /></Grid></Border><Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="↻  故障切换" FontSize="18" /><TextBlock Text="自动  ›" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" FontSize="16" /></Grid></Border><Border Padding="4,11"><Grid><TextBlock Text="♢  泄漏保护" FontSize="18" /><TextBlock Text="正常  ›" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" FontSize="16" /></Grid></Border></StackPanel></Border>
+            <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" Style="{StaticResource RunePanel}" Padding="22,14"><StackPanel><TextBlock Text="智能选线执行边界" Style="{StaticResource RuneSectionTitle}" /><Grid Margin="0,16,0,0"><Grid.ColumnDefinitions><ColumnDefinition Width="1*" /><ColumnDefinition Width="1*" /><ColumnDefinition Width="1*" /></Grid.ColumnDefinitions><StackPanel><TextBlock Text="当前源站" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding SelectedSourceDisplay}" FontSize="20" Margin="0,8,0,0" /></StackPanel><StackPanel Grid.Column="1"><TextBlock Text="候选顺序" Style="{StaticResource RuneCaption}" /><TextBlock Text="按真实测速排序" FontSize="20" Margin="0,8,0,0" /></StackPanel><StackPanel Grid.Column="2"><TextBlock Text="跨源站" Style="{StaticResource RuneCaption}" /><TextBlock Text="禁止" FontSize="20" Margin="0,8,0,0" /></StackPanel></Grid></StackPanel></Border>
+          </Grid>
+        </Grid>
+
+        <!-- The production routing workspace presents three genuinely
+             different operating modes. The historical RoutingPage above is
+             retained as a collapsed automation-compatibility surface only. -->
+        <Grid x:Name="RoutingModeWorkspace" Visibility="Collapsed" Margin="26,20,26,24">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="52" />
+            <RowDefinition Height="*" />
+          </Grid.RowDefinitions>
+
+          <ListBox x:Name="ModeWorkspaceBox"
+                   Width="590"
+                   HorizontalAlignment="Left"
+                   Style="{StaticResource SegmentStyle}"
+                   SelectedValue="{Binding Mode, Mode=TwoWay}"
+                   SelectedValuePath="Tag"
+                   IsEnabled="{Binding CanEditConnectionSettings}"
+                   AutomationProperties.Name="代理模式">
+            <ListBoxItem Tag="smart" AutomationProperties.Name="源站内智能选线">智能选线</ListBoxItem>
+            <ListBoxItem Tag="global" AutomationProperties.Name="全局代理，固定当前线路">全局代理</ListBoxItem>
+            <ListBoxItem Tag="smartgate" AutomationProperties.Name="SmartGate">SmartGate</ListBoxItem>
+          </ListBox>
+
+          <Grid Grid.Row="1">
+            <!-- SMART ROUTING -->
+            <Grid x:Name="SmartModePanel" Visibility="{Binding IsSmartMode, Converter={StaticResource BoolToVisibility}}">
+              <Grid.RowDefinitions><RowDefinition Height="*" /><RowDefinition Height="14" /><RowDefinition Height="230" /></Grid.RowDefinitions>
+              <Grid.ColumnDefinitions><ColumnDefinition Width="1*" /><ColumnDefinition Width="16" /><ColumnDefinition Width="1*" /><ColumnDefinition Width="16" /><ColumnDefinition Width="1*" /></Grid.ColumnDefinitions>
+
+              <Border Grid.Column="0" Style="{StaticResource RunePanel}">
+                <StackPanel>
+                  <TextBlock Text="源站内智能选线" Style="{StaticResource RuneSectionTitle}" />
+                  <TextBlock Text="固定当前源站，只在该源站的签名候选中按真实延迟和健康度自动切换。" Style="{StaticResource RuneCaption}" Margin="0,8,0,8" />
+                  <Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="选线范围" FontSize="18" /><TextBlock Text="当前源站内部" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" /></Grid></Border>
+                  <Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="候选失败" FontSize="18" /><TextBlock Text="尝试下一条" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" /></Grid></Border>
+                  <Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="跨源站" FontSize="18" /><TextBlock Text="禁止" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" /></Grid></Border>
+                  <Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="网络保护" FontSize="18" /><TextBlock Text="已启用" Foreground="{DynamicResource PositiveBrush}" HorizontalAlignment="Right" /></Grid></Border>
+                </StackPanel>
+              </Border>
+
+              <Border Grid.Column="2" Style="{StaticResource RunePanel}">
+                <StackPanel>
+                  <Grid>
+                    <TextBlock Text="应用规则" Style="{StaticResource RuneSectionTitle}" />
+                    <CheckBox x:Name="ModeAppPolicyEnabledBox" Content="启用应用分流" HorizontalAlignment="Right" IsChecked="{Binding AppPolicyEnabled, Mode=TwoWay}" IsEnabled="{Binding CanEditConnectionSettings}" AutomationProperties.Name="启用应用分流" />
+                  </Grid>
+                  <TextBlock Text="{Binding ApplicationRuleSummary}" Style="{StaticResource RuneCaption}" Margin="0,8,0,0" />
+                  <ComboBox x:Name="ModeAppPolicyBox" Margin="0,10,0,0" SelectedValue="{Binding AppPolicy, Mode=TwoWay}" SelectedValuePath="Tag" IsEnabled="{Binding CanEditConnectionSettings}" Visibility="{Binding AppPolicyEnabled, Converter={StaticResource BoolToVisibility}}" AutomationProperties.Name="应用规则方式">
+                    <ComboBoxItem Tag="allow">仅名单内应用走代理</ComboBoxItem>
+                    <ComboBoxItem Tag="exclude">名单内应用直连，其余走代理</ComboBoxItem>
+                  </ComboBox>
+                  <Button Content="选择已安装程序…" Click="AddApplication_Click" IsEnabled="{Binding CanEditConnectionSettings}" MinHeight="44" Margin="0,10,0,0" AutomationProperties.Name="选择已安装程序加入应用规则" />
+                  <StackPanel x:Name="ModeIncludeAppsPanel" Margin="0,10,0,0" Visibility="Collapsed">
+                    <TextBlock Text="代理程序（可继续手动编辑进程名，每行一个）" Style="{StaticResource RuneCaption}" />
+                    <TextBox x:Name="ModeIncludeAppsBox" Text="{Binding IncludeApps, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=300}" IsEnabled="{Binding CanEditConnectionSettings}" AcceptsReturn="True" MinHeight="82" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AutomationProperties.Name="代理应用标识" />
+                  </StackPanel>
+                  <StackPanel x:Name="ModeExcludeAppsPanel" Margin="0,10,0,0" Visibility="Collapsed">
+                    <TextBlock Text="直连程序（可继续手动编辑进程名，每行一个）" Style="{StaticResource RuneCaption}" />
+                    <TextBox x:Name="ModeExcludeAppsBox" Text="{Binding ExcludeApps, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, Delay=300}" IsEnabled="{Binding CanEditConnectionSettings}" AcceptsReturn="True" MinHeight="82" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" AutomationProperties.Name="直连应用标识" />
+                  </StackPanel>
+                </StackPanel>
+              </Border>
+
+              <Border Grid.Column="4" Style="{StaticResource RunePanel}">
+                <StackPanel>
+                  <TextBlock Text="DNS 与保护" Style="{StaticResource RuneSectionTitle}" />
+                  <Border Style="{StaticResource RuneRow}" Margin="0,10,0,0"><Grid><TextBlock Text="加密 DNS" FontSize="18" /><TextBlock Text="已启用" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" /></Grid></Border>
+                  <Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="故障切换" FontSize="18" /><TextBlock Text="自动" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" /></Grid></Border>
+                  <Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="泄漏保护" FontSize="18" /><TextBlock Text="正常" Foreground="{DynamicResource PositiveBrush}" HorizontalAlignment="Right" /></Grid></Border>
+                  <TextBlock Text="仅显示本机服务已验证的保护状态。" Style="{StaticResource RuneCaption}" Margin="0,14,0,0" />
+                </StackPanel>
+              </Border>
+
+              <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Style="{StaticResource RunePanel}" Padding="22,16">
+                <Grid>
+                  <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+                  <TextBlock Text="智能选线摘要" Style="{StaticResource RuneSectionTitle}" />
+                  <Grid Grid.Row="1" Margin="0,14,0,0">
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="1*" /><ColumnDefinition Width="1*" /><ColumnDefinition Width="1*" /></Grid.ColumnDefinitions>
+                    <StackPanel><TextBlock Text="固定源站" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding SelectedSourceDisplay}" FontSize="20" Margin="0,8,0,0" /><TextBlock Text="不会自动跨到另一个源站" Style="{StaticResource RuneCaption}" Margin="0,6,0,0" /></StackPanel>
+                    <StackPanel Grid.Column="1"><TextBlock Text="当前候选" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding EffectiveCandidateLabel}" FontSize="20" Margin="0,8,0,0" /><TextBlock Text="失败时按测量结果尝试下一条" Style="{StaticResource RuneCaption}" Margin="0,6,0,0" /></StackPanel>
+                    <StackPanel Grid.Column="2"><TextBlock Text="应用规则" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding ApplicationRuleSummary}" FontSize="20" Margin="0,8,0,0" /><TextBlock Text="仅在此模式中单独启用" Style="{StaticResource RuneCaption}" Margin="0,6,0,0" /></StackPanel>
+                  </Grid>
+                </Grid>
+              </Border>
+            </Grid>
+
+            <!-- GLOBAL PROXY -->
+            <Grid x:Name="GlobalModePanel" Visibility="{Binding IsGlobalMode, Converter={StaticResource BoolToVisibility}}">
+              <Grid.RowDefinitions><RowDefinition Height="*" /><RowDefinition Height="14" /><RowDefinition Height="230" /></Grid.RowDefinitions>
+              <Grid.ColumnDefinitions><ColumnDefinition Width="1*" /><ColumnDefinition Width="16" /><ColumnDefinition Width="1*" /><ColumnDefinition Width="16" /><ColumnDefinition Width="1*" /></Grid.ColumnDefinitions>
+              <Border Grid.Column="0" Style="{StaticResource RunePanel}"><StackPanel><TextBlock Text="全局代理" Style="{StaticResource RuneSectionTitle}" /><TextBlock Text="所有受支持流量通过用户明确选择的当前 A/B 候选；该候选失败时直接报错，不自动换线。" Style="{StaticResource RuneCaption}" Margin="0,8,0,18" /><TextBlock Text="当前源站" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding SelectedSourceDisplay}" Style="{StaticResource RuneValue}" Margin="0,8,0,16" /><TextBlock Text="当前线路" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding EffectiveCandidateLabel}" FontSize="21" Margin="0,8,0,0" TextWrapping="Wrap" /></StackPanel></Border>
+              <Border Grid.Column="2" Style="{StaticResource RunePanel}"><StackPanel><TextBlock Text="代理范围" Style="{StaticResource RuneSectionTitle}" /><Border Style="{StaticResource RuneRow}" Margin="0,10,0,0"><Grid><TextBlock Text="受支持流量" FontSize="18" /><TextBlock Text="全部代理" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" /></Grid></Border><Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="本机控制通信" FontSize="18" /><TextBlock Text="安全直连" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" /></Grid></Border><Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="连接失败" FontSize="18" /><TextBlock Text="阻断泄漏" Foreground="{DynamicResource PositiveBrush}" HorizontalAlignment="Right" /></Grid></Border><TextBlock Text="切换到此模式会关闭应用名单，避免显示模式与实际路由不一致。" Style="{StaticResource RuneCaption}" Margin="0,14,0,0" /></StackPanel></Border>
+              <Border Grid.Column="4" Style="{StaticResource RunePanel}"><StackPanel><TextBlock Text="链路信息" Style="{StaticResource RuneSectionTitle}" /><TextBlock Text="传输" Style="{StaticResource RuneCaption}" Margin="0,18,0,0" /><TextBlock Text="{Binding TransportSummary}" FontSize="21" Margin="0,7,0,14" /><TextBlock Text="网络保护" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding NetworkProtectionStatus}" FontSize="21" Margin="0,7,0,14" /><TextBlock Text="候选线路" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding CandidateCountText}" FontSize="18" Margin="0,7,0,0" /></StackPanel></Border>
+              <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Style="{StaticResource RunePanel}" Padding="22,16"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions><StackPanel VerticalAlignment="Center"><TextBlock Text="全局代理已选中" Style="{StaticResource RuneSectionTitle}" /><TextBlock Text="下一次建立连接时，服务将使用全局路由并固定当前候选；应用分流名单不会介入。" FontSize="17" Margin="0,12,0,0" TextWrapping="Wrap" /><TextBlock Text="仍保留加密 DNS 和泄漏保护，但不会自动切换候选。" Style="{StaticResource RuneCaption}" Margin="0,8,0,0" /></StackPanel><Button Grid.Column="1" Content="返回连接页" Command="{Binding NavigateCommand}" CommandParameter="home" Width="150" Height="48" VerticalAlignment="Center" AutomationProperties.Name="返回连接页" /></Grid></Border>
+            </Grid>
+
+            <!-- SMARTGATE -->
+            <Grid x:Name="SmartGateModePanel" Visibility="{Binding IsSmartGateMode, Converter={StaticResource BoolToVisibility}}">
+              <Grid.RowDefinitions><RowDefinition Height="*" /><RowDefinition Height="14" /><RowDefinition Height="230" /></Grid.RowDefinitions>
+              <Grid.ColumnDefinitions><ColumnDefinition Width="1*" /><ColumnDefinition Width="16" /><ColumnDefinition Width="1*" /><ColumnDefinition Width="16" /><ColumnDefinition Width="1*" /></Grid.ColumnDefinitions>
+              <Border Grid.Column="0" Style="{StaticResource RunePanel}"><StackPanel><TextBlock Text="SmartGate 状态" Style="{StaticResource RuneSectionTitle}" /><TextBlock Text="{Binding SmartGateManualStatus}" Style="{StaticResource RuneValue}" Margin="0,16,0,0" /><TextBlock Text="SmartGate 节点由用户本人选择，不会自动替换成其他出口节点。" Style="{StaticResource RuneCaption}" Margin="0,10,0,18" /><TextBlock Text="当前节点" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding SmartGateNodeSummary}" FontSize="21" Margin="0,7,0,0" TextWrapping="Wrap" /></StackPanel></Border>
+              <Border Grid.Column="2" Style="{StaticResource RunePanel}"><StackPanel><TextBlock Text="节点选择" Style="{StaticResource RuneSectionTitle}" /><TextBlock Text="请选择管理员已经发布的 SmartGate 节点" Style="{StaticResource RuneCaption}" Margin="0,10,0,10" /><ComboBox x:Name="SmartGateNodeBox" ItemsSource="{Binding CountryOptions}" DisplayMemberPath="Name" SelectedValue="{Binding Country, Mode=TwoWay}" SelectedValuePath="Code" IsEnabled="{Binding CanEditConnectionSettings}" Visibility="{Binding HasCountryOptions, Converter={StaticResource BoolToVisibility}}" MinHeight="44" AutomationProperties.Name="选择 SmartGate 节点" /><TextBlock Text="当前没有可用 SmartGate 节点，请等待管理员发布。" Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap" Visibility="{Binding NoCountryOptions, Converter={StaticResource BoolToVisibility}}" Margin="0,6,0,0" /><Border Style="{StaticResource RuneRow}" Margin="0,12,0,0"><Grid><TextBlock Text="选择方式" FontSize="18" /><TextBlock Text="用户手动" Foreground="{DynamicResource AccentBrush}" HorizontalAlignment="Right" /></Grid></Border><Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="故障策略" FontSize="18" /><TextBlock Text="{Binding SmartGateManualFailoverStatus}" Foreground="{DynamicResource PositiveBrush}" HorizontalAlignment="Right" TextTrimming="CharacterEllipsis" MaxWidth="220" /></Grid></Border></StackPanel></Border>
+              <Border Grid.Column="4" Style="{StaticResource RunePanel}"><StackPanel><TextBlock Text="接入与保护" Style="{StaticResource RuneSectionTitle}" /><TextBlock Text="接入源站" Style="{StaticResource RuneCaption}" Margin="0,18,0,0" /><TextBlock Text="{Binding SelectedSourceDisplay}" FontSize="21" Margin="0,7,0,14" TextWrapping="Wrap" /><TextBlock Text="传输" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding TransportSummary}" FontSize="21" Margin="0,7,0,14" /><TextBlock Text="保护状态" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding NetworkProtectionStatus}" FontSize="21" Margin="0,7,0,0" /></StackPanel></Border>
+              <Border Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="5" Style="{StaticResource RunePanel}" Padding="22,16"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="18" /><ColumnDefinition Width="240" /></Grid.ColumnDefinitions><StackPanel VerticalAlignment="Center"><TextBlock Text="SmartGate 控制台" Style="{StaticResource RuneSectionTitle}" /><TextBlock Text="先由用户明确选择 SmartGate 节点，再建立连接。系统只维护所选节点的接入链路，不会在后台擅自切换到其他 SmartGate 节点。" FontSize="17" Margin="0,12,0,0" TextWrapping="Wrap" /><Button Content="线路与源站设置" Click="OpenSmartGateAdvanced_Click" Width="160" Height="42" HorizontalAlignment="Left" Margin="0,14,0,0" AutomationProperties.Name="SmartGate 线路与源站设置" /></StackPanel><Button x:Name="SmartGateConnectButton" Grid.Column="2" Content="{Binding SmartGateManualActionLabel}" Command="{Binding ConnectCommand}" IsEnabled="{Binding CanUseSmartGateAction}" Height="54" VerticalAlignment="Center" AutomationProperties.Name="连接所选 SmartGate 节点" /></Grid></Border>
+            </Grid>
+          </Grid>
+        </Grid>
+
+        <!-- ACTIVITY -->
+        <Grid x:Name="ActivityPage" Visibility="Collapsed" Margin="30,24,30,30"><Grid.RowDefinitions><RowDefinition Height="108" /><RowDefinition Height="16" /><RowDefinition Height="*" /><RowDefinition Height="16" /><RowDefinition Height="220" /></Grid.RowDefinitions>
+          <Grid x:Name="ActivityMetricsGrid"><Grid.ColumnDefinitions><ColumnDefinition Width="1*" /><ColumnDefinition Width="12" /><ColumnDefinition Width="1*" /><ColumnDefinition Width="12" /><ColumnDefinition Width="1*" /><ColumnDefinition Width="12" /><ColumnDefinition Width="1*" /></Grid.ColumnDefinitions><Grid.RowDefinitions><RowDefinition Height="*" /><RowDefinition x:Name="ActivityMetricRowGap" Height="0" /></Grid.RowDefinitions><Border x:Name="ActivityDownloadMetric" Grid.Column="0" Style="{StaticResource RunePanel}" Padding="18"><StackPanel><TextBlock Text="下载速率" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding DownloadMetric}" FontSize="22" Margin="0,10,0,0" TextWrapping="Wrap" /></StackPanel></Border><Border x:Name="ActivityUploadMetric" Grid.Column="2" Style="{StaticResource RunePanel}" Padding="18"><StackPanel><TextBlock Text="上传速率" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding UploadMetric}" FontSize="22" Margin="0,10,0,0" TextWrapping="Wrap" /></StackPanel></Border><Border x:Name="ActivitySessionMetric" Grid.Column="4" Style="{StaticResource RunePanel}" Padding="18"><StackPanel><TextBlock Text="本次流量" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding SessionMetric}" FontSize="22" Margin="0,10,0,0" TextWrapping="Wrap" /></StackPanel></Border><Border x:Name="ActivityDurationMetric" Grid.Column="6" Style="{StaticResource RunePanel}" Padding="18"><StackPanel><TextBlock Text="连接时长" Style="{StaticResource RuneCaption}" /><TextBlock Text="{Binding DurationMetric}" FontSize="22" Margin="0,10,0,0" TextWrapping="Wrap" /></StackPanel></Border><TextBlock x:Name="ActivityEmptyText" Text="{Binding TelemetryAvailabilityText}" Foreground="{DynamicResource MutedTextBrush}" TextWrapping="Wrap" /></Grid>
+          <Border Grid.Row="2" Style="{StaticResource RunePanel}" Padding="22,18"><Grid><Grid.RowDefinitions><RowDefinition Height="38" /><RowDefinition Height="*" /></Grid.RowDefinitions><StackPanel><TextBlock Text="实时活动" FontSize="21" /><TextBlock Text="{Binding LiveStatusText}" Style="{StaticResource RuneCaption}" Margin="0,4,0,0" /></StackPanel><StackPanel Orientation="Horizontal" HorizontalAlignment="Right"><TextBlock Text="━  下载" Foreground="{DynamicResource ChartBrush}" Margin="0,0,24,0" /><TextBlock Text="━  上传" Foreground="{DynamicResource ChartSecondaryBrush}" /></StackPanel><Canvas x:Name="ActivityChartCanvas" Grid.Row="1" Margin="20,10,0,0" ClipToBounds="True"><Line X1="0" Y1="35" X2="1100" Y2="35" Stroke="{DynamicResource HairlineBrush}" StrokeDashArray="3,3" /><Line X1="0" Y1="95" X2="1100" Y2="95" Stroke="{DynamicResource HairlineBrush}" StrokeDashArray="3,3" /><Line X1="0" Y1="155" X2="1100" Y2="155" Stroke="{DynamicResource HairlineBrush}" StrokeDashArray="3,3" /><Polyline x:Name="ActivityChartLine" Stroke="{DynamicResource ChartBrush}" StrokeThickness="2" /><Polyline x:Name="ActivityChartLineSecondary" Stroke="{DynamicResource ChartSecondaryBrush}" StrokeThickness="2" /></Canvas><TextBlock Grid.Row="1" Text="{Binding TelemetryAvailabilityText}" Foreground="{DynamicResource MutedTextBrush}" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" Visibility="{Binding NoSamples, Converter={StaticResource BoolToVisibility}}" /></Grid></Border>
+          <Border Grid.Row="4" Style="{StaticResource RunePanel}" Padding="22,14"><Grid><Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions><TextBlock Text="实时状态记录" FontSize="21" /><Grid Grid.Row="1" Margin="0,12,0,4"><Grid.ColumnDefinitions><ColumnDefinition Width="0.7*" /><ColumnDefinition Width="1.1*" /><ColumnDefinition Width="1.6*" /><ColumnDefinition Width="1.6*" /></Grid.ColumnDefinitions><TextBlock Text="时间" Style="{StaticResource RuneCaption}" /><TextBlock Grid.Column="1" Text="事件" Style="{StaticResource RuneCaption}" /><TextBlock Grid.Column="2" Text="源站 / 线路" Style="{StaticResource RuneCaption}" /><TextBlock Grid.Column="3" Text="状态" Style="{StaticResource RuneCaption}" /></Grid><ItemsControl Grid.Row="2" ItemsSource="{Binding LiveEvents}"><ItemsControl.ItemTemplate><DataTemplate><Border Style="{StaticResource RuneRow}" Padding="0,7"><Grid><Grid.ColumnDefinitions><ColumnDefinition Width="0.7*" /><ColumnDefinition Width="1.1*" /><ColumnDefinition Width="1.6*" /><ColumnDefinition Width="1.6*" /></Grid.ColumnDefinitions><TextBlock Text="{Binding Time}" /><TextBlock Grid.Column="1" Text="{Binding Event}" /><TextBlock Grid.Column="2" Text="{Binding Route}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Route}" /><TextBlock Grid.Column="3" Text="{Binding Status}" Foreground="{DynamicResource PositiveBrush}" TextTrimming="CharacterEllipsis" ToolTip="{Binding Status}" /></Grid></Border></DataTemplate></ItemsControl.ItemTemplate></ItemsControl></Grid></Border>
+        </Grid>
+
+        <!-- SETTINGS -->
+        <ScrollViewer x:Name="SettingsPage" Visibility="Collapsed" VerticalScrollBarVisibility="Auto" Padding="28,38,28,28"><Grid x:Name="SettingsLayout"><Grid.ColumnDefinitions><ColumnDefinition x:Name="SettingsLeftColumn" Width="1*" /><ColumnDefinition x:Name="SettingsGapColumn" Width="18" /><ColumnDefinition x:Name="SettingsRightColumn" Width="1*" /></Grid.ColumnDefinitions><Grid.RowDefinitions><RowDefinition x:Name="SettingsTopRow" Height="310" /><RowDefinition x:Name="SettingsRowGap" Height="18" /><RowDefinition x:Name="SettingsBottomRow" Height="Auto" /><RowDefinition x:Name="SettingsNarrowGapOne" Height="0" /><RowDefinition x:Name="SettingsNarrowThirdRow" Height="0" /><RowDefinition x:Name="SettingsNarrowGapTwo" Height="0" /><RowDefinition x:Name="SettingsNarrowFourthRow" Height="0" /></Grid.RowDefinitions>
+          <Border x:Name="SettingsGeneralCard" Grid.Column="0" Grid.Row="0" Style="{StaticResource RunePanel}"><StackPanel><TextBlock Text="⚙  常规" Style="{StaticResource RuneValue}" FontSize="22" /><Border Style="{StaticResource RuneRow}" Margin="0,16,0,0"><Grid><TextBlock Text="◯  开机启动" FontSize="18" /><CheckBox HorizontalAlignment="Right" /></Grid></Border><Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="⇩  最小化到托盘" FontSize="18" /><CheckBox HorizontalAlignment="Right" IsChecked="True" /></Grid></Border><Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="♧  显示通知" FontSize="18" /><CheckBox HorizontalAlignment="Right" IsChecked="True" /></Grid></Border></StackPanel></Border>
+          <Border x:Name="SettingsAppearanceCard" Grid.Column="2" Grid.Row="0" Style="{StaticResource RunePanel}"><StackPanel><TextBlock Text="♢  外观" Style="{StaticResource RuneValue}" FontSize="22" /><Border Style="{StaticResource RuneRow}" Margin="0,16,0,0"><Grid><TextBlock Text="☾  深色模式" FontSize="18" /><TextBlock Text="已启用" Foreground="{DynamicResource AccentBrush}" FontSize="17" HorizontalAlignment="Right" /></Grid></Border><Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="Aa  界面字体" FontSize="18" /><TextBlock Text="楷体" Foreground="{DynamicResource AccentBrush}" FontSize="17" HorizontalAlignment="Right" /></Grid></Border><ComboBox x:Name="ThemeBox" Visibility="Collapsed" SelectedValue="{Binding Theme, Mode=TwoWay}" SelectedValuePath="Tag"><ComboBoxItem Tag="dark">深色</ComboBoxItem></ComboBox><ListBox x:Name="DesignDirectionBox" Visibility="Collapsed" /><Border x:Name="PreviewRail" Visibility="Collapsed" /><Border x:Name="PreviewHero" Visibility="Collapsed" /><StackPanel x:Name="PreviewStack" Visibility="Collapsed" /></StackPanel></Border>
+          <Border x:Name="SettingsAccountCard" Grid.Column="0" Grid.Row="2" Style="{StaticResource RunePanel}">
+            <StackPanel>
+              <TextBlock Text="♙  设备与账户" Style="{StaticResource RuneValue}" FontSize="22" />
+              <Border Style="{StaticResource RuneRow}" Margin="0,16,0,0"><Grid><TextBlock Text="▱  设备状态" FontSize="18" /><TextBlock Text="{Binding DeviceRegistrationStatus}" Foreground="{DynamicResource AccentBrush}" FontSize="17" HorizontalAlignment="Right" /></Grid></Border>
+              <Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="◉  控制端" FontSize="18" /><TextBlock x:Name="ControlOriginStatusText" Text="{Binding ControlOriginStatus}" Foreground="{DynamicResource AccentBrush}" FontSize="17" HorizontalAlignment="Right" /></Grid></Border>
+              <Grid x:Name="ActivationRecoveryLayout" Margin="0,14,0,0" Visibility="{Binding RequiresActivation, Converter={StaticResource BoolToVisibility}}">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="1*" /><ColumnDefinition Width="14" /><ColumnDefinition Width="1*" /></Grid.ColumnDefinitions>
+                <StackPanel>
+                  <TextBlock Text="邀请码" Style="{StaticResource RuneCaption}" />
+                  <PasswordBox x:Name="InviteBox" Margin="0,7,0,0" MinHeight="38" IsEnabled="{Binding CanStartEnrollment}" AutomationProperties.Name="邀请码" />
+                  <TextBox x:Name="TestInviteBox" Visibility="Collapsed" AutomationProperties.Name="TEST-ONLY 邀请码" />
+                  <Button x:Name="EnrollButton" Content="激活设备" Margin="0,10,0,0" MinHeight="40" IsEnabled="{Binding CanStartEnrollment}" Click="Enroll_Click" AutomationProperties.Name="激活设备" />
+                </StackPanel>
+                <Border Grid.Column="2" Padding="10,8" Background="{DynamicResource InputBrush}" BorderBrush="{DynamicResource HairlineBrush}" BorderThickness="1" CornerRadius="7">
+                  <StackPanel>
+                    <TextBlock Text="已有账号？恢复设备" Style="{StaticResource RuneCaption}" />
+                    <TextBox x:Name="RecoveryPublicIdBox" Margin="0,7,0,0" MinHeight="38" IsEnabled="{Binding CanStartRecovery}" AutomationProperties.Name="账号编号" />
+                    <PasswordBox x:Name="RecoveryCodeBox" Margin="0,7,0,0" MinHeight="38" IsEnabled="{Binding CanStartRecovery}" AutomationProperties.Name="恢复码" />
+                    <Button x:Name="RecoverButton" Content="恢复设备" Margin="0,10,0,0" MinHeight="40" IsEnabled="{Binding CanStartRecovery}" Click="Recover_Click" AutomationProperties.Name="恢复设备" />
+                  </StackPanel>
+                </Border>
+              </Grid>
+              <TextBlock Text="{Binding UpdateText}" Margin="0,8,0,0" Style="{StaticResource RuneCaption}" TextWrapping="Wrap" Visibility="{Binding RequiresActivation, Converter={StaticResource BoolToVisibility}}" />
+              <Border x:Name="SavedRecoveryCodePanel" Margin="0,18,0,0" Padding="10,8" Background="{DynamicResource InputBrush}" BorderBrush="{DynamicResource HairlineBrush}" BorderThickness="1" CornerRadius="7" Visibility="{Binding IsEnrolled, Converter={StaticResource BoolToVisibility}}">
+                <StackPanel>
+                  <TextBlock Text="账号恢复码（换设备时使用）" Style="{StaticResource RuneCaption}" />
+                  <TextBox x:Name="SavedRecoveryCodeBox" Text="{Binding RecoveryCode, Mode=OneWay}" Margin="0,7,0,0" MinHeight="38" IsReadOnly="True" TextWrapping="Wrap" AutomationProperties.Name="当前账号完整恢复码" />
+                  <TextBlock Text="{Binding RecoveryCodeStatus}" Style="{StaticResource RuneCaption}" Margin="0,6,0,0" TextWrapping="Wrap" />
+                  <Button x:Name="RotateRecoveryCodeButton" Content="重新生成恢复码" Margin="0,10,0,0" MinHeight="40" IsEnabled="{Binding CanInteract}" Click="RotateRecoveryCode_Click" AutomationProperties.Name="重新生成账号恢复码" />
+                </StackPanel>
+              </Border>
+              <Grid Margin="0,18,0,0" Visibility="{Binding IsEnrolled, Converter={StaticResource BoolToVisibility}}"><Grid.ColumnDefinitions><ColumnDefinition Width="1*" /><ColumnDefinition Width="14" /><ColumnDefinition Width="1*" /></Grid.ColumnDefinitions><Button x:Name="CreatePairingButton" Content="🔗  设备配对" Click="CreatePairing_Click" /><Button x:Name="LogoutButton" Grid.Column="2" Content="↪  注销设备" Command="{Binding LogoutCommand}" /></Grid><PasswordBox x:Name="PairingCodeInput" Visibility="Collapsed" /><Button x:Name="RedeemPairingButton" Visibility="Collapsed" Click="RedeemPairing_Click" />
+            </StackPanel>
+          </Border>
+          <Border x:Name="SettingsUpdateCard" Grid.Column="2" Grid.Row="2" Style="{StaticResource RunePanel}">
+            <StackPanel>
+              <TextBlock Text="ⓘ  更新与关于" Style="{StaticResource RuneValue}" FontSize="22" />
+              <Border Style="{StaticResource RuneRow}" Margin="0,16,0,0"><Grid><TextBlock Text="♢  Bifrost" FontSize="18" /><TextBlock Text="{Binding ProductVersion}" Foreground="{DynamicResource AccentBrush}" FontSize="17" HorizontalAlignment="Right" /></Grid></Border>
+              <Border Style="{StaticResource RuneRow}"><Grid><TextBlock Text="↻  自动更新" FontSize="18" /><TextBlock Text="{Binding UpdateAvailabilityText}" Foreground="{DynamicResource AccentBrush}" FontSize="17" HorizontalAlignment="Right" /></Grid></Border>
+              <Grid Margin="0,14,0,0">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="1*" /><ColumnDefinition Width="14" /><ColumnDefinition Width="1*" /></Grid.ColumnDefinitions>
+                <Button x:Name="CheckUpdateButton" Content="{Binding UpdateActionLabel}" Command="{Binding CheckUpdateCommand}" AutomationProperties.Name="检查 Bifrost 更新" />
+                <Button Grid.Column="2" Content="〈/〉  开源许可证" Click="LicensePaged_Click" />
+              </Grid>
+              <Border Margin="0,12,0,0" Padding="12,9" Background="{DynamicResource InputBrush}" BorderBrush="{DynamicResource HairlineBrush}" BorderThickness="1" CornerRadius="7">
+                <Grid>
+                  <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /><RowDefinition Height="Auto" /></Grid.RowDefinitions>
+                  <Grid>
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                    <TextBlock Text="{Binding UpdateStatusTitle}" FontWeight="SemiBold" AutomationProperties.LiveSetting="Polite">
+                      <TextBlock.Style>
+                        <Style TargetType="TextBlock">
+                          <Setter Property="Foreground" Value="{DynamicResource AccentBrush}" />
+                          <Style.Triggers>
+                            <DataTrigger Binding="{Binding UpdateStatusKind}" Value="current"><Setter Property="Foreground" Value="{DynamicResource PositiveBrush}" /></DataTrigger>
+                            <DataTrigger Binding="{Binding UpdateStatusKind}" Value="success"><Setter Property="Foreground" Value="{DynamicResource PositiveBrush}" /></DataTrigger>
+                            <DataTrigger Binding="{Binding UpdateStatusKind}" Value="warning"><Setter Property="Foreground" Value="{DynamicResource WarningBrush}" /></DataTrigger>
+                            <DataTrigger Binding="{Binding UpdateStatusKind}" Value="failed"><Setter Property="Foreground" Value="{DynamicResource ErrorBrush}" /></DataTrigger>
+                          </Style.Triggers>
+                        </Style>
+                      </TextBlock.Style>
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" Text="{Binding UpdateProgressText}" Foreground="{DynamicResource MutedTextBrush}" Margin="12,0,0,0" />
+                  </Grid>
+                  <ProgressBar Grid.Row="1" Height="5" Margin="0,8,0,0" Minimum="0" Maximum="100" Value="{Binding UpdateProgress, Mode=OneWay}" IsIndeterminate="{Binding UpdateProgressIndeterminate, Mode=OneWay}" Foreground="{DynamicResource AccentBrush}" AutomationProperties.Name="程序更新进度" />
+                  <TextBlock x:Name="UpdateText" Grid.Row="2" Text="{Binding UpdateText}" Style="{StaticResource RuneCaption}" Margin="0,7,0,0" TextWrapping="Wrap" AutomationProperties.LiveSetting="Polite" />
+                </Grid>
+              </Border>
+              <Button x:Name="RefreshButton" Visibility="Collapsed" Command="{Binding RefreshCommand}" />
+              <TextBlock x:Name="ConfigText" Text="{Binding ConfigText}" Visibility="Collapsed" />
+            </StackPanel>
+          </Border>
+        </Grid></ScrollViewer>
+      </Grid>
+
+      <Border Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="2" Visibility="Collapsed"><Grid><Grid.ColumnDefinitions><ColumnDefinition x:Name="FooterSidebarColumn" Width="144" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions></Grid></Border>
+    </Grid>
+  </Border>
+</Window>

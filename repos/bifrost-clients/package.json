@@ -1,0 +1,8 @@
+{
+  "name": "bifrost-clients-dev",
+  "version": "2.0.5",
+  "private": true,
+  "type": "module",
+  "engines": {"node": ">=22.5.0"},
+  "scripts": {"client": "node tools/bifrost-client.mjs", "pretest": "node tools/prepare-test-prerequisites.mjs", "test": "node --test --test-concurrency=1 tests/*.test.mjs"}
+}

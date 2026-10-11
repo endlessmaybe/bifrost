@@ -1,0 +1,7 @@
+<resources>
+    <string name="license_about_title">GPLv3 客户端许可与对应源码</string>
+    <string name="license_full_text_path">COPYING</string>
+    <string name="license_source_bundle_path">SOURCE-BUNDLE.tar</string>
+    <string name="license_notice_index_path">LICENSES.txt</string>
+    <string name="license_redistribution_notice">允许复制、修改和再分发；不附加仅限本人或禁止修改的限制。</string>
+</resources>

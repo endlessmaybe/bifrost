@@ -1,0 +1,142 @@
+{
+  "$id": "https://contracts.bifrost.invalid/release/v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "contract_id": "bifrost.release",
+  "contract_version": "1.2.0",
+  "format": "BIFROST-RELEASE-MANIFEST-2",
+  "status": "PENDING-EXTERNAL-CEREMONY",
+  "envelope": {
+    "required": ["manifest_text", "signature", "delegation", "root_signature", "key_state"],
+    "fields": ["manifest_text", "signature", "delegation", "root_signature", "key_state", "transition_signature"],
+    "optional": ["transition_signature"],
+    "max_bytes": 1048576,
+    "signature_algorithm": "Ed25519",
+    "delegation_required": ["root_key_id", "key_id", "purpose", "algorithm", "public_key_pem", "public_key_fingerprint", "channel", "activation_sequence", "retirement_sequence", "generation"],
+    "key_state_required": ["root_key_id", "generation", "channel", "active_key_ids", "revoked_key_ids", "signature"],
+    "transition_required": ["old_key_id", "new_key_id", "purpose", "algorithm", "channel", "from_generation", "to_generation", "activation_sequence", "retirement_sequence", "old_public_key_pem", "new_public_key_pem", "old_signature", "new_signature"]
+  },
+  "manifest": {
+    "required": ["format", "generated_at", "release_sequence", "minimum_client_version", "minimum_config_version", "channel", "rollback_floor", "build", "sbom_sha256", "licenses_sha256", "source_bundle_id", "notice_artifact_id", "signing_algorithm", "signing_key_id", "trust_root_key_id", "rollback_policy"],
+    "stable_required": ["format", "generated_at", "release_sequence", "minimum_client_version", "minimum_config_version", "channel", "rollback_floor", "build", "sbom_sha256", "licenses_sha256", "source_bundle_id", "notice_artifact_id", "signing_algorithm", "signing_key_id", "trust_root_key_id", "rollback_policy", "source_manifest_sha256", "build_plan_sha256", "source_policy_sha256", "core_provenance_sha256", "build_inputs_sha256", "toolchain_sha256", "dependency_license_manifest_sha256"],
+    "channels": ["stable", "beta", "test"],
+    "max_bytes": 1048576
+  },
+  "build": {
+    "required": ["format", "generated_at", "configuration", "android_signing_scope", "android_signing_key_alias", "artifact_root", "artifacts"],
+    "max_artifacts": 64,
+    "max_artifact_bytes": 536870912,
+    "max_total_bytes": 1073741824
+  },
+  "artifact": {
+    "required": ["id", "path", "install_path", "platform", "arch", "kind", "bytes", "sha256", "source_bundle", "notice", "dependencies"],
+    "platforms": ["android", "windows", "linux"],
+    "kinds": ["apk", "exe", "service-exe", "installer", "core", "core-manifest", "node-agent", "metadata", "notice", "source"],
+    "max_dependencies": 32
+  },
+  "required_sets": {
+    "windows-x64": ["app", "service", "installer", "mihomo", "geosite", "geoip", "core-manifest", "install-metadata"],
+    "android": ["android-arm64-v8a-apk", "android-armeabi-v7a-apk", "android-x86_64-apk"]
+  },
+  "schemas": {
+    "safe_integer": {"type": "integer", "minimum": 0, "maximum": 9007199254740991},
+    "delegation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["root_key_id", "key_id", "purpose", "algorithm", "public_key_pem", "public_key_fingerprint", "channel", "activation_sequence", "retirement_sequence", "generation"],
+      "properties": {
+        "root_key_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$"},
+        "key_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$"},
+        "purpose": {"const": "release-signing"}, "algorithm": {"const": "Ed25519"},
+        "public_key_pem": {"type": "string", "minLength": 32, "maxLength": 4096},
+        "public_key_fingerprint": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "channel": {"type": "string", "enum": ["stable", "beta", "test"]},
+        "activation_sequence": {"$ref": "#/$defs/safe_integer", "minimum": 1},
+        "retirement_sequence": {"$ref": "#/$defs/safe_integer", "minimum": 2},
+        "generation": {"$ref": "#/$defs/safe_integer", "minimum": 1}
+      }
+    },
+    "key_state": {
+      "type": "object", "additionalProperties": false,
+      "required": ["root_key_id", "generation", "channel", "active_key_ids", "revoked_key_ids", "signature"],
+      "properties": {
+        "root_key_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$"},
+        "generation": {"$ref": "#/$defs/safe_integer", "minimum": 1},
+        "channel": {"type": "string", "enum": ["stable", "beta", "test"]},
+        "active_key_ids": {"type": "array", "minItems": 1, "maxItems": 32, "items": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$"}},
+        "revoked_key_ids": {"type": "array", "maxItems": 64, "items": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$"}},
+        "signature": {"type": "string", "minLength": 86, "maxLength": 86}
+      }
+    },
+    "artifact": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "path", "install_path", "platform", "arch", "kind", "bytes", "sha256", "source_bundle", "notice", "dependencies"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,128}$"},
+        "path": {"type": "string", "minLength": 1, "maxLength": 240},
+        "install_path": {"type": "string", "minLength": 1, "maxLength": 240},
+        "platform": {"type": "string", "enum": ["android", "windows", "linux"]},
+        "arch": {"type": "string", "pattern": "^[A-Za-z0-9._-]+$"},
+        "kind": {"type": "string", "enum": ["apk", "exe", "service-exe", "installer", "core", "core-manifest", "node-agent", "metadata", "notice", "source"]},
+        "bytes": {"$ref": "#/$defs/safe_integer", "minimum": 1, "maximum": 536870912},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "source_bundle": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,128}$"},
+        "notice": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,128}$"},
+        "dependencies": {"type": "array", "maxItems": 32, "items": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,128}$"}}
+      }
+    },
+    "build": {
+      "type": "object", "additionalProperties": false,
+      "required": ["format", "generated_at", "configuration", "android_signing_scope", "android_signing_key_alias", "artifact_root", "artifacts"],
+      "properties": {
+        "format": {"const": "BIFROST-BUILD-MANIFEST-2"}, "generated_at": {"type": "string"},
+        "configuration": {"type": "string", "minLength": 1, "maxLength": 128}, "android_signing_scope": {"type": "string", "minLength": 1, "maxLength": 128},
+        "android_signing_key_alias": {"type": "string", "minLength": 1, "maxLength": 128}, "artifact_root": {"const": "releases"},
+        "artifacts": {"type": "array", "minItems": 1, "maxItems": 64, "items": {"$ref": "#/schemas/artifact"}}
+      }
+    },
+    "manifest": {
+      "type": "object", "additionalProperties": false,
+      "required": ["format", "generated_at", "release_sequence", "minimum_client_version", "minimum_config_version", "channel", "rollback_floor", "build", "sbom_sha256", "licenses_sha256", "source_bundle_id", "notice_artifact_id", "signing_algorithm", "signing_key_id", "trust_root_key_id", "rollback_policy"],
+      "properties": {
+        "format": {"const": "BIFROST-RELEASE-MANIFEST-2"}, "generated_at": {"type": "string"}, "release_sequence": {"$ref": "#/$defs/safe_integer", "minimum": 1},
+        "minimum_client_version": {"type": "string", "minLength": 5, "maxLength": 128}, "minimum_config_version": {"$ref": "#/$defs/safe_integer"},
+        "channel": {"type": "string", "enum": ["stable", "beta", "test"]}, "rollback_floor": {"$ref": "#/$defs/safe_integer", "minimum": 1},
+        "build": {"$ref": "#/schemas/build"}, "sbom_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "licenses_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "source_bundle_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,128}$"}, "notice_artifact_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,128}$"},
+        "signing_algorithm": {"const": "Ed25519"}, "signing_key_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$"}, "trust_root_key_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$"},
+        "source_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "build_plan_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "source_policy_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "core_provenance_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "build_inputs_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "toolchain_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}, "dependency_license_manifest_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "rollback_policy": {"type": "object", "additionalProperties": false, "required": ["reject_sequence_below_last_seen", "reject_config_version_below_rollback_floor"], "properties": {"reject_sequence_below_last_seen": {"const": true}, "reject_config_version_below_rollback_floor": {"const": true}}}
+      }
+    },
+    "envelope": {
+      "type": "object", "additionalProperties": false, "required": ["manifest_text", "signature", "delegation", "root_signature", "key_state"],
+      "properties": {"manifest_text": {"type": "string", "minLength": 2, "maxLength": 1048576}, "signature": {"type": "string", "minLength": 86, "maxLength": 86}, "delegation": {"$ref": "#/schemas/delegation"}, "root_signature": {"type": "string", "minLength": 86, "maxLength": 86}, "key_state": {"$ref": "#/schemas/key_state"}, "transition_signature": {"$ref": "#/schemas/transition"}}
+    },
+    "transition": {
+      "type": "object", "additionalProperties": false, "required": ["old_key_id", "new_key_id", "purpose", "algorithm", "channel", "from_generation", "to_generation", "activation_sequence", "retirement_sequence", "old_public_key_pem", "new_public_key_pem", "old_signature", "new_signature"],
+      "properties": {"old_key_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$"}, "new_key_id": {"type": "string", "pattern": "^[A-Za-z0-9._-]{1,64}$"}, "purpose": {"const": "release-signing"}, "algorithm": {"const": "Ed25519"}, "channel": {"type": "string", "enum": ["stable", "beta", "test"]}, "from_generation": {"$ref": "#/$defs/safe_integer", "minimum": 1}, "to_generation": {"$ref": "#/$defs/safe_integer", "minimum": 2}, "activation_sequence": {"$ref": "#/$defs/safe_integer", "minimum": 1}, "retirement_sequence": {"$ref": "#/$defs/safe_integer", "minimum": 2}, "old_public_key_pem": {"type": "string", "minLength": 32, "maxLength": 4096}, "new_public_key_pem": {"type": "string", "minLength": 32, "maxLength": 4096}, "old_signature": {"type": "string", "minLength": 86, "maxLength": 86}, "new_signature": {"type": "string", "minLength": 86, "maxLength": 86}}
+    }
+  },
+  "$defs": {"safe_integer": {"type": "integer", "minimum": 0, "maximum": 9007199254740991}},
+  "canonical": {
+    "encoding": "UTF-8",
+    "duplicate_keys": "reject",
+    "unknown_fields": "reject",
+    "numbers": "safe-integer-only",
+    "signed_bytes": "exact-original-UTF8-manifest_text"
+  },
+  "trust_root": {
+    "key_id": "bifrost-root-v1",
+    "purpose": "release-trust-root",
+    "algorithm": "Ed25519",
+    "public_key_pem": null,
+    "fingerprint": null,
+    "status": "PENDING-EXTERNAL-CEREMONY",
+    "production_rotation": "PENDING-EXTERNAL-CEREMONY",
+    "delegation_purpose": "release-signing"
+  },
+  "state": {
+    "schema": "bifrost.release.state.v2",
+    "required": ["last_sequence", "last_manifest_digest", "envelope_digest", "authority_digest", "authority_generation", "root_key_id", "root_fingerprint", "delegation_generation", "key_id", "signing_key_fingerprint", "channel", "floor", "state_generation", "slot", "state_checksum", "updated_at"],
+    "allow_missing": "protected-installer-bootstrap-only"
+  }
+}

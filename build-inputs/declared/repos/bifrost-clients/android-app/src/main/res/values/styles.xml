@@ -1,0 +1,6 @@
+<resources>
+    <style name="Theme.Bifrost" parent="android:style/Theme.Material.Light.NoActionBar">
+        <item name="android:fontFamily">sans</item>
+        <item name="android:colorAccent">#5967D9</item>
+    </style>
+</resources>

@@ -1,0 +1,14 @@
+Bifrost client license inventory (index; the complete texts are shipped below).
+
+COPYING                         GNU GPLv3, complete official text
+licenses/GPL-3.0-only.txt      GNU GPLv3, complete text
+licenses/Apache-2.0.txt        Apache License 2.0, complete text
+licenses/MPL-2.0.txt           Mozilla Public License 2.0, complete text
+licenses/MIT.txt               MIT license and copyright notice
+THIRD_PARTY_NOTICES.md         version/source/modification index
+INSTALLATION_INFORMATION.md    GPLv3 Installation Information
+core-adapters/mihomo.lock.json pinned Windows core URL and SHA-256 identity
+core-adapters/mihomo-geodata.lock.json pinned GeoSite/GeoIP release identity
+
+This index is not a substitute for any complete text above. No notice removes
+or limits the GPLv3 rights to copy, modify or redistribute the clients.

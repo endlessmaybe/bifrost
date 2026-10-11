@@ -1,0 +1,12 @@
+{
+  "schema": "bifrost-mihomo-lock-v1",
+  "version": "v1.19.30",
+  "platform": "windows-amd64-compatible",
+  "archive_url": "https://github.com/MetaCubeX/mihomo/releases/download/v1.19.30/mihomo-windows-amd64-compatible-v1.19.30.zip",
+  "archive_size": 18529108,
+  "archive_sha256": "289fde5e29d37a5b3326480590d8b3551c5bf7f8737290355c19bce74d57a563",
+  "executable_name": "mihomo.exe",
+  "executable_sha256": "6ac25fcb26afe8e1bea24b6e6e80805bf884a33232d12e2d78dfa0b6c529ac14",
+  "license": "GPL-3.0-only",
+  "source": "https://github.com/MetaCubeX/mihomo/tree/v1.19.30"
+}

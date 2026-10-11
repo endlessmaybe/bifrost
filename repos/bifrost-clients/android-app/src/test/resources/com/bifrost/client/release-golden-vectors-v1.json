@@ -1,0 +1,328 @@
+{
+  "$id": "https://contracts.bifrost.invalid/release/v1/golden-vectors",
+  "contract_id": "bifrost.release",
+  "version": "1.2.0",
+  "test_only": true,
+  "vectors": [
+    {
+      "id": "fixed-ed25519-signed-bytes",
+      "schema": "SignedBytes",
+      "message_utf8": "BIFROST-ED25519-FIXED-VECTOR-v1\\nmanifest payload bytes",
+      "signature_base64url": "mzlMQU4Js_EkK2kq71k8vKgx-SsXhWv4OeGRhQS9GYXBZk1fMj9LTNwFHOyNs4mWWkHnDQnf-NjeifhzpiAfBA",
+      "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAHOvPHzgTfkusEObQQacilPrv7a6HdQlDVqLYZNxpyLE=\n-----END PUBLIC KEY-----\n",
+      "expected": "accept",
+      "operation": "signature",
+      "input": {
+        "schema": "SignedBytes",
+        "message_utf8": "BIFROST-ED25519-FIXED-VECTOR-v1\\nmanifest payload bytes",
+        "signature_base64url": "mzlMQU4Js_EkK2kq71k8vKgx-SsXhWv4OeGRhQS9GYXBZk1fMj9LTNwFHOyNs4mWWkHnDQnf-NjeifhzpiAfBA",
+        "public_key_pem": "-----BEGIN PUBLIC KEY-----\nMCowBQYDK2VwAyEAHOvPHzgTfkusEObQQacilPrv7a6HdQlDVqLYZNxpyLE=\n-----END PUBLIC KEY-----\n"
+      },
+      "expected_error_family": null
+    },
+    {
+      "id": "duplicate-key",
+      "raw_json": "{\"manifest_text\":\"x\",\"manifest_text\":\"y\",\"signature\":\"x\"}",
+      "expected": "reject",
+      "error": "BF-RELEASE-DUPLICATE-KEY",
+      "operation": "strict-json",
+      "input": {
+        "raw_json": "{\"manifest_text\":\"x\",\"manifest_text\":\"y\",\"signature\":\"x\"}"
+      },
+      "expected_error_family": "BF-RELEASE-DUPLICATE-KEY"
+    },
+    {
+      "id": "unsafe-number-exponent",
+      "raw_manifest": "{\"release_sequence\":1e3}",
+      "expected": "reject",
+      "error": "BF-RELEASE-FIELDS",
+      "operation": "canonical-number",
+      "input": {
+        "raw_manifest": "{\"release_sequence\":1e3}"
+      },
+      "expected_error_family": "BF-RELEASE-FIELDS"
+    },
+    {
+      "id": "unsafe-path-traversal",
+      "path": "../escape",
+      "expected": "reject",
+      "error": "BF-RELEASE-PATH",
+      "operation": "safe-path",
+      "input": {
+        "path": "../escape"
+      },
+      "expected_error_family": "BF-RELEASE-PATH"
+    },
+    {
+      "id": "unsafe-path-device",
+      "path": "CON/payload.exe",
+      "expected": "reject",
+      "error": "BF-RELEASE-PATH",
+      "operation": "safe-path",
+      "input": {
+        "path": "CON/payload.exe"
+      },
+      "expected_error_family": "BF-RELEASE-PATH"
+    },
+    {
+      "id": "unsafe-path-normalization-collision",
+      "paths": [
+        "A/payload.exe",
+        "a/payload.exe"
+      ],
+      "expected": "reject",
+      "error": "BF-RELEASE-PATH-COLLISION",
+      "operation": "path-collision",
+      "input": {
+        "paths": [
+          "A/payload.exe",
+          "a/payload.exe"
+        ]
+      },
+      "expected_error_family": "BF-RELEASE-PATH-COLLISION"
+    },
+    {
+      "id": "sequence-floor",
+      "release_sequence": 3,
+      "rollback_floor": 4,
+      "expected": "reject",
+      "error": "BF-RELEASE-METADATA",
+      "operation": "manifest-shape",
+      "input": {
+        "release_sequence": 3,
+        "rollback_floor": 4
+      },
+      "expected_error_family": "BF-RELEASE-METADATA"
+    },
+    {
+      "id": "unknown-key",
+      "signing_key_id": "unknown-test-key",
+      "expected": "reject",
+      "error": "BF-RELEASE-KEY",
+      "operation": "manifest-shape",
+      "input": {
+        "signing_key_id": "unknown-test-key"
+      },
+      "expected_error_family": "BF-RELEASE-KEY"
+    },
+    {
+      "id": "direct-root-signed-release",
+      "schema": "ReleaseEnvelope",
+      "envelope": {
+        "manifest_text": "{}",
+        "signature": "TEST-ONLY"
+      },
+      "expected": "reject",
+      "error": "BF-RELEASE-KEY",
+      "operation": "envelope",
+      "input": {
+        "schema": "ReleaseEnvelope",
+        "envelope": {
+          "manifest_text": "{}",
+          "signature": "TEST-ONLY"
+        }
+      },
+      "expected_error_family": "BF-RELEASE-KEY"
+    },
+    {
+      "id": "manifest-envelope-key-mismatch",
+      "schema": "ReleaseEnvelope",
+      "manifest_signing_key_id": "bifrost-release-v1",
+      "delegation_key_id": "bifrost-release-v2",
+      "expected": "reject",
+      "error": "BF-RELEASE-KEY",
+      "operation": "manifest-shape",
+      "input": {
+        "schema": "ReleaseEnvelope",
+        "manifest_signing_key_id": "bifrost-release-v1",
+        "delegation_key_id": "bifrost-release-v2"
+      },
+      "expected_error_family": "BF-RELEASE-KEY"
+    },
+    {
+      "id": "revoked-signer-self-assertion",
+      "schema": "ReleaseManifest",
+      "revoked_key_ids": [
+        "bifrost-release-v1"
+      ],
+      "expected": "reject",
+      "error": "BF-RELEASE-KEY",
+      "operation": "manifest-shape",
+      "input": {
+        "schema": "ReleaseManifest",
+        "revoked_key_ids": [
+          "bifrost-release-v1"
+        ]
+      },
+      "expected_error_family": "BF-RELEASE-KEY"
+    },
+    {
+      "id": "activation-before-window",
+      "schema": "Delegation",
+      "activation_sequence": 9,
+      "release_sequence": 8,
+      "expected": "reject",
+      "error": "BF-RELEASE-KEY",
+      "operation": "manifest-shape",
+      "input": {
+        "schema": "Delegation",
+        "activation_sequence": 9,
+        "release_sequence": 8
+      },
+      "expected_error_family": "BF-RELEASE-KEY"
+    },
+    {
+      "id": "retired-signer",
+      "schema": "Delegation",
+      "activation_sequence": 1,
+      "retirement_sequence": 2,
+      "release_sequence": 2,
+      "expected": "reject",
+      "error": "BF-RELEASE-KEY",
+      "operation": "manifest-shape",
+      "input": {
+        "schema": "Delegation",
+        "activation_sequence": 1,
+        "retirement_sequence": 2,
+        "release_sequence": 2
+      },
+      "expected_error_family": "BF-RELEASE-KEY"
+    },
+    {
+      "id": "same-sequence-same-digest",
+      "schema": "ReleaseState",
+      "sequence": 12,
+      "current_manifest_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "manifest_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expected": "idempotent",
+      "operation": "state",
+      "input": {
+        "schema": "ReleaseState",
+        "sequence": 12,
+        "current_manifest_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "manifest_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+      },
+      "expected_error_family": null
+    },
+    {
+      "id": "same-sequence-different-digest",
+      "schema": "ReleaseState",
+      "sequence": 12,
+      "current_manifest_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "manifest_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "expected": "reject",
+      "error": "BF-RELEASE-EQUIVOCATION",
+      "operation": "state",
+      "input": {
+        "schema": "ReleaseState",
+        "sequence": 12,
+        "current_manifest_digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "manifest_digest": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+      },
+      "expected_error_family": "BF-RELEASE-EQUIVOCATION"
+    },
+    {
+      "id": "torn-state",
+      "schema": "ReleaseState",
+      "raw": "{\"last_sequence\":",
+      "expected": "reject",
+      "error": "BF-RELEASE-STATE-CORRUPT",
+      "operation": "strict-state",
+      "input": {
+        "schema": "ReleaseState",
+        "raw": "{\"last_sequence\":"
+      },
+      "expected_error_family": "BF-RELEASE-STATE-CORRUPT"
+    },
+    {
+      "id": "unknown-field",
+      "schema": "ReleaseManifest",
+      "extra": true,
+      "expected": "reject",
+      "error": "BF-RELEASE-FIELDS",
+      "operation": "manifest-shape",
+      "input": {
+        "schema": "ReleaseManifest",
+        "extra": true
+      },
+      "expected_error_family": "BF-RELEASE-FIELDS"
+    },
+    {
+      "id": "absolute-path",
+      "schema": "Artifact",
+      "path": "C:/Windows/Bifrost.exe",
+      "expected": "reject",
+      "error": "BF-RELEASE-PATH",
+      "operation": "safe-path",
+      "input": {
+        "schema": "Artifact",
+        "path": "C:/Windows/Bifrost.exe"
+      },
+      "expected_error_family": "BF-RELEASE-PATH"
+    },
+    {
+      "id": "ads-path",
+      "schema": "Artifact",
+      "path": "payload.exe:stream",
+      "expected": "reject",
+      "error": "BF-RELEASE-PATH",
+      "operation": "safe-path",
+      "input": {
+        "schema": "Artifact",
+        "path": "payload.exe:stream"
+      },
+      "expected_error_family": "BF-RELEASE-PATH"
+    },
+    {
+      "id": "unicode-collision",
+      "schema": "Artifact",
+      "paths": [
+        "é.exe",
+        "é.exe"
+      ],
+      "expected": "reject",
+      "error": "BF-RELEASE-PATH-COLLISION",
+      "operation": "path-collision",
+      "input": {
+        "schema": "Artifact",
+        "paths": [
+          "é.exe",
+          "é.exe"
+        ]
+      },
+      "expected_error_family": "BF-RELEASE-PATH-COLLISION"
+    },
+    {
+      "id": "range-resume",
+      "schema": "Download",
+      "status": 206,
+      "expected": "reject",
+      "error": "BF-RELEASE-RANGE",
+      "operation": "download-status",
+      "input": {
+        "schema": "Download",
+        "status": 206
+      },
+      "expected_error_family": "BF-RELEASE-RANGE"
+    },
+    {
+      "id": "cross-origin-redirect",
+      "schema": "Download",
+      "status": 302,
+      "expected": "reject",
+      "error": "BF-RELEASE-REDIRECT",
+      "operation": "download-status",
+      "input": {
+        "schema": "Download",
+        "status": 302
+      },
+      "expected_error_family": "BF-RELEASE-REDIRECT"
+    }
+  ],
+  "vector_schema": {
+    "required_input": true,
+    "expected_disposition": "accept|reject|idempotent",
+    "error_family": "stable-code",
+    "stable_manifest_binding_fields": ["source_manifest_sha256", "build_plan_sha256", "source_policy_sha256", "core_provenance_sha256", "build_inputs_sha256", "toolchain_sha256", "dependency_license_manifest_sha256"]
+  }
+}

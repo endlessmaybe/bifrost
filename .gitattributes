@@ -1,0 +1,8 @@
+* text=auto
+*.png binary
+*.ico binary
+*.jar binary
+*.tar binary
+*.gz binary
+*.dat binary
+*.metadb binary

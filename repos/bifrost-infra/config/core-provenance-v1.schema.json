@@ -1,0 +1,40 @@
+{
+  "$id": "bifrost.core-provenance.v1",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "mihomo", "patches_digest", "source_archive", "overlay"],
+  "properties": {
+    "format": {"const": "BIFROST-CORE-PROVENANCE-1"},
+    "patches_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source_archive": {"$ref": "#/$defs/inputs"},
+    "overlay": {"$ref": "#/$defs/inputs"},
+    "mihomo": {"$ref": "#/$defs/core"}
+  },
+  "$defs": {
+    "core": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["version", "source_digest", "patch_digest", "source_path", "patch_path"],
+      "properties": {
+        "version": {"type": "string", "minLength": 1, "maxLength": 128},
+        "source_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "patch_digest": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "source_path": {"type": "string", "minLength": 1, "maxLength": 240},
+        "patch_path": {"type": "string", "minLength": 1, "maxLength": 240}
+      }
+    },
+    "inputs": {
+      "type": "array", "minItems": 1, "maxItems": 20000,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["path", "bytes", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1, "maxLength": 240},
+          "bytes": {"type": "integer", "minimum": 1, "maximum": 67108864},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    }
+  }
+}
